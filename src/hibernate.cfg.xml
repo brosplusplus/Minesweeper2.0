@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="Util">
+  <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
+  <property name="hibernate.connection.password">derby</property>
+  <property name="hibernate.connection.url">jdbc:derby://localhost:1527/HibernateDB;create=true</property>
+  <property name="hibernate.connection.username">derby</property>
+  <property name="hibernate.default_schema">test</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
+  <property name="hibernate.show_sql">true</property>
+  <property name="hibernate.hbm2ddl.auto">update</property>
+  <property name="current_session_context_class">thread</property>
+  <mapping class="com.bros.minesweeper.domain.model.UsuariRegistrat"/>
+  <mapping class="com.bros.minesweeper.domain.model.Jugador"/>
+  <mapping class="com.bros.minesweeper.domain.model.Administrador"/>
+  <mapping class="com.bros.minesweeper.domain.model.Casella"/>
+  <mapping class="com.bros.minesweeper.domain.model.Partida"/>
+  <mapping class="com.bros.minesweeper.domain.model.Nivell"/>
+ </session-factory>
+</hibernate-configuration>
