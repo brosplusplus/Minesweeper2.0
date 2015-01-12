@@ -1,8 +1,8 @@
-package com.bros.minesweeper.domain.factory;
+package com.bros.minesweeper.factory;
 
-import com.bros.minesweeper.domain.datainterface.CtrlJugador;
-import com.bros.minesweeper.domain.datainterface.CtrlNivell;
-import com.bros.minesweeper.domain.datainterface.CtrlUsuariRegistrat;
+import com.bros.minesweeper.datainterface.CtrlJugador;
+import com.bros.minesweeper.datainterface.CtrlNivell;
+import com.bros.minesweeper.datainterface.CtrlUsuariRegistrat;
 
 public class FactoriaControladors {
 

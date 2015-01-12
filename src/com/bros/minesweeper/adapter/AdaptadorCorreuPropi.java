@@ -1,4 +1,4 @@
-package com.bros.minesweeper.domain.adapter;
+package com.bros.minesweeper.adapter;
 
 import java.rmi.RemoteException;
 

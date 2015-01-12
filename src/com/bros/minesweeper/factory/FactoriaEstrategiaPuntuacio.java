@@ -1,4 +1,4 @@
-package com.bros.minesweeper.domain.factory;
+package com.bros.minesweeper.factory;
 
 import java.util.ArrayList;
 

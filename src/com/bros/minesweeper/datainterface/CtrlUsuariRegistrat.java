@@ -1,4 +1,4 @@
-package com.bros.minesweeper.domain.datainterface;
+package com.bros.minesweeper.datainterface;
 
 import com.bros.minesweeper.domain.model.UsuariRegistrat;
 

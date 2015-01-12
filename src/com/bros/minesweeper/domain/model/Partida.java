@@ -18,7 +18,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.bros.minesweeper.domain.datainterface.CtrlNivell;
+import com.bros.minesweeper.datainterface.CtrlNivell;
 
 /**
  * Partida represents a single game of minesweeper

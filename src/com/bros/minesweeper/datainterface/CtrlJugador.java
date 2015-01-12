@@ -1,4 +1,4 @@
-package com.bros.minesweeper.domain.datainterface;
+package com.bros.minesweeper.datainterface;
 
 public class CtrlJugador {
 

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import com.bros.minesweeper.domain.datainterface.CtrlJugador;
-import com.bros.minesweeper.domain.datainterface.CtrlNivell;
-import com.bros.minesweeper.domain.factory.FactoriaControladors;
-import com.bros.minesweeper.domain.factory.FactoriaEstrategiaPuntuacio;
+import com.bros.minesweeper.datainterface.CtrlJugador;
+import com.bros.minesweeper.datainterface.CtrlNivell;
 import com.bros.minesweeper.domain.model.EstatPartida;
 import com.bros.minesweeper.domain.model.EstrategiaPuntuacio;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.Partida;
+import com.bros.minesweeper.factory.FactoriaControladors;
+import com.bros.minesweeper.factory.FactoriaEstrategiaPuntuacio;
 
 public class JugarPartidaUseCaseController {
 

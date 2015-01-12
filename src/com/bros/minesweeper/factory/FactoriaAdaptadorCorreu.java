@@ -1,7 +1,7 @@
-package com.bros.minesweeper.domain.factory;
+package com.bros.minesweeper.factory;
 
-import com.bros.minesweeper.domain.adapter.AdaptadorCorreuPropi;
-import com.bros.minesweeper.domain.adapter.IAdaptadorCorreu;
+import com.bros.minesweeper.adapter.AdaptadorCorreuPropi;
+import com.bros.minesweeper.adapter.IAdaptadorCorreu;
 
 public class FactoriaAdaptadorCorreu {
 	public static IAdaptadorCorreu getAdaptadorCorreu(AdaptadorType tipus)
