@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.bros.minesweeper.db.CtrlNivell;
 import com.bros.minesweeper.domain.model.Nivell;
 import com.bros.minesweeper.factory.FactoriaControladors;
+import com.bros.minesweeper.utils.debug;
 
 /**
  *ConsultarNivellUseCaseController representa el cas d'us de Consultar Nivell
@@ -32,5 +33,19 @@ public class ConsultarNivellUseCaseController {
 		
 		return result;
 
+	}
+	
+	public static void main(String args[]) 
+	{
+		ConsultarNivellUseCaseController ucc = new ConsultarNivellUseCaseController();
+		
+		try {
+			ArrayList<HashMap<String,String>> ar = ucc.consultarNivells();
+			debug.outln(ar.toString());
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			debug.outln(e.getMessage());
+		}
 	}
 }
