@@ -18,6 +18,7 @@ import javax.persistence.Transient;
 import com.bros.minesweeper.factory.FactoriaControladors;
 import com.bros.minesweeper.factory.FactoriaEstrategiaPuntuacio;
 import com.bros.minesweeper.utils.Pair;
+import com.bros.minesweeper.utils.debug;
 
 /**
  * Partida representa una partida al joc BuscaMines
@@ -73,7 +74,23 @@ public class Partida {
 	@Transient
 	private Integer nMines; //numero de mines del taulell
 
-	public Partida(){}
+	public Partida() {}
+	
+	public Partida(Jugador jugName, Nivell niv, EstrategiaPuntuacio estrat){
+		this.estaAcabada = false;
+		this.estaGuanyada = false;
+		this.nombreTirades = 0;
+		this.taulell = new ArrayList<Casella>();
+		this.jugadorPartidaActual = jugName;
+		this.teNivell = niv;
+		
+		this.nCols = this.teNivell.getNombreCasellesxFila();
+		this.nRows = this.teNivell.getNombreCasellesxColumna();
+		this.nMines = this.teNivell.getNombreMines();
+		
+		this.inicialitzarCaselles(nRows, nCols);
+		this.estrategia = estrat;
+	}
 	
 	public Partida(Jugador jugName, String niv) {
 		this.estaAcabada = false;
@@ -282,7 +299,7 @@ public class Partida {
 			Integer x = rand.nextInt(this.nRows);
 			Integer y = rand.nextInt(this.nCols);
 			Casella c = getCasellaTaulell(x, y);
-			if(!c.getTeMina()){
+			if(!c.tensMina()){
 				c.setTeMina(true);
 				for (int i = x-1; i < x+1; ++i) {
 					for (int j = y-1; j <  y+1; ++j) {

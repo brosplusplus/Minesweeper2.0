@@ -1,5 +1,6 @@
 package com.bros.minesweeper.test;
 
+import com.bros.minesweeper.domain.model.EstrategiaPerTemps;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.Nivell;
 import com.bros.minesweeper.domain.model.Partida;
@@ -20,10 +21,15 @@ public class ProvaTreminal {
 		nivell.setNombreCasellesxFila(5);
 		nivell.setNombreMines(5);
 		
-		Partida partida = new Partida(player1, nivell.getNom());
+		EstrategiaPerTemps estrat = new EstrategiaPerTemps();
+		
+		Partida partida = new Partida(player1, nivell, estrat);
 		partida.crearCaselles(nivell.getNombreCasellesxColumna(), 
 				nivell.getNombreCasellesxFila(), nivell.getNombreMines());
 		
+		for(int i = 0; i < nivell.getNombreCasellesxColumna(); ++i) {
+			for(int j = 0;)
+		}
 		
 	}
 }
