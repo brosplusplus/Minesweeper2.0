@@ -6,10 +6,6 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import antlr.debug.Event;
-
-import com.bros.minesweeper.domain.model.Nivell;
-
 /**
  * Vista de l'aplicacio del Buscamines
  * 
