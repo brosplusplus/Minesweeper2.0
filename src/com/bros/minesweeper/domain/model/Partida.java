@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.bros.minesweeper.db.CtrlNivell;
 import com.bros.minesweeper.utils.Pair;
 
 /**
@@ -63,7 +63,7 @@ public class Partida {
 	@Transient
 	private Integer puntuacio_tirades;
 	
-	@OneToMany (targetEntity=Casella.class, mappedBy="idCasella")
+	@OneToMany (targetEntity=Casella.class, mappedBy="partida")
 	private List<Casella> taulell;
 	@Transient
 	private Integer nCols; //numero de columnes del taulell
@@ -72,6 +72,8 @@ public class Partida {
 	@Transient
 	private Integer nMines; //numero de mines del taulell
 
+	
+	public Partida(){}
 	public Partida(int id, Jugador jugName, String niv, 
 			EstrategiaPuntuacio estrategiaEscollida) {
 		this.idPartida = id;

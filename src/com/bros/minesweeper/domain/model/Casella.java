@@ -2,7 +2,6 @@ package com.bros.minesweeper.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,11 +14,10 @@ import javax.persistence.UniqueConstraint;
 })
 public class Casella {
 	@Id
-	@GeneratedValue
 	@Column (name="idCasella")
-	private Integer idCasella;
+	private String idCasella;
 	
-	@ManyToOne	
+	@ManyToOne
 	@JoinColumn(name="idPartida")
 	private Partida partida;
 	private Integer numeroFila;
@@ -29,12 +27,17 @@ public class Casella {
 	private Boolean estaMarcada;
 	private Boolean teMina;
 	
+	public Casella(){
+		
+	}
+	
 	public Casella(int nF, int nC, Partida partida) {
 		this.numeroFila = nF;
 		this.numeroColumna = nC;
 		this.estaDescoberta = false;
 		this.estaMarcada = false;
 		this.partida = partida;
+		this.idCasella = partida+":"+nF+":"+nC;
 	}
 	
 	public void setPartida(Partida p) {
@@ -139,4 +142,5 @@ public class Casella {
 	public void incrementaNumero() {
 		++this.numero;
 	}
+
 }
