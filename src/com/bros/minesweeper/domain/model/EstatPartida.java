@@ -14,4 +14,11 @@ public class EstatPartida {
 	public Boolean acabada;
 	public Integer puntuacio;
 	public ArrayList<Pair<Integer, Integer> > casellesPerDescobrir;
+	
+	public EstatPartida() {
+		this.guanyada = false;
+		this.acabada = false;
+		this.puntuacio = 0;
+		this.casellesPerDescobrir = null;
+	}
 }
