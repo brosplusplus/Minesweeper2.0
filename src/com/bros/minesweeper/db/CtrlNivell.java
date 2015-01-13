@@ -9,6 +9,12 @@ import java.util.ArrayList;
 import com.bros.minesweeper.datainterface.ICtrlNivell;
 import com.bros.minesweeper.domain.model.Nivell;
 
+/**
+ * Accedim a la informacio dels nivells que conte la base de dades
+ * 
+ * @author Alejandro Martinez
+ *
+ */
 public class CtrlNivell implements ICtrlNivell{
 	
     private static String tableName = "Nivell";
