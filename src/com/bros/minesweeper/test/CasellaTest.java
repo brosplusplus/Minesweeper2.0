@@ -22,6 +22,5 @@ public class CasellaTest {
 		session.save(p);
 		session.save(c);
 		session.getTransaction().commit();
-		session.close();
 	}
 }
