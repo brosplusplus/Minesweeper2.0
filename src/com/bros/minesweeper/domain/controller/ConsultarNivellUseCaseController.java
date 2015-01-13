@@ -3,7 +3,7 @@ package com.bros.minesweeper.domain.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.bros.minesweeper.datainterface.CtrlNivell;
+import com.bros.minesweeper.db.CtrlNivell;
 import com.bros.minesweeper.domain.model.Nivell;
 import com.bros.minesweeper.factory.FactoriaControladors;
 

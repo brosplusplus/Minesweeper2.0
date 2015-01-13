@@ -1,12 +1,13 @@
-package com.bros.minesweeper.datainterface;
+package com.bros.minesweeper.db;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.bros.minesweeper.db.ConnexioDB;
+import com.bros.minesweeper.datainterface.ICtrlJugador;
+import com.bros.minesweeper.domain.model.Jugador;
 
-public class CtrlJugador {
+public class CtrlJugador implements ICtrlJugador {
 
 	private static String tableName = "Jugador";
     // jdbc Connection
@@ -26,6 +27,12 @@ public class CtrlJugador {
 		}
 
 		return false;
+	}
+
+	@Override
+	public Jugador get(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

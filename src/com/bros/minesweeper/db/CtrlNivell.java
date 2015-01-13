@@ -1,4 +1,4 @@
-package com.bros.minesweeper.datainterface;
+package com.bros.minesweeper.db;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -6,10 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.bros.minesweeper.db.ConnexioDB;
+import com.bros.minesweeper.datainterface.ICtrlNivell;
 import com.bros.minesweeper.domain.model.Nivell;
 
-public class CtrlNivell {
+public class CtrlNivell implements ICtrlNivell{
 	
     private static String tableName = "Nivell";
     // jdbc Connection
@@ -42,7 +42,7 @@ public class CtrlNivell {
 		return null;
 	}
 
-	public static Nivell get(String nomNivell) {
+	public Nivell get(String nomNivell) {
 		// TODO Auto-generated method stub
 		try {
 			ConnexioDB.createConnection();

@@ -1,29 +1,36 @@
 package com.bros.minesweeper.factory;
 
-import com.bros.minesweeper.datainterface.CtrlJugador;
-import com.bros.minesweeper.datainterface.CtrlNivell;
-import com.bros.minesweeper.datainterface.CtrlUsuariRegistrat;
+import com.bros.minesweeper.db.CtrlCasella;
+import com.bros.minesweeper.db.CtrlJugador;
+import com.bros.minesweeper.db.CtrlNivell;
+import com.bros.minesweeper.db.CtrlPartida;
+import com.bros.minesweeper.db.CtrlUsuariRegistrat;
 
-public class FactoriaControladors {
+/**
+ * Factoria dels controladors de persistencia.
+ * @author Borja Arias
+ */
 
-	public boolean exists(String userN) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+public class FactoriaControladors extends AbstractFactory{
 
-	public static CtrlUsuariRegistrat getCtrlUsuari() {
-		// TODO Auto-generated method stub
-		return null;
+	public static CtrlUsuariRegistrat getCtrlUsuariRegistrat() {
+		return new CtrlUsuariRegistrat();
 	}
 
 	public static CtrlNivell getCtrlNivell() {
-		// TODO Auto-generated method stub
-		return null;
+		return new CtrlNivell();
 	}
 
 	public static CtrlJugador getCtrlJugador() {
-		// TODO Auto-generated method stub
-		return null;
+		return new CtrlJugador();
+	}
+	
+	public static CtrlPartida getCtrlPartida() {
+		return new CtrlPartida();
+	}
+	
+	public static CtrlCasella getCtrlCasella() {
+		return new CtrlCasella();
 	}
 
 }

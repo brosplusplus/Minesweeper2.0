@@ -329,7 +329,7 @@
                                                                          com.bros.services.mailer.MailSender.GetNameResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultgetName(
-                                        (com.bros.services.mailer.MailSenderStub.GetNameResponse)object);
+                                        (com.bros.services.mailer.MailSender.GetNameResponse)object);
                                         
                             } catch (org.apache.axis2.AxisFault e) {
                                 callback.receiveErrorgetName(e);

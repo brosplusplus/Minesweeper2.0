@@ -12,7 +12,7 @@ public class MailSenderMessagingExceptionException extends java.lang.Exception{
 
     private static final long serialVersionUID = 1421144113249L;
     
-    private com.bros.services.mailer.MailSenderStub.MailSenderMessagingException faultMessage;
+    private com.bros.services.mailer.MailSender.MailSenderMessagingException faultMessage;
 
     
         public MailSenderMessagingExceptionException() {
@@ -32,11 +32,11 @@ public class MailSenderMessagingExceptionException extends java.lang.Exception{
         }
     
 
-    public void setFaultMessage(com.bros.services.mailer.MailSenderStub.MailSenderMessagingException msg){
+    public void setFaultMessage(com.bros.services.mailer.MailSender.MailSenderMessagingException msg){
        faultMessage = msg;
     }
     
-    public com.bros.services.mailer.MailSenderStub.MailSenderMessagingException getFaultMessage(){
+    public com.bros.services.mailer.MailSender.MailSenderMessagingException getFaultMessage(){
        return faultMessage;
     }
 }
