@@ -47,7 +47,7 @@ public class JugarPartidaUseCaseController {
 		ArrayList<EstrategiaPuntuacio> estrategies = FactoriaEstrategiaPuntuacio.getAll();
 		int index = new Random().nextInt(estrategies.size());
 		EstrategiaPuntuacio estrategiaEscollida = estrategies.get(index);
-		this.partida = new Partida(jugName, nivell, estrategiaEscollida);
+		this.partida = new Partida(jugName, nivell);
 	}
 	
 	

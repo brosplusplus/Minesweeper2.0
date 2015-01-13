@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import com.bros.minesweeper.utils.Pair;
 
+/**
+ * Aquesta classe representa una tupla amb la informacio
+ * d'una partida despres de realitzar un moviment.
+ *
+ */
 public class EstatPartida {
 	public Boolean guanyada;
 	public Boolean acabada;
