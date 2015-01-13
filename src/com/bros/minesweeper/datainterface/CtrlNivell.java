@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.bros.minesweeper.DB.ConnexioDB;
+import com.bros.minesweeper.db.ConnexioDB;
 import com.bros.minesweeper.domain.model.Nivell;
 
 public class CtrlNivell {

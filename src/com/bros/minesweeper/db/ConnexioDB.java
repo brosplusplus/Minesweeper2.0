@@ -1,4 +1,4 @@
-package com.bros.minesweeper.DB;
+package com.bros.minesweeper.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.bros.minesweeper.DB.ConnexioDB;
+import com.bros.minesweeper.db.ConnexioDB;
 import com.bros.minesweeper.domain.model.UsuariRegistrat;
 
 public class CtrlUsuariRegistrat {
