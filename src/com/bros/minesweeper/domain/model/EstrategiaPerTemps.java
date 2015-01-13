@@ -14,6 +14,16 @@ public class EstrategiaPerTemps implements EstrategiaPuntuacio {
 	}
 	
 	@Override
+	/**
+	 * Aquesta funcio retorna la puntuacio seguint
+	 * l'estrategia puntuacio per temps.
+	 * 
+	 * @param partida es la partida la qual es calcula
+	 * la puntuacio.
+	 * 
+	 * @return retorna la puntuacio de la partida.
+	 * 
+	 */
 	public Integer getPuntuacio(Partida partida) {
 		long actualTime = System.currentTimeMillis();
 		long timeDiff = actualTime - this.startTimeStamp;
