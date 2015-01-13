@@ -1,6 +1,6 @@
 package com.bros.minesweeper.domain.controller;
 
-import com.bros.minesweeper.datainterface.CtrlUsuariRegistrat;
+import com.bros.minesweeper.db.CtrlUsuariRegistrat;
 import com.bros.minesweeper.domain.model.UsuariRegistrat;
 import com.bros.minesweeper.factory.FactoriaControladors;
 

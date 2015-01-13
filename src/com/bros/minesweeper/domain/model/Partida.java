@@ -1,10 +1,7 @@
 package com.bros.minesweeper.domain.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Random;
 
 import javax.persistence.Column;
@@ -18,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.bros.minesweeper.datainterface.CtrlNivell;
+import com.bros.minesweeper.db.CtrlNivell;
 import com.bros.minesweeper.utils.Pair;
 
 /**
@@ -83,7 +80,7 @@ public class Partida {
 		this.nombreTirades = 0;
 		this.taulell = new ArrayList<Casella>();
 		this.jugadorPartidaActual = jugName;
-		this.teNivell = CtrlNivell.get(niv);
+		//this.teNivell = CtrlNivell.get(niv);
 		this.estrategia = estrategiaEscollida;
 		
 		this.nCols = this.teNivell.getNombreCasellesxFila();

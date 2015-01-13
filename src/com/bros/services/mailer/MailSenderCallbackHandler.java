@@ -49,7 +49,7 @@
             * override this method for handling normal response from getName operation
             */
            public void receiveResultgetName(
-                    com.bros.services.mailer.MailSenderStub.GetNameResponse result
+                    com.bros.services.mailer.MailSender.GetNameResponse result
                         ) {
            }
 

@@ -1,13 +1,13 @@
-package com.bros.minesweeper.datainterface;
+package com.bros.minesweeper.db;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.bros.minesweeper.db.ConnexioDB;
+import com.bros.minesweeper.datainterface.ICtrlUsuariRegistrat;
 import com.bros.minesweeper.domain.model.UsuariRegistrat;
 
-public class CtrlUsuariRegistrat {
+public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
 
 	private static String tableName = "USUARIREGISTRAT";
     // jdbc Connection

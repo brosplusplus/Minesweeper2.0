@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import com.bros.minesweeper.datainterface.CtrlJugador;
-import com.bros.minesweeper.datainterface.CtrlNivell;
+import com.bros.minesweeper.db.CtrlJugador;
+import com.bros.minesweeper.db.CtrlNivell;
 import com.bros.minesweeper.domain.model.EstatPartida;
 import com.bros.minesweeper.domain.model.EstrategiaPuntuacio;
 import com.bros.minesweeper.domain.model.Jugador;
