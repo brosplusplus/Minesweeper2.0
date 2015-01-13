@@ -1,14 +1,15 @@
 package com.bros.minesweeper.db;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
 
 import org.hibernate.Session;
 
 import com.bros.minesweeper.datainterface.ICtrlUsuariRegistrat;
-import com.bros.minesweeper.domain.model.Partida;
+import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.UsuariRegistrat;
+import com.bros.minesweeper.factory.FactoriaControladors;
+import com.bros.minesweeper.utils.debug;
 
 public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
 
@@ -37,4 +38,24 @@ public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
 		return id;
 	}
 
+	
+	public static void main (String[] args) {
+		ICtrlUsuariRegistrat ctrlUsuari = FactoriaControladors.getCtrlUsuariRegistrat();
+		
+		UsuariRegistrat user = new Jugador();
+		user.setUsername("Paco");
+		user.setNom("Paco");
+		user.setCognom("Franco");
+		user.setPwd("pacopaco");
+		
+		ctrlUsuari.save(user);
+		
+		user = ctrlUsuari.get("Paco");
+		
+		if (user != null) 
+			debug.outln("S'ha trobat un Paco al sistema: "+user.getNom()+" "+user.getCognom());
+		else
+			debug.outln("No s'ha trobat cap Paco al sistema");
+		
+	}
 }
