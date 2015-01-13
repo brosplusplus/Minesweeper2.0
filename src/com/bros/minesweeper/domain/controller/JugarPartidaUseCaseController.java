@@ -2,16 +2,12 @@ package com.bros.minesweeper.domain.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 import com.bros.minesweeper.db.CtrlJugador;
-import com.bros.minesweeper.db.CtrlNivell;
 import com.bros.minesweeper.domain.model.EstatPartida;
-import com.bros.minesweeper.domain.model.EstrategiaPuntuacio;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.Partida;
 import com.bros.minesweeper.factory.FactoriaControladors;
-import com.bros.minesweeper.factory.FactoriaEstrategiaPuntuacio;
 
 public class JugarPartidaUseCaseController {
 

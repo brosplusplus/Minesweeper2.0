@@ -8,6 +8,7 @@ import com.bros.minesweeper.domain.model.EstrategiaPerTemps;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.Nivell;
 import com.bros.minesweeper.domain.model.Partida;
+import com.bros.minesweeper.utils.Pair;
 import com.bros.minesweeper.utils.debug;
 
 public class ProvaTreminal {
@@ -56,19 +57,29 @@ public class ProvaTreminal {
 			int numF = in.nextInt();
 			debug.outln("Introdueix una columna [0-"+(nivell.getNombreCasellesxFila()-1)+"]:");
 			int numC = in.nextInt();
-			
-			switch (accio) {
-			case 1:
-				partida.marcarCasella(numF, numC);
-				break;
-			case 2:
-				partida.desmarcarCasella(numF, numC);
-				break;
-			case 3:
-				ep = partida.descobrirCasella(numF, numC);
-				break;
-			default:
-				break;
+			try{
+				switch (accio) {
+				case 1:
+					partida.marcarCasella(numF, numC);
+					break;
+				case 2:
+					partida.desmarcarCasella(numF, numC);
+					break;
+				case 3:
+					ep = partida.descobrirCasella(numF, numC);
+					for (Pair<Integer, Integer> punt : ep.casellesPerDescobrir)
+					{
+						if (partida.getCasellaTaulell(punt.getFirst(), punt.getSecond()).estaDescoberta())
+							debug.outln(punt.getFirst()+" "+punt.getSecond()+" : YEZ");
+						else
+							debug.outln(punt.getFirst()+" "+punt.getSecond()+" : NOP");
+					}
+					break;
+				default:
+					break;
+				}
+			} catch (Exception e) {
+				debug.outln(e.getMessage());
 			}
 			imprimeixTaulell(partida, nivell);
 		}

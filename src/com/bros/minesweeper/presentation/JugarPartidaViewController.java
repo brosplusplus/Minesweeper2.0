@@ -1,6 +1,5 @@
 package com.bros.minesweeper.presentation;
 
-import java.awt.Event;
 import java.util.ArrayList;
 import java.util.HashMap;
 

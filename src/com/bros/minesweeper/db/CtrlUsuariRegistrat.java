@@ -1,11 +1,15 @@
 package com.bros.minesweeper.db;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
 
+import org.hibernate.Session;
+
 import com.bros.minesweeper.datainterface.ICtrlUsuariRegistrat;
+import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.UsuariRegistrat;
+import com.bros.minesweeper.factory.FactoriaControladors;
+import com.bros.minesweeper.utils.debug;
 
 public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
 
@@ -15,27 +19,43 @@ public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
     private static Statement stmt = null;
 	
 	public UsuariRegistrat get(String username) {
-		try {
-			ConnexioDB.createConnection();
-            stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM " + tableName +" WHERE nom =" + username);
-
-            // TODO revisar aquesta creadora.
-            UsuariRegistrat ur = new UsuariRegistrat() {};
-        	ur.setNom(result.getString("nom"));
-        	ur.setCognom(result.getString("cognom"));
-        	ur.setPwd(result.getString("pwd"));
-        	ur.setUsername(result.getString("username"));
-        	
-            result.close();
-            stmt.close();
-            conn.close();
-    		return ur;
-		}
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-		return null;
+		Session session = PersistenceSessionFactory.getInstance().openSession();
+		
+		UsuariRegistrat user = (UsuariRegistrat)session.get(UsuariRegistrat.class, username);
+		
+		return user;
 	}
 
+	@Override
+	public String save(UsuariRegistrat usuariRegistrat) {
+		Session session = PersistenceSessionFactory.getInstance().openSession();
+		
+		session.beginTransaction();
+		String id = (String)session.save(usuariRegistrat);
+		session.getTransaction().commit();
+		session.close();		
+		
+		return id;
+	}
+
+	
+	public static void main (String[] args) {
+		ICtrlUsuariRegistrat ctrlUsuari = FactoriaControladors.getCtrlUsuariRegistrat();
+		
+		UsuariRegistrat user = new Jugador();
+		user.setUsername("Paco");
+		user.setNom("Paco");
+		user.setCognom("Franco");
+		user.setPwd("pacopaco");
+		
+		ctrlUsuari.save(user);
+		
+		user = ctrlUsuari.get("Paco");
+		
+		if (user != null) 
+			debug.outln("S'ha trobat un Paco al sistema: "+user.getNom()+" "+user.getCognom());
+		else
+			debug.outln("No s'ha trobat cap Paco al sistema");
+		
+	}
 }

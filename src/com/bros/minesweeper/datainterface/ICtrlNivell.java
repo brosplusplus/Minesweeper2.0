@@ -15,4 +15,5 @@ import com.bros.minesweeper.domain.model.Nivell;
 public interface ICtrlNivell {
 	public Nivell get(String nomNivell);
 	public ArrayList<Nivell> getAll() throws SQLException;
+	public String save(Nivell nivell);
 }
