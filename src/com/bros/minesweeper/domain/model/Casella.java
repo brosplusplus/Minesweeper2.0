@@ -37,8 +37,7 @@ public class Casella {
 		this.partida = partida;
 	}
 	
-	public void setPartida(Partida p)
-	{
+	public void setPartida(Partida p) {
 		this.partida = p;
 	}
 	
@@ -79,32 +78,64 @@ public class Casella {
 		this.numero = Numero;
 	}
 
+	/**
+	 * Funcio que marca la casella.
+	 * @throws Exception
+	 * 					casellaJaDescoberta: es vol marcar una casella que esta descoberta.
+	 * 					casellaJaMarcada: es vol marcar una casella que esta marcada.
+	 */
 	public void marcar() throws Exception{
 		if (getEstaDescoberta()) throw new Exception("La casella esta descoberta i no es pot marcar");
 		if (getEstaMarcada()) throw new Exception("La casella ja esta marcada");
 		setEstaMarcada(true);
 	}
 	
+	/**
+	 * Funcio que desmarca la casella.
+	 * @throws Exception
+	 * 					casellaJaDescoberta: es vol desmarcar una casella que esta descoberta.
+	 * 					casellaJaDesmarcada: es vol desmarcar una casella que esta desmarcada.
+	 */
 	public void desmarcar() throws Exception{
 		if (getEstaDescoberta()) throw new Exception("La casella esta descoberta i no es pot desmarcar");
 		if (!getEstaMarcada()) throw new Exception("La casella ja esta desmarcada");
 		setEstaMarcada(false);
 	}
 	
+	/**
+	 * Funcio per saber si una casella conte una mina.
+	 * @return true si te una mina, false altrament.
+	 */
 	public Boolean tensMina() {
 		return this.getTeMina();
 	}
 
+	/**
+	 * Funcio per saber si una casella esta descoberta.
+	 * @return true si esta descoberta, false altrament.
+	 */
 	public Boolean estaDescoberta() {
 		return this.getEstaDescoberta();
 	}
 	
+	/**
+	 * Funcio que descobreix la casella.
+	 * @throws Exception
+	 * 					casellaMarcada: es vol marcar una casella ja marcada
+	 * 					casellaJaDescoberta: es vol descobrir una casella ja descoberta.
+	 */
 	public void descobrir() throws Exception {
 		if (getEstaDescoberta()) throw new Exception("La casella esta descoberta");
 		if (getEstaMarcada()) throw new Exception("La casella esta marcada i no es pot descobrir");
 		setEstaDescoberta(true);
 	}
 
+	/**
+	 * Funcio per incrementar el numero que tindra la casella en el 
+	 * moment de ser descoberta (el numero un cop iniciada la partida
+	 * ha de ser la suma total de mines que te la casella a les caselles
+	 * del voltant [0-8]).
+	 */
 	public void incrementaNumero() {
 		++this.numero;
 	}
