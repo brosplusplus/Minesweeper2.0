@@ -38,7 +38,7 @@ public class Casella {
 		this.estaMarcada = false;
 		this.teMina = false;
 		this.partida = partida;
-		this.idCasella = partida+":"+nF+":"+nC;
+		this.idCasella = partida.getIdPartida()+":"+nF+":"+nC;
 	}
 	
 	public void setPartida(Partida p) {

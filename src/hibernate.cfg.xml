@@ -16,7 +16,7 @@
   <mapping class="com.bros.minesweeper.domain.model.Jugador"/>
   <mapping class="com.bros.minesweeper.domain.model.Administrador"/>
   <mapping class="com.bros.minesweeper.domain.model.Nivell"/>
-  <mapping class="com.bros.minesweeper.domain.model.Partida"/>
   <mapping class="com.bros.minesweeper.domain.model.Casella"/>
+  <mapping class="com.bros.minesweeper.domain.model.Partida"/>
  </session-factory>
 </hibernate-configuration>

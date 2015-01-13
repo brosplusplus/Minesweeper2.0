@@ -11,4 +11,5 @@ import com.bros.minesweeper.domain.model.UsuariRegistrat;
  */
 public interface ICtrlUsuariRegistrat {
 	public UsuariRegistrat get(String username);
+	public String save(UsuariRegistrat usuariRegistrat);
 }
