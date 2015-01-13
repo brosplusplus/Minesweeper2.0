@@ -35,6 +35,10 @@ public class JugarPartidaView {
 		
 	}
 	
+	public void mostrarMenuPrincipal() {
+		
+	}
+	
 	public void mostrarNivells(String usuari, ArrayList<Nivell> nivells) {
 		
 	}

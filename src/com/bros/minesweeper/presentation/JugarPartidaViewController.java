@@ -35,11 +35,34 @@ public class JugarPartidaViewController {
 	/**
 	 * Metodes
 	 */
+	
+	/**
+	 * 
+	 */
 	public void PrJugar() {
 		JPV.mostrarIdentificacio();
 	}
 	
-	//PrEntrar(String usuari, String password)
+	/**
+	 * 
+	 * @param usuari
+	 * @param password
+	 * @throws Exception
+	 *  [usernameNoExisteix]
+	 *  [pwdIncorrecte]
+	 *  [usuariNoJugador]
+	 */
+	public void PrEntrar(String usuari, String password) throws Exception {
+		try{
+			JPUCC.FerAutenticacio(usuari, password);
+			JPV.mostrarMenuPrincipal();
+		}
+		catch(Exception e){
+			JPV.mostrarMissatge(e.getMessage());
+		}
+		
+	}
+	
 	//PrJugarPartida(String nomNivell)
 	//PrBotoDret(Integer x, Integer y)
 	//PrBotoEsq(Integer x, Integer y)
