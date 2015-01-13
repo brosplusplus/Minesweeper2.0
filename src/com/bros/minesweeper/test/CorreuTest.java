@@ -2,13 +2,12 @@ package com.bros.minesweeper.test;
 
 import java.rmi.RemoteException;
 
-import com.bros.minesweeper.factory.AdaptadorType;
 import com.bros.minesweeper.factory.FactoriaAdaptadorCorreu;
 import com.bros.services.mailer.MailSenderAddressExceptionException;
 import com.bros.services.mailer.MailSenderMessagingExceptionException;
 
 public class CorreuTest {
-	public static void main (String[] args)
+	/*public static void main (String[] args)
 	{
 		try {
 			FactoriaAdaptadorCorreu.getAdaptadorCorreu(AdaptadorType.OWN)
@@ -19,5 +18,5 @@ public class CorreuTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 }

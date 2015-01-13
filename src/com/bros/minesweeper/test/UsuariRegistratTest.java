@@ -1,17 +1,13 @@
 package com.bros.minesweeper.test;
 
-import java.util.List;
-
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.classic.Session;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
 
-import com.bros.minesweeper.domain.model.Administrador;
-import com.bros.minesweeper.domain.model.Casella;
 import com.bros.minesweeper.domain.model.Jugador;
 
 public class UsuariRegistratTest {
+	
 	public static void main (String[] args) {
 		AnnotationConfiguration conf = new AnnotationConfiguration();
 		conf.configure("hibernate.cfg.xml");

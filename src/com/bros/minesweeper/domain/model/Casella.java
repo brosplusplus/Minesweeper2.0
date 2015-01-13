@@ -36,6 +36,7 @@ public class Casella {
 		this.numeroColumna = nC;
 		this.estaDescoberta = false;
 		this.estaMarcada = false;
+		this.teMina = false;
 		this.partida = partida;
 		this.idCasella = partida+":"+nF+":"+nC;
 	}
@@ -140,6 +141,7 @@ public class Casella {
 	 * del voltant [0-8]).
 	 */
 	public void incrementaNumero() {
+		if (this.numero == null) numero = 0;
 		++this.numero;
 	}
 

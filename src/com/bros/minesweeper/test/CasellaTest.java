@@ -14,7 +14,8 @@ public class CasellaTest {
 		session.beginTransaction();
 		Partida p = new Partida();
 		Casella c = new Casella(1,1,p);
+		session.save(p);
+		session.save(c);
 		session.getTransaction().commit();
-		session.close();
 	}
 }

@@ -16,7 +16,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.bros.minesweeper.factory.FactoriaControladors;
+import com.bros.minesweeper.factory.FactoriaEstrategiaPuntuacio;
 import com.bros.minesweeper.utils.Pair;
+import com.bros.minesweeper.utils.debug;
 
 /**
  * Partida representa una partida al joc BuscaMines
@@ -72,25 +75,46 @@ public class Partida {
 	@Transient
 	private Integer nMines; //numero de mines del taulell
 
+	public Partida() {}
 	
-	public Partida(){}
-	public Partida(int id, Jugador jugName, String niv, 
-			EstrategiaPuntuacio estrategiaEscollida) {
-		this.idPartida = id;
+	public Partida(Jugador jugName, Nivell niv, EstrategiaPuntuacio estrat){
 		this.estaAcabada = false;
 		this.estaGuanyada = false;
 		this.nombreTirades = 0;
 		this.taulell = new ArrayList<Casella>();
 		this.jugadorPartidaActual = jugName;
-		//this.teNivell = CtrlNivell.get(niv);
-		this.estrategia = estrategiaEscollida;
+		this.teNivell = niv;
 		
 		this.nCols = this.teNivell.getNombreCasellesxFila();
 		this.nRows = this.teNivell.getNombreCasellesxColumna();
 		this.nMines = this.teNivell.getNombreMines();
 		
 		this.inicialitzarCaselles(nRows, nCols);
-		this.assignarPuntuacio();			
+		this.estrategia = estrat;
+	}
+	
+	public Partida(Jugador jugName, String niv) {
+		this.estaAcabada = false;
+		this.estaGuanyada = false;
+		this.nombreTirades = 0;
+		this.taulell = new ArrayList<Casella>();
+		this.jugadorPartidaActual = jugName;
+		this.teNivell = FactoriaControladors.getCtrlNivell().get(niv);
+		
+		this.nCols = this.teNivell.getNombreCasellesxFila();
+		this.nRows = this.teNivell.getNombreCasellesxColumna();
+		this.nMines = this.teNivell.getNombreMines();
+		
+		this.inicialitzarCaselles(nRows, nCols);
+		try {
+			this.estrategia = assignarEstrategiaPuntuacio();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
 	}
 
 	public Integer getIdPartida() {
@@ -141,7 +165,7 @@ public class Partida {
 		this.jugadorPartidaActual = jugadorPartidaActual;
 	}
 	
-	private Casella getCasellaTaulell(int numF, int numC) {
+	public Casella getCasellaTaulell(int numF, int numC) {
 		int posicio = this.nCols*numF + numC;
 		return this.taulell.get(posicio);
 	}
@@ -221,20 +245,27 @@ public class Partida {
 			es.acabada = true;
 			es.guanyada = false;
 		}
-		else if (!teMina && this.casellesPerDescobrir == 0){
+		else if (!teMina && this.casellesPerDescobrir == 1){
 			es.acabada = true;
 			es.guanyada = true;
 		}
 		c.descobrir();
 		this.casellesPerDescobrir--;
 		ArrayList<Pair<Integer, Integer> > l = new ArrayList<Pair<Integer, Integer> >();
-		if (c.getNumero() == null) {
-			ArrayList<Pair<Integer, Integer> > casellesDescobertes = descobrirCasellesVoltant(numF, numC);
-			for (int i = 0; i < casellesDescobertes.size(); ++i) {
-				l.add(casellesDescobertes.get(i));
-			}
+		if (c.getNumero() == null) 
+			for (int i = numF-1; i <= numF+1; ++i) 
+				for (int j = numC-1; j <=  numC+1; ++j) 
+					if(0 <= i && i < this.nRows && 0 <= j && j < this.nCols && !(numF == i && numC == j)){
+						l.addAll(descobrirCasellesVoltant(i, j));
 		}
-		if (es.acabada) {
+		es.casellesPerDescobrir = l;
+		this.casellesPerDescobrir -= l.size();
+		if (this.casellesPerDescobrir == 0) {
+			es.acabada = true;
+			es.guanyada = true;
+		}
+		if (es.acabada != null && es.acabada
+				&& es.guanyada != null && es.guanyada) {
 			es.puntuacio = computaPuntuacio();
 		}
 		return es;
@@ -276,10 +307,10 @@ public class Partida {
 			Integer x = rand.nextInt(this.nRows);
 			Integer y = rand.nextInt(this.nCols);
 			Casella c = getCasellaTaulell(x, y);
-			if(!c.getTeMina()){
+			if(!c.tensMina()){
 				c.setTeMina(true);
-				for (int i = x-1; i < x+1; ++i) {
-					for (int j = y-1; j <  y+1; ++j) {
+				for (int i = x-1; i <= x+1; ++i) {
+					for (int j = y-1; j <=  y+1; ++j) {
 						if(0 <= i && i < this.nRows && 0 <= j && j < this.nCols && !(x == i && y == j)){
 							Casella c2 = getCasellaTaulell(i, j);
 							if(!c2.tensMina()) c2.incrementaNumero();
@@ -315,8 +346,8 @@ public class Partida {
 			Pair<Integer, Integer> p = new Pair<Integer, Integer> (numF, numC);
 			l.add(p);
 			if(c.getNumero() == null) {
-				for (int i = numF-1; i < numF+1; ++i) {
-					for (int j = numC-1; j <  numC+1; ++j) {
+				for (int i = numF-1; i <= numF+1; ++i) {
+					for (int j = numC-1; j <=  numC+1; ++j) {
 						if(0 <= i && i < this.nRows && 0 <= j && j < this.nCols && !(numF == i && numC == j)){
 							l.addAll(descobrirCasellesVoltant(i, j));	
 						}
@@ -327,8 +358,17 @@ public class Partida {
 		return l;
 	}
 	
-	public void assignarPuntuacio() {
-		//TODO implement
+	/**
+	 * Funcio que selecciona una estrategia per comptar els punts en la partida.
+	 * @return retorna una estrategia que hi ha en el sistema de manera aleatoria.
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 */
+	public EstrategiaPuntuacio assignarEstrategiaPuntuacio() throws InstantiationException, IllegalAccessException {
+		ArrayList<EstrategiaPuntuacio> estrategies = FactoriaEstrategiaPuntuacio.getAll();
+		Random rand = new Random();
+		int i = rand.nextInt(estrategies.size());
+		return estrategies.get(i);
 	}
 	
 	/*public static void main(String[] args) throws Exception {
