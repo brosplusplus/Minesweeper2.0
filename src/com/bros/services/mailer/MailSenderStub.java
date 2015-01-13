@@ -14,7 +14,7 @@
         */
 
         
-        public class MailSender extends org.apache.axis2.client.Stub
+        public class MailSenderStub extends org.apache.axis2.client.Stub
         {
         protected org.apache.axis2.description.AxisOperation[] _operations;
 
@@ -91,7 +91,7 @@
       *Constructor that takes in a configContext
       */
 
-    public MailSender(org.apache.axis2.context.ConfigurationContext configurationContext,
+    public MailSenderStub(org.apache.axis2.context.ConfigurationContext configurationContext,
        java.lang.String targetEndpoint)
        throws org.apache.axis2.AxisFault {
          this(configurationContext,targetEndpoint,false);
@@ -101,7 +101,7 @@
    /**
      * Constructor that takes in a configContext  and useseperate listner
      */
-   public MailSender(org.apache.axis2.context.ConfigurationContext configurationContext,
+   public MailSenderStub(org.apache.axis2.context.ConfigurationContext configurationContext,
         java.lang.String targetEndpoint, boolean useSeparateListener)
         throws org.apache.axis2.AxisFault {
          //To populate AxisService
@@ -124,7 +124,7 @@
     /**
      * Default Constructor
      */
-    public MailSender(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
+    public MailSenderStub(org.apache.axis2.context.ConfigurationContext configurationContext) throws org.apache.axis2.AxisFault {
         
                     this(configurationContext,"http://localhost:8080/MailService/services/MailSender.MailSenderHttpSoap12Endpoint/" );
                 
@@ -133,7 +133,7 @@
     /**
      * Default Constructor
      */
-    public MailSender() throws org.apache.axis2.AxisFault {
+    public MailSenderStub() throws org.apache.axis2.AxisFault {
         
                     this("http://localhost:8080/MailService/services/MailSender.MailSenderHttpSoap12Endpoint/" );
                 
@@ -142,7 +142,7 @@
     /**
      * Constructor taking the target endpoint
      */
-    public MailSender(java.lang.String targetEndpoint) throws org.apache.axis2.AxisFault {
+    public MailSenderStub(java.lang.String targetEndpoint) throws org.apache.axis2.AxisFault {
         this(null,targetEndpoint);
     }
 
@@ -159,9 +159,9 @@
 
                     
 
-                            public  com.bros.services.mailer.MailSender.GetNameResponse getName(
+                            public  com.bros.services.mailer.MailSenderStub.GetNameResponse getName(
 
-                            com.bros.services.mailer.MailSender.GetName getName1)
+                            com.bros.services.mailer.MailSenderStub.GetName getName1)
                         
 
                     throws java.rmi.RemoteException
@@ -212,11 +212,11 @@
                 
                                 java.lang.Object object = fromOM(
                                              _returnEnv.getBody().getFirstElement() ,
-                                             com.bros.services.mailer.MailSender.GetNameResponse.class,
+                                             com.bros.services.mailer.MailSenderStub.GetNameResponse.class,
                                               getEnvelopeNamespaces(_returnEnv));
 
                                
-                                        return (com.bros.services.mailer.MailSender.GetNameResponse)object;
+                                        return (com.bros.services.mailer.MailSenderStub.GetNameResponse)object;
                                    
          }catch(org.apache.axis2.AxisFault f){
 
@@ -280,7 +280,7 @@
                 */
                 public  void startgetName(
 
-                 com.bros.services.mailer.MailSender.GetName getName1,
+                 com.bros.services.mailer.MailSenderStub.GetName getName1,
 
                   final com.bros.services.mailer.MailSenderCallbackHandler callback)
 
@@ -326,7 +326,7 @@
                                 org.apache.axiom.soap.SOAPEnvelope resultEnv = resultContext.getEnvelope();
                                 
                                         java.lang.Object object = fromOM(resultEnv.getBody().getFirstElement(),
-                                                                         com.bros.services.mailer.MailSender.GetNameResponse.class,
+                                                                         com.bros.services.mailer.MailSenderStub.GetNameResponse.class,
                                                                          getEnvelopeNamespaces(resultEnv));
                                         callback.receiveResultgetName(
                                         (com.bros.services.mailer.MailSenderStub.GetNameResponse)object);
@@ -432,7 +432,7 @@
 
                             public  void sendMail(
 
-                            com.bros.services.mailer.MailSender.SendMail sendMail3)
+                            com.bros.services.mailer.MailSenderStub.SendMail sendMail3)
                         
 
                     throws java.rmi.RemoteException
@@ -550,7 +550,7 @@
                 */
                 public  void startsendMail(
 
-                 com.bros.services.mailer.MailSender.SendMail sendMail3,
+                 com.bros.services.mailer.MailSenderStub.SendMail sendMail3,
 
                   final com.bros.services.mailer.MailSenderCallbackHandler callback)
 
@@ -2968,12 +2968,12 @@
         }
            
     
-            private  org.apache.axiom.om.OMElement  toOM(com.bros.services.mailer.MailSender.GetName param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(com.bros.services.mailer.MailSenderStub.GetName param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(com.bros.services.mailer.MailSender.GetName.MY_QNAME,
+                             return param.getOMElement(com.bros.services.mailer.MailSenderStub.GetName.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -2982,12 +2982,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(com.bros.services.mailer.MailSender.GetNameResponse param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(com.bros.services.mailer.MailSenderStub.GetNameResponse param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(com.bros.services.mailer.MailSender.GetNameResponse.MY_QNAME,
+                             return param.getOMElement(com.bros.services.mailer.MailSenderStub.GetNameResponse.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -2996,12 +2996,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(com.bros.services.mailer.MailSender.SendMail param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(com.bros.services.mailer.MailSenderStub.SendMail param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(com.bros.services.mailer.MailSender.SendMail.MY_QNAME,
+                             return param.getOMElement(com.bros.services.mailer.MailSenderStub.SendMail.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -3010,12 +3010,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(com.bros.services.mailer.MailSender.MailSenderAddressException param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(com.bros.services.mailer.MailSenderStub.MailSenderAddressException param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(com.bros.services.mailer.MailSender.MailSenderAddressException.MY_QNAME,
+                             return param.getOMElement(com.bros.services.mailer.MailSenderStub.MailSenderAddressException.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -3024,12 +3024,12 @@
 
             }
         
-            private  org.apache.axiom.om.OMElement  toOM(com.bros.services.mailer.MailSender.MailSenderMessagingException param, boolean optimizeContent)
+            private  org.apache.axiom.om.OMElement  toOM(com.bros.services.mailer.MailSenderStub.MailSenderMessagingException param, boolean optimizeContent)
             throws org.apache.axis2.AxisFault {
 
             
                         try{
-                             return param.getOMElement(com.bros.services.mailer.MailSender.MailSenderMessagingException.MY_QNAME,
+                             return param.getOMElement(com.bros.services.mailer.MailSenderStub.MailSenderMessagingException.MY_QNAME,
                                           org.apache.axiom.om.OMAbstractFactory.getOMFactory());
                         } catch(org.apache.axis2.databinding.ADBException e){
                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -3039,14 +3039,14 @@
             }
         
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, com.bros.services.mailer.MailSender.GetName param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, com.bros.services.mailer.MailSenderStub.GetName param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(com.bros.services.mailer.MailSender.GetName.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(com.bros.services.mailer.MailSenderStub.GetName.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -3060,14 +3060,14 @@
 
                              
                                     
-                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, com.bros.services.mailer.MailSender.SendMail param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
+                                        private  org.apache.axiom.soap.SOAPEnvelope toEnvelope(org.apache.axiom.soap.SOAPFactory factory, com.bros.services.mailer.MailSenderStub.SendMail param, boolean optimizeContent, javax.xml.namespace.QName methodQName)
                                         throws org.apache.axis2.AxisFault{
 
                                              
                                                     try{
 
                                                             org.apache.axiom.soap.SOAPEnvelope emptyEnvelope = factory.getDefaultEnvelope();
-                                                            emptyEnvelope.getBody().addChild(param.getOMElement(com.bros.services.mailer.MailSender.SendMail.MY_QNAME,factory));
+                                                            emptyEnvelope.getBody().addChild(param.getOMElement(com.bros.services.mailer.MailSenderStub.SendMail.MY_QNAME,factory));
                                                             return emptyEnvelope;
                                                         } catch(org.apache.axis2.databinding.ADBException e){
                                                             throw org.apache.axis2.AxisFault.makeFault(e);
@@ -3097,37 +3097,37 @@
 
         try {
         
-                if (com.bros.services.mailer.MailSender.GetName.class.equals(type)){
+                if (com.bros.services.mailer.MailSenderStub.GetName.class.equals(type)){
                 
-                           return com.bros.services.mailer.MailSender.GetName.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return com.bros.services.mailer.MailSenderStub.GetName.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (com.bros.services.mailer.MailSender.GetNameResponse.class.equals(type)){
+                if (com.bros.services.mailer.MailSenderStub.GetNameResponse.class.equals(type)){
                 
-                           return com.bros.services.mailer.MailSender.GetNameResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return com.bros.services.mailer.MailSenderStub.GetNameResponse.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (com.bros.services.mailer.MailSender.SendMail.class.equals(type)){
+                if (com.bros.services.mailer.MailSenderStub.SendMail.class.equals(type)){
                 
-                           return com.bros.services.mailer.MailSender.SendMail.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return com.bros.services.mailer.MailSenderStub.SendMail.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (com.bros.services.mailer.MailSender.MailSenderAddressException.class.equals(type)){
+                if (com.bros.services.mailer.MailSenderStub.MailSenderAddressException.class.equals(type)){
                 
-                           return com.bros.services.mailer.MailSender.MailSenderAddressException.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return com.bros.services.mailer.MailSenderStub.MailSenderAddressException.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
            
-                if (com.bros.services.mailer.MailSender.MailSenderMessagingException.class.equals(type)){
+                if (com.bros.services.mailer.MailSenderStub.MailSenderMessagingException.class.equals(type)){
                 
-                           return com.bros.services.mailer.MailSender.MailSenderMessagingException.Factory.parse(param.getXMLStreamReaderWithoutCaching());
+                           return com.bros.services.mailer.MailSenderStub.MailSenderMessagingException.Factory.parse(param.getXMLStreamReaderWithoutCaching());
                     
 
                 }
