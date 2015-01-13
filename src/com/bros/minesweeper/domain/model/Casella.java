@@ -29,6 +29,14 @@ public class Casella {
 	private Boolean estaMarcada;
 	private Boolean teMina;
 	
+	public Casella(int nF, int nC, Partida partida) {
+		this.numeroFila = nF;
+		this.numeroColumna = nC;
+		this.estaDescoberta = false;
+		this.estaMarcada = false;
+		this.partida = partida;
+	}
+	
 	public void setPartida(Partida p)
 	{
 		this.partida = p;

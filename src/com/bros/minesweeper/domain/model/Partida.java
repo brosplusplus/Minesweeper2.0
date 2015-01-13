@@ -82,8 +82,12 @@ public class Partida {
 		this.jugadorPartidaActual = jugName;
 		this.teNivell = CtrlNivell.get(niv);
 		this.estrategia = estrategiaEscollida;
-		this.inicialitzarCaselles();
-		this.assignarPuntuacio();		
+		
+		Integer columnesDelNivell = this.teNivell.getNombreCasellesxFila();
+		Integer filesDelNivell = this.teNivell.getNombreCasellesxColumna();
+		
+		this.inicialitzarCaselles(filesDelNivell, columnesDelNivell, this.teNivell.getNombreMines());
+		this.assignarPuntuacio();			
 	}
 
 	public Integer getIdPartida() {
@@ -134,6 +138,15 @@ public class Partida {
 		this.jugadorPartidaActual = jugadorPartidaActual;
 	}
 	
+	private void setCasellaTaulell(int numF, int numC, Casella c) {
+		int posicio = this.nCols*numF + numC;
+		this.taulell.set(posicio, c);
+	}
+	private Casella getCasellaTaulell(int numF, int numC) {
+		int posicio = this.nCols*numF + numC;
+		return this.taulell.get(posicio);
+	}
+	
 	public Jugador getJugadorPartidaJugada() {
 		return jugadorPartidaJugada;
 	}
@@ -149,7 +162,6 @@ public class Partida {
 	public void setTeNivell(Nivell teNivell) {
 		this.teNivell = teNivell;
 	}
-	
 	
 	public EstrategiaPuntuacio getEstrategia() {
 		return estrategia;
@@ -167,55 +179,32 @@ public class Partida {
 		this.taulell = taulell;
 	}
 	
-	private void setCasella(int numF, int numC, Casella c) {
-		set(this.taulell, numF ,numC, c);
-	}
-	private Casella getCasella(int numF, int numC) {
-		return get(this.taulell, numF ,numC);
-	}
-	
 	public void marcarCasella(int numF, int numC) throws Exception{
-		Casella c = new Casella();
-		c = getCasella(numF, numC);
-		c.marcar();
+		getCasellaTaulell(numF, numC).marcar();
 	}
 	
 	public void desmarcarCasella (int numF, int numC) throws Exception {
-		Casella c = new Casella();
-		c = getCasella(numF, numC);
-		c.desmarcar();
+		getCasellaTaulell(numF, numC).desmarcar();
 	}
 	
 	public EstatPartida descobrirCasella (int numF, int numC) throws Exception {
-		Casella c = new Casella();
-		c = getCasella(numF, numC);
-		c.descobrirCasella();
+		getCasellaTaulell(numF, numC).descobrirCasella();
 		EstatPartida es = new EstatPartida();
 		return es;
 	}
 	
-	public void inicialitzarCaselles( ) {
-		int columnesDelNivell = this.teNivell.getNombreCasellesxFila();
-		this.nRows = columnesDelNivell;
-		int filesDelNivell = this.teNivell.getNombreCasellesxColumna();
-		this.nCols = filesDelNivell;
-		for (int i = 0; i < filesDelNivell; ++i) {
-			for (int j = 0; j <  columnesDelNivell; ++j) {
-				Casella c = new Casella();
-				c.setNumeroFila(i);
-				c.setNumeroColumna(j);
-				c.setNumero(null);
-				c.setEstaDescoberta(false);
-				c.setEstaMarcada(false);
-				c.setTeMina(null);
-				setCasella(i, j, c);
+	public void inicialitzarCaselles(Integer filesDelNivell, Integer columnesDelNivell, Integer numMines ) {
+		for (int nF = 0; nF < filesDelNivell; ++nF) {
+			for (int nC = 0; nC <  columnesDelNivell; ++nC) {
+				Casella c = new Casella(nF, nC, this);
+				this.taulell.add(c);
 			}
 		}
 	}
 	
 	public void colocarMines(){
-		Integer filesDelNivell = this.teNivell.getNombreCasellesxFila();
-		Integer columnesDelNivell = this.teNivell.getNombreCasellesxColumna();
+		Integer columnesDelNivell = this.teNivell.getNombreCasellesxFila();
+		Integer filesDelNivell = this.teNivell.getNombreCasellesxColumna();
 		Integer numMinesDelNivell = this.teNivell.getNombreMines();
 		while(numMinesDelNivell > 0){
 			Random rand = new Random();
@@ -224,12 +213,12 @@ public class Partida {
 			Casella c = getCasella(x, y);
 			if(!c.getTeMina()){
 				c.setTeMina(true);
-				for (int i = 0; i < filesDelNivell; ++i) {
-					for (int j = 0; j <  columnesDelNivell; ++j) {
-						if(0 <= i && i < this.nRows && 0 <= j && j < this.nCols){
-							Casella c2 = getCasella(i, j);
+				for (int i = x-1; i < x+1; ++i) {
+					for (int j = y-1; j <  y+1; ++j) {
+						if(0 <= i && i < this.nRows && 0 <= j && j < this.nCols && !(x == i && y == j)){
+							Casella c2 = getCasellaTaulell(i, j);
 							if(!c2.tensMina()) c2.incrementaNumero();
-							setCasella(i, j, c2);
+							setCasellaTaulell(i, j, c2);
 						}
 					}
 				}
@@ -239,29 +228,15 @@ public class Partida {
 		}
 	}
 	
-	public void crearCaselles (int F, int C, int nM) {
+	public void crearCaselles (Integer F, Integer C, Integer nM) {
 		this.casellesPerDescobrir = F*C - nM;
-		inicialitzarCaselles();
+		inicialitzarCaselles(F, C, nM);
 		colocarMines();
 	}
-	
-	
 	
 	public void assignarPuntuacio() {
 		//TODO implement
 	}
-	
-
-	private void set(List<Casella> array, int x, int y, Casella casella) {
-		int index = x * this.nCols + y;
-		array.set(index, casella);
-	}
-	
-	private Casella get(List<Casella> array, int x, int y) {
-		int index = x * this.nCols + y;
-		return array.get(index);
-	}
-	
 	
 	/*public static void main(String[] args) throws Exception {
 		Partida p = new Partida();
