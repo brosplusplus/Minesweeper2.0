@@ -164,7 +164,7 @@ public class Partida {
 		this.jugadorPartidaActual = jugadorPartidaActual;
 	}
 	
-	private Casella getCasellaTaulell(int numF, int numC) {
+	public Casella getCasellaTaulell(int numF, int numC) {
 		int posicio = this.nCols*numF + numC;
 		return this.taulell.get(posicio);
 	}
@@ -257,7 +257,7 @@ public class Partida {
 				l.add(casellesDescobertes.get(i));
 			}
 		}
-		if (es.acabada) {
+		if (es.acabada != null && es.acabada) {
 			es.puntuacio = computaPuntuacio();
 		}
 		return es;
