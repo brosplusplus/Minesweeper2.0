@@ -4,17 +4,14 @@
 package com.bros.minesweeper.db;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.classic.Session;
+import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 import com.bros.minesweeper.datainterface.ICtrlCasella;
-import com.bros.minesweeper.domain.model.Administrador;
 import com.bros.minesweeper.domain.model.Casella;
 
 /**
@@ -31,18 +28,12 @@ public class CtrlCasella implements ICtrlCasella{
 	@Override
 	public Casella get(Integer idPartida, Integer numF, Integer numC) {
 		try {
-			//ConnexioDB.createConnection();
-			AnnotationConfiguration conf = new AnnotationConfiguration();
-			conf.configure("hibernate.cfg.xml");
-			SessionFactory sessionfact = conf.buildSessionFactory();
-			Session session = sessionfact.getCurrentSession();
-			Casella cas = (Casella)session.createSQLQuery("select * from test.Casella c "
-					+ "where  c.idPartida = "+idPartida
-					+ "       c.numeroFila = "+numF
-					+ "       c.numeroColumna = "+numC)
-					.addEntity("com.bros.minesweeper.domain.model.Casella")
-					.uniqueResult();
-			return cas;
+			Session session = PersistenceSessionFactory.getInstance().openSession();
+			
+			String iden = idPartida+":"+numF+":"+numC;
+			Casella lcas = (Casella)session.get(Casella.class,iden);
+			session.close();
+			return null;
 		}
 		catch (Exception e) {
             e.printStackTrace();
@@ -52,6 +43,11 @@ public class CtrlCasella implements ICtrlCasella{
 	
 	
 	public static void main (String[] args) {
+		Configuration conf = new Configuration().configure("hibernate.cfg.xml");
+		new SchemaExport(conf).create(true,true);
 		
+//		CtrlCasella ctrlcas = new CtrlCasella();
+//		Casella cas = ctrlcas.get(1, 1, 2);
+//		System.out.println(cas.getNumero());
 	}
 }
