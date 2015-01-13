@@ -8,10 +8,9 @@ import org.hibernate.classic.Session;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 import com.bros.minesweeper.domain.model.Administrador;
-import com.bros.minesweeper.domain.model.Casella;
-import com.bros.minesweeper.domain.model.Jugador;
 
 public class UsuariRegistratTest {
+	
 	public static void main (String[] args) {
 		AnnotationConfiguration conf = new AnnotationConfiguration();
 		conf.configure("hibernate.cfg.xml");
@@ -20,9 +19,10 @@ public class UsuariRegistratTest {
 		Session session = sessionfact.getCurrentSession();
 		
 		
+		@SuppressWarnings("unchecked")
 		List<Administrador> l = session.createSQLQuery("select * from test.ADMINISTRADOR a,"
 				+ " test.USUARIREGISTRAT u where u.username = :username").
-				.addEntity("com.bros.minesweeper.domain.model.Administrador")
+				addEntity("com.bros.minesweeper.domain.model.Administrador")
 				.list();
 		for (int i = 0; i < l.size(); i++)
 		{
