@@ -72,9 +72,9 @@ public class Partida {
 	@Transient
 	private Integer nMines; //numero de mines del taulell
 
-	public Partida(int id, Jugador jugName, String niv, 
-			EstrategiaPuntuacio estrategiaEscollida) {
-		this.idPartida = id;
+	public Partida(){}
+	
+	public Partida(Jugador jugName, String niv, EstrategiaPuntuacio estrategiaEscollida) {
 		this.estaAcabada = false;
 		this.estaGuanyada = false;
 		this.nombreTirades = 0;

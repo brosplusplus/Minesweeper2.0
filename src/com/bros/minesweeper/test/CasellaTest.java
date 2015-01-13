@@ -17,11 +17,8 @@ public class CasellaTest {
 		SessionFactory sessionfact = conf.buildSessionFactory();
 		Session session = sessionfact.getCurrentSession();
 		session.beginTransaction();
-		Casella c = new Casella();
-		c.setNumeroColumna(1);
-		c.setNumeroFila(2);
 		Partida p = new Partida();
-		c.setPartida(p);
+		Casella c = new Casella(1,1,p); 
 		session.save(p);
 		session.save(c);
 		session.getTransaction().commit();
