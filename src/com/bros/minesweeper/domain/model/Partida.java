@@ -87,7 +87,7 @@ public class Partida {
 		Integer columnesDelNivell = this.teNivell.getNombreCasellesxFila();
 		Integer filesDelNivell = this.teNivell.getNombreCasellesxColumna();
 		
-		this.inicialitzarCaselles(filesDelNivell, columnesDelNivell, this.teNivell.getNombreMines());
+		this.inicialitzarCaselles(filesDelNivell, columnesDelNivell);
 		this.assignarPuntuacio();			
 	}
 
@@ -139,10 +139,6 @@ public class Partida {
 		this.jugadorPartidaActual = jugadorPartidaActual;
 	}
 	
-	private void setCasellaTaulell(int numF, int numC, Casella c) {
-		int posicio = this.nCols*numF + numC;
-		this.taulell.set(posicio, c);
-	}
 	private Casella getCasellaTaulell(int numF, int numC) {
 		int posicio = this.nCols*numF + numC;
 		return this.taulell.get(posicio);
@@ -180,13 +176,31 @@ public class Partida {
 		this.taulell = taulell;
 	}
 	
+	/**
+	 * Aquesta funcio marca la casella (numF, numC).
+	 * @param numF numero de fila de la casella.
+	 * @param numC numero de columna de la casella.
+	 * @throws Exception
+	 * 					casellaJaDescoberta: es vol marcar una casella que esta descoberta.
+	 * 					casellaJaMarcada: es vol marcar una casella que esta marcada.
+	 */
 	public void marcarCasella(int numF, int numC) throws Exception{
 		getCasellaTaulell(numF, numC).marcar();
 	}
 	
+	
+	/**
+	 * Aquesta funcio desmarca la casella (numF, numC).
+	 * @param numF numero de fila de la casella.
+	 * @param numC numero de columna de la casella.
+	 * @throws Exception
+	 * 					casellaJaDescoberta: es vol desmarcar una casella que esta descoberta.
+	 * 					casellaJaDesmarcada: es vol desmarcar una casella que esta desmarcada.
+	 */
 	public void desmarcarCasella (int numF, int numC) throws Exception {
 		getCasellaTaulell(numF, numC).desmarcar();
 	}
+	
 	
 	/**
 	 * Descobreix la casella (numF,numC) i totes les possibles del seu voltant en cas
@@ -225,12 +239,24 @@ public class Partida {
 		return es;
 	}
 	
+	/**
+	 * 
+	 * Aquesta funcio calcula la puntuacio de la partida
+	 * @return els punts que l'usuari ha aconseguit en la partida.
+	 * 
+	 */
 	private Integer computaPuntuacio() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void inicialitzarCaselles(Integer filesDelNivell, Integer columnesDelNivell, Integer numMines ) {
+	
+	/**
+	 * Aquesta funcio inicialitza les caselles d'una partida. 
+	 * @param filesDelNivell numero total de files que te el taulell
+	 * @param columnesDelNivell numero total de columnes que te el taulell
+	 */
+	public void inicialitzarCaselles(Integer filesDelNivell, Integer columnesDelNivell) {
 		for (int nF = 0; nF < filesDelNivell; ++nF) {
 			for (int nC = 0; nC <  columnesDelNivell; ++nC) {
 				Casella c = new Casella(nF, nC, this);
@@ -239,6 +265,9 @@ public class Partida {
 		}
 	}
 	
+	/**
+	 * Posa totes les mines en el taulell de manera aleatòria.
+	 */
 	public void colocarMines(){
 		Integer columnesDelNivell = this.teNivell.getNombreCasellesxFila();
 		Integer filesDelNivell = this.teNivell.getNombreCasellesxColumna();
@@ -263,9 +292,16 @@ public class Partida {
 		}
 	}
 	
+	
+	/**
+	 * Funcio que crea les caselles d'una partida.
+	 * @param F numero de files que te el taulell.
+	 * @param C numero de columnes que te el taulell.
+	 * @param nM numero de mines que te el taulell.
+	 */
 	public void crearCaselles (Integer F, Integer C, Integer nM) {
 		this.casellesPerDescobrir = F*C - nM;
-		inicialitzarCaselles(F, C, nM);
+		inicialitzarCaselles(F, C);
 		colocarMines();
 	}
 	
