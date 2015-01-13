@@ -39,14 +39,12 @@ public class JugarPartidaUseCaseController {
 	
 	/**
 	 * Methods
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
 	 * @throws Exception 
 	 */
 	public void crearPartida (String nomNivell) {
-		int id = this.partida.getIdPartida() + 1;
-		String nivell = CtrlNivell.get(nomNivell).getNom();
-		ArrayList<EstrategiaPuntuacio> estrategies = FactoriaEstrategiaPuntuacio.getAll();
-		int index = new Random().nextInt(estrategies.size());
-		EstrategiaPuntuacio estrategiaEscollida = estrategies.get(index);
+		String nivell = FactoriaControladors.getCtrlNivell().get(nomNivell).getNom();
 		this.partida = new Partida(jugName, nivell);
 	}
 	
