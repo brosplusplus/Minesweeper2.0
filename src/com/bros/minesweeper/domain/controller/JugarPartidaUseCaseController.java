@@ -2,16 +2,12 @@ package com.bros.minesweeper.domain.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 import com.bros.minesweeper.db.CtrlJugador;
-import com.bros.minesweeper.db.CtrlNivell;
 import com.bros.minesweeper.domain.model.EstatPartida;
-import com.bros.minesweeper.domain.model.EstrategiaPuntuacio;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.Partida;
 import com.bros.minesweeper.factory.FactoriaControladors;
-import com.bros.minesweeper.factory.FactoriaEstrategiaPuntuacio;
 
 public class JugarPartidaUseCaseController {
 
@@ -42,12 +38,8 @@ public class JugarPartidaUseCaseController {
 	 * @throws Exception 
 	 */
 	public void crearPartida (String nomNivell) {
-		int id = this.partida.getIdPartida() + 1;
-		String nivell = CtrlNivell.get(nomNivell).getNom();
-		ArrayList<EstrategiaPuntuacio> estrategies = FactoriaEstrategiaPuntuacio.getAll();
-		int index = new Random().nextInt(estrategies.size());
-		EstrategiaPuntuacio estrategiaEscollida = estrategies.get(index);
-		this.partida = new Partida(id, jugName, nivell, estrategiaEscollida);
+		String nivell = FactoriaControladors.getCtrlNivell().get(nomNivell).getNom();
+		this.partida = new Partida(jugName, nivell);
 	}
 	
 	

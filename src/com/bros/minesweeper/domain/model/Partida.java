@@ -15,7 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.bros.minesweeper.db.CtrlNivell;
+import com.bros.minesweeper.factory.FactoriaControladors;
+import com.bros.minesweeper.factory.FactoriaEstrategiaPuntuacio;
 import com.bros.minesweeper.utils.Pair;
 
 /**
@@ -74,21 +75,28 @@ public class Partida {
 
 	public Partida(){}
 	
-	public Partida(Jugador jugName, String niv, EstrategiaPuntuacio estrategiaEscollida) {
+	public Partida(Jugador jugName, String niv) {
 		this.estaAcabada = false;
 		this.estaGuanyada = false;
 		this.nombreTirades = 0;
 		this.taulell = new ArrayList<Casella>();
 		this.jugadorPartidaActual = jugName;
-		//this.teNivell = CtrlNivell.get(niv);
-		this.estrategia = estrategiaEscollida;
+		this.teNivell = FactoriaControladors.getCtrlNivell().get(niv);
 		
 		this.nCols = this.teNivell.getNombreCasellesxFila();
 		this.nRows = this.teNivell.getNombreCasellesxColumna();
 		this.nMines = this.teNivell.getNombreMines();
 		
 		this.inicialitzarCaselles(nRows, nCols);
-		this.assignarPuntuacio();			
+		try {
+			this.estrategia = assignarEstrategiaPuntuacio();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
 	}
 
 	public Integer getIdPartida() {
@@ -325,8 +333,17 @@ public class Partida {
 		return l;
 	}
 	
-	public void assignarPuntuacio() {
-		//TODO implement
+	/**
+	 * Funcio que selecciona una estrategia per comptar els punts en la partida.
+	 * @return retorna una estrategia que hi ha en el sistema de manera aleatoria.
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 */
+	public EstrategiaPuntuacio assignarEstrategiaPuntuacio() throws InstantiationException, IllegalAccessException {
+		ArrayList<EstrategiaPuntuacio> estrategies = FactoriaEstrategiaPuntuacio.getAll();
+		Random rand = new Random();
+		int i = rand.nextInt(estrategies.size());
+		return estrategies.get(i);
 	}
 	
 	/*public static void main(String[] args) throws Exception {
