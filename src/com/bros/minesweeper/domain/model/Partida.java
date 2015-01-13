@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.bros.minesweeper.datainterface.CtrlNivell;
+import com.bros.minesweeper.utils.Pair;
 
 /**
  * Partida represents a single game of minesweeper
@@ -187,12 +188,48 @@ public class Partida {
 		getCasellaTaulell(numF, numC).desmarcar();
 	}
 	
+	/**
+	 * Descobreix la casella (numF,numC) i totes les possibles del seu voltant en cas
+	 * que sigui possible (numero == null)
+	 * @param numF coordenada fila de la casella.
+	 * @param numC coordenada columna de la casella.
+	 * @return retorna un EstatPartida que representa la situacio actual de la partida.
+	 * @throws Exception
+	 * 					casellaMarcada: es vol marcar una casella ja marcada
+	 * 					casellaJaDescoberta: es vol descobrir una casella ja descoberta.
+	 */
 	public EstatPartida descobrirCasella (int numF, int numC) throws Exception {
-		getCasellaTaulell(numF, numC).descobrirCasella();
 		EstatPartida es = new EstatPartida();
+		Casella c = getCasellaTaulell(numF, numC);
+		boolean teMina = c.tensMina();
+		if (teMina) {
+			es.acabada = true;
+			es.guanyada = false;
+		}
+		else if (!teMina && this.casellesPerDescobrir == 0){
+			es.acabada = true;
+			es.guanyada = true;
+		}
+		c.descobrir();
+		this.casellesPerDescobrir--;
+		ArrayList<Pair<Integer, Integer> > l = new ArrayList<Pair<Integer, Integer> >();
+		if (c.getNumero() == null) {
+			ArrayList<Pair<Integer, Integer> > casellesDescobertes = descobrirCasellesVoltant(numF, numC);
+			for (int i = 0; i < casellesDescobertes.size(); ++i) {
+				l.add(casellesDescobertes.get(i));
+			}
+		}
+		if (es.acabada) {
+			es.puntuacio = computaPuntuacio();
+		}
 		return es;
 	}
 	
+	private Integer computaPuntuacio() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public void inicialitzarCaselles(Integer filesDelNivell, Integer columnesDelNivell, Integer numMines ) {
 		for (int nF = 0; nF < filesDelNivell; ++nF) {
 			for (int nC = 0; nC <  columnesDelNivell; ++nC) {
@@ -210,7 +247,7 @@ public class Partida {
 			Random rand = new Random();
 			Integer x = rand.nextInt(filesDelNivell);
 			Integer y = rand.nextInt(columnesDelNivell);
-			Casella c = getCasella(x, y);
+			Casella c = getCasellaTaulell(x, y);
 			if(!c.getTeMina()){
 				c.setTeMina(true);
 				for (int i = x-1; i < x+1; ++i) {
@@ -218,12 +255,10 @@ public class Partida {
 						if(0 <= i && i < this.nRows && 0 <= j && j < this.nCols && !(x == i && y == j)){
 							Casella c2 = getCasellaTaulell(i, j);
 							if(!c2.tensMina()) c2.incrementaNumero();
-							setCasellaTaulell(i, j, c2);
 						}
 					}
 				}
 				--numMinesDelNivell;
-				setCasella(x, y, c);
 			}			
 		}
 	}
