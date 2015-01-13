@@ -9,4 +9,9 @@ public class debug {
 	public static void outln(Object s) {
 		System.out.println(s);
 	}
+	
+	public static void err(Object s) {
+		System.err.println(s);
+	}
+	
 }
