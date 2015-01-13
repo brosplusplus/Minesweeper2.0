@@ -71,7 +71,6 @@ public class JugarPartidaUseCaseController {
 		this.setJugName(userN);
 	}
 	
-	//TODO cal canviar el tipus de funcio i posarli el return.
 	public ArrayList<HashMap<String, String> > obtenirNivells() throws Exception {
 		ConsultarNivellUseCaseController cnucc = new ConsultarNivellUseCaseController();
 		return cnucc.consultarNivells();

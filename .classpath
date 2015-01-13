@@ -15,5 +15,6 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate3"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

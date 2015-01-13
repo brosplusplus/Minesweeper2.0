@@ -99,7 +99,7 @@ public class Casella {
 		return this.getEstaDescoberta();
 	}
 	
-	public void descobrirCasella() throws Exception {
+	public void descobrir() throws Exception {
 		if (getEstaDescoberta()) throw new Exception("La casella esta descoberta");
 		if (getEstaMarcada()) throw new Exception("La casella esta marcada i no es pot descobrir");
 		setEstaDescoberta(true);

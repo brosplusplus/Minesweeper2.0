@@ -7,6 +7,13 @@ import com.bros.minesweeper.db.CtrlNivell;
 import com.bros.minesweeper.domain.model.Nivell;
 import com.bros.minesweeper.factory.FactoriaControladors;
 
+/**
+ *ConsultarNivellUseCaseController representa el cas d'us de Consultar Nivell
+ * 
+ * @author Alejandro Martinez
+ *
+ */
+
 public class ConsultarNivellUseCaseController {
 
 	public ArrayList<HashMap<String,String>> consultarNivells() throws Exception{
