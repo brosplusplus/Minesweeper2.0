@@ -1,9 +1,12 @@
 package com.bros.minesweeper.presentation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import antlr.debug.Event;
 
 import com.bros.minesweeper.domain.model.Nivell;
 
@@ -39,7 +42,7 @@ public class JugarPartidaView {
 		
 	}
 	
-	public void mostrarNivells(String usuari, ArrayList<Nivell> nivells) {
+	public void mostrarNivells(String usuari, ArrayList<HashMap<String, String>> nivells) {
 		
 	}
 	
@@ -47,6 +50,9 @@ public class JugarPartidaView {
 		
 	}
 	
+	public void actualitzaTaulell() {
+		
+	}
 	public void mostrarMissatge(String txt){
 		
 	}
