@@ -21,7 +21,7 @@ public class UsuariRegistratTest {
 		
 		
 		List<Administrador> l = session.createSQLQuery("select * from test.ADMINISTRADOR a,"
-				+ " test.USUARIREGISTRAT u where u.username = a.username")
+				+ " test.USUARIREGISTRAT u where u.username = :username").
 				.addEntity("com.bros.minesweeper.domain.model.Administrador")
 				.list();
 		for (int i = 0; i < l.size(); i++)

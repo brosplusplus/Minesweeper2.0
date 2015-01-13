@@ -6,6 +6,7 @@ import java.sql.Statement;
 
 import com.bros.minesweeper.datainterface.ICtrlJugador;
 import com.bros.minesweeper.domain.model.Jugador;
+import com.bros.minesweeper.domain.model.Nivell;
 
 public class CtrlJugador implements ICtrlJugador {
 
@@ -31,8 +32,28 @@ public class CtrlJugador implements ICtrlJugador {
 
 	@Override
 	public Jugador get(String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		try {
+			ConnexioDB.createConnection();
+            stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery("SELECT * FROM " + tableName +
+            		" WHERE nom =" + username);
 
+            Jugador j = new Jugador();
+        	j.setNom(result.getString("nom"));
+        	j.setCognom(result.getString("cognom"));
+        	j.setEmail(result.getString("email"));
+        	j.setPwd(result.getString("pwd"));
+        	j.setUsername(username);
+
+            result.close();
+            stmt.close();
+            conn.close();
+    		return j;
+		}
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+		return null;
+	} 
 }
+
