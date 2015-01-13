@@ -4,6 +4,7 @@ import com.bros.minesweeper.domain.model.EstrategiaPerTemps;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.Nivell;
 import com.bros.minesweeper.domain.model.Partida;
+import com.bros.minesweeper.utils.debug;
 
 public class ProvaTreminal {
 	
@@ -28,7 +29,9 @@ public class ProvaTreminal {
 				nivell.getNombreCasellesxFila(), nivell.getNombreMines());
 		
 		for(int i = 0; i < nivell.getNombreCasellesxColumna(); ++i) {
-			for(int j = 0;)
+			for(int j = 0; j < nivell.getNombreCasellesxFila(); ++j) {
+				
+			}
 		}
 		
 	}
