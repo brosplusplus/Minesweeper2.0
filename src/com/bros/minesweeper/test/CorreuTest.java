@@ -12,7 +12,7 @@ public class CorreuTest {
 	{
 		try {
 			FactoriaAdaptadorCorreu.getAdaptadorCorreu(AdaptadorType.OWN)
-				.sendMessage("kaspmr@hotmail.com", "PROVA2", "HOLAAA");
+				.sendMessage("alex.martinez.romero@gmail.com", "PROVA2", "HOLAAA");
 		} catch (RemoteException
 				| MailSenderMessagingExceptionException
 				| MailSenderAddressExceptionException e) {
