@@ -22,7 +22,7 @@ import com.bros.minesweeper.datainterface.CtrlNivell;
 import com.bros.minesweeper.utils.Pair;
 
 /**
- * Partida represents a single game of minesweeper
+ * Partida representa una partida al joc BuscaMines
  * 
  * @author Borja Arias
  * @version 0.1
@@ -72,6 +72,8 @@ public class Partida {
 	private Integer nCols; //numero de columnes del taulell
 	@Transient
 	private Integer nRows; //numero de files del taulell
+	@Transient
+	private Integer nMines; //numero de mines del taulell
 
 	public Partida(int id, Jugador jugName, String niv, 
 			EstrategiaPuntuacio estrategiaEscollida) {
@@ -84,10 +86,11 @@ public class Partida {
 		this.teNivell = CtrlNivell.get(niv);
 		this.estrategia = estrategiaEscollida;
 		
-		Integer columnesDelNivell = this.teNivell.getNombreCasellesxFila();
-		Integer filesDelNivell = this.teNivell.getNombreCasellesxColumna();
+		this.nCols = this.teNivell.getNombreCasellesxFila();
+		this.nRows = this.teNivell.getNombreCasellesxColumna();
+		this.nMines = this.teNivell.getNombreMines();
 		
-		this.inicialitzarCaselles(filesDelNivell, columnesDelNivell);
+		this.inicialitzarCaselles(nRows, nCols);
 		this.assignarPuntuacio();			
 	}
 
@@ -201,7 +204,6 @@ public class Partida {
 		getCasellaTaulell(numF, numC).desmarcar();
 	}
 	
-	
 	/**
 	 * Descobreix la casella (numF,numC) i totes les possibles del seu voltant en cas
 	 * que sigui possible (numero == null)
@@ -269,13 +271,11 @@ public class Partida {
 	 * Posa totes les mines en el taulell de manera aleatòria.
 	 */
 	public void colocarMines(){
-		Integer columnesDelNivell = this.teNivell.getNombreCasellesxFila();
-		Integer filesDelNivell = this.teNivell.getNombreCasellesxColumna();
-		Integer numMinesDelNivell = this.teNivell.getNombreMines();
+		Integer numMinesDelNivell = this.nMines;
 		while(numMinesDelNivell > 0){
 			Random rand = new Random();
-			Integer x = rand.nextInt(filesDelNivell);
-			Integer y = rand.nextInt(columnesDelNivell);
+			Integer x = rand.nextInt(this.nRows);
+			Integer y = rand.nextInt(this.nCols);
 			Casella c = getCasellaTaulell(x, y);
 			if(!c.getTeMina()){
 				c.setTeMina(true);
@@ -303,6 +303,29 @@ public class Partida {
 		this.casellesPerDescobrir = F*C - nM;
 		inicialitzarCaselles(F, C);
 		colocarMines();
+	}
+	
+	public ArrayList<Pair<Integer, Integer>> descobrirCasellesVoltant(int numF, int numC) {
+		Casella c = getCasellaTaulell(numF, numC);
+		Boolean ambMina = c.getTeMina();
+		Boolean descoberta = c.getEstaDescoberta();
+		Boolean marcada = c.getEstaMarcada();
+		ArrayList<Pair<Integer, Integer>> l = new ArrayList<Pair<Integer, Integer>>();
+		if(!ambMina && !descoberta && !marcada) {
+			c.setEstaDescoberta(true);
+			Pair<Integer, Integer> p = new Pair<Integer, Integer> (numF, numC);
+			l.add(p);
+			if(c.getNumero() == null) {
+				for (int i = numF-1; i < numF+1; ++i) {
+					for (int j = numC-1; j <  numC+1; ++j) {
+						if(0 <= i && i < this.nRows && 0 <= j && j < this.nCols && !(numF == i && numC == j)){
+							l.addAll(descobrirCasellesVoltant(i, j));	
+						}
+					}
+				}
+			}
+		}
+		return l;
 	}
 	
 	public void assignarPuntuacio() {

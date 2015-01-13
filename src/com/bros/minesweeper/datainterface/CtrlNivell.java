@@ -9,6 +9,13 @@ import java.util.ArrayList;
 import com.bros.minesweeper.db.ConnexioDB;
 import com.bros.minesweeper.domain.model.Nivell;
 
+/**
+ * CtrlNivell representa unintermediari entre els nivells i la base de dades 
+ * 
+ * @author Alejandro Martinez
+ * @version 0.1
+ */
+
 public class CtrlNivell {
 	
     private static String tableName = "Nivell";
