@@ -11,5 +11,6 @@ package com.bros.minesweeper.domain.model;
  */
 
 public interface EstrategiaPuntuacio {
+	public void setMaxim(Integer files, Integer Columnes, Integer mines);
 	public Integer getPuntuacio(Partida partida);
 }

@@ -26,16 +26,22 @@ public class CtrlJugador implements ICtrlJugador {
 			Session session = PersistenceSessionFactory.getInstance().openSession();
 			
 			session.beginTransaction();
-			Jugador jug = (Jugador)session.get(Jugador.class,jugador.getUsername());
-			session.persist(jug);
-			jug.setCognom(jugador.getCognom());
-			jug.setEmail(jugador.getEmail());
-			jug.setNom(jugador.getNom());
-			jug.setPwd(jugador.getPwd());
+			try {
+				Jugador jug = (Jugador)session.get(Jugador.class,jugador.getUsername());
+				session.persist(jug);
+				jug.setCognom(jugador.getCognom());
+				jug.setEmail(jugador.getEmail());
+				jug.setNom(jugador.getNom());
+				jug.setPwd(jugador.getPwd());
+			}
+			catch (Exception e) {
+				session.save(jugador);
+			}
+			
 			session.getTransaction().commit();
 			session.close();
 			
-			return jug.getUsername();
+			return jugador.getUsername();
 	} 
 }
 

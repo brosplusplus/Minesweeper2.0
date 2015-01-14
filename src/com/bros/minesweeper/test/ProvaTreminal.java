@@ -29,9 +29,7 @@ public class ProvaTreminal {
 		EstrategiaPerTemps estrat = new EstrategiaPerTemps(120);
 		
 		Partida partida = new Partida(player1, nivell, estrat);
-		partida.crearCaselles(nivell.getNombreCasellesxColumna(), 
-				nivell.getNombreCasellesxFila(), nivell.getNombreMines());
-		
+
 		imprimeixTaulell(partida, nivell);
 
 		@SuppressWarnings("resource")

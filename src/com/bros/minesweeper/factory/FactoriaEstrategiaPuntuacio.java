@@ -11,9 +11,6 @@ import com.bros.minesweeper.domain.model.EstrategiaPuntuacio;
  * @author Borja Arias
  */
 public class FactoriaEstrategiaPuntuacio extends AbstractFactory{
-
-	private static EstrategiaPerTemps estrategiaPerTemps;
-	private static EstrategiaPerTirades estrategiaPerTirades;
 	
 	/**
 	 * Genera una llista de les estrategies de puntuacio que hi han al sistema
@@ -21,10 +18,10 @@ public class FactoriaEstrategiaPuntuacio extends AbstractFactory{
 	 * @throws InstantiationException
 	 * @throws IllegalAccessException
 	 */
-	public static ArrayList<EstrategiaPuntuacio> getAll() throws InstantiationException, IllegalAccessException {
-		ArrayList<EstrategiaPuntuacio> ret = new ArrayList<EstrategiaPuntuacio>();
-		ret.add(estrategiaPerTemps.getClass().newInstance());
-		ret.add(estrategiaPerTirades.getClass().newInstance());
+	public static ArrayList<Class> getAll() throws InstantiationException, IllegalAccessException {
+		ArrayList<Class> ret = new ArrayList<Class>();
+		ret.add(EstrategiaPerTemps.class);
+		ret.add(EstrategiaPerTirades.class);
 		return ret;		
 	}
 

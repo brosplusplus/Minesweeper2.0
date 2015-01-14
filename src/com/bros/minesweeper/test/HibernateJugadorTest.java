@@ -55,6 +55,5 @@ public class HibernateJugadorTest {
 			}			
 		}
 		return jugador;
-		
 	}
 }

@@ -31,8 +31,18 @@ public class EstrategiaPerTemps implements EstrategiaPuntuacio {
 		long timeDiff = actualTime - this.startTimeStamp;
 		if (timeDiff > this.tempsMaxim)
 			return 0;
-		else
-			return (int) (this.tempsMaxim - timeDiff);
+		int multiplicador = 10000;
+		double percent = (double)(this.tempsMaxim - timeDiff)/this.tempsMaxim;
+		return (int)percent * multiplicador;
+	}
+
+	@Override
+	public void setMaxim(Integer files, Integer columnes, Integer mines) {
+		Double x = 0.3;
+		Double y = -0.93;
+		Double mida = (Double)(double)files*columnes;
+		Double factor = (mida/mines)*x+y;
+		this.tempsMaxim = (int) Math.round((mida-mines)*factor); 		
 	}
 
 }
