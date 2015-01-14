@@ -102,9 +102,9 @@ public class ProvaTreminal {
 					if (c.estaDescoberta()) {
 						debug.out(" # ");
 					}
-					else {
+					/*else {
 						debug.out(" * ");
-					}
+					}*/
 				}
 				else if (c.getEstaMarcada()){
 					debug.out(" M ");
