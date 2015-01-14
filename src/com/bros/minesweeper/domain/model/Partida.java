@@ -277,9 +277,9 @@ public class Partida {
 	 * @return els punts que l'usuari ha aconseguit en la partida.
 	 * 
 	 */
-	private Integer computaPuntuacio() {
+	public Integer computaPuntuacio() {
 		// TODO Auto-generated method stub
-		return null;
+		return estrategia.getPuntuacio(this);
 	}
 
 	

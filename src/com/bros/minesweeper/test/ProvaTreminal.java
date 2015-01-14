@@ -25,26 +25,16 @@ public class ProvaTreminal {
 		nivell.setNom("facil");
 		nivell.setNombreCasellesxColumna(9);
 		nivell.setNombreCasellesxFila(9);
-		nivell.setNombreMines(27);
+		nivell.setNombreMines(0);
 		
-		EstrategiaPerTemps estrat = new EstrategiaPerTemps();
+		EstrategiaPerTemps estrat = new EstrategiaPerTemps(120);
 		
 		Partida partida = new Partida(player1, nivell, estrat);
 		partida.crearCaselles(nivell.getNombreCasellesxColumna(), 
 				nivell.getNombreCasellesxFila(), nivell.getNombreMines());
 		
-		for(int i = 0; i < nivell.getNombreCasellesxColumna(); ++i) {
-			for(int j = 0; j < nivell.getNombreCasellesxFila(); ++j) {
-				/*Casella c = partida.getCasellaTaulell(i, j);
-				if (!c.tensMina()) {*/
-					debug.out(" . ");
-				/*}
-				else {
-					debug.out(" * ");
-				}*/
-			}
-			debug.outln("\n");
-		}
+		imprimeixTaulell(partida, nivell);
+
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		EstatPartida ep = new EstatPartida();
@@ -85,10 +75,11 @@ public class ProvaTreminal {
 		}
 		
 		if (ep.acabada && ep.guanyada) {
-			debug.out("Has guanyat, "+player1.getNom()+"!");
+			debug.outln("Has guanyat, "+player1.getNom()+"!");
+			debug.outln(partida.computaPuntuacio() + " punts");
 		}
 		else if (ep.acabada) {
-			debug.out("Ta petao una mina hippiecolgaoo!!!");
+			debug.outln("Ta petao una mina hippiecolgaoo!!!");
 		}
 		
 	}
