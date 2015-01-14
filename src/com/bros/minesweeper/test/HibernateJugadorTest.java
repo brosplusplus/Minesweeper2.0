@@ -10,7 +10,7 @@ import com.bros.minesweeper.utils.debug;
 public class HibernateJugadorTest {
 	
 	@SuppressWarnings("resource")
-	public static Jugador obteJugadorActual(String[] args) {
+	public static Jugador newJugador() {
 		Scanner in = new Scanner(System.in);
 		debug.outln("Hola, què vols fer?");
 		debug.outln("1. Nou perfil\n2. Carregar perfil");
@@ -31,10 +31,10 @@ public class HibernateJugadorTest {
 		else {
 			debug.outln("Nom d'usuari:");
 			String username = in.nextLine();
-			debug.outln("Contrasenya:");
-			String pwd = in.nextLine();
 			LoginUseCaseController lucc = new LoginUseCaseController();
 			while (jugador == null) {
+				debug.outln("Contrasenya:");
+				String pwd = in.nextLine();
 				try {
 					lucc.login(username, pwd);
 					jugador = cj.get(username);

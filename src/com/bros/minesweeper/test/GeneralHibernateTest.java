@@ -14,22 +14,22 @@ import com.bros.minesweeper.utils.debug;
  */
 public class GeneralHibernateTest {
 	public static void main (String[] args) {
-		Jugador jug = HibernateJugador.newJugador();
+		Jugador jug = HibernateJugadorTest.obteJugadorActual();
 		if (jug != null) 
 			debug.outln("Creat el jugador: "+jug.getUsername())
 		else
 			debug.err("Error en crear el jugador");
-		Nivell niv = HibernateNivell.newNivell();
+		Nivell niv = HibernateNivellTest.newNivell();
 		if (niv != null)
 			debug.outln("Creat el Nivell: "+niv.getNom());
 		else
 			debug.err("Error en crear el Nivell");
-		Administrador admin = HibernateAdministrador.newAdministrador();
+		Administrador admin = HibernateAdministradorTest.newAdministrador();
 		if (admin != null)
 			debug.outln("Creat el Administrador: "+admin.getUsername());
 		else
 			debug.err("Error en crear Administrador");
-		Partida part = HibernatePartida.newPartida();
+		Partida part = HibernatePartidaTest.newPartida();
 		if (part != null)
 			debug.outln("Creada la Partida amb IdPartida: "+part.getIdPartida());
 		else
