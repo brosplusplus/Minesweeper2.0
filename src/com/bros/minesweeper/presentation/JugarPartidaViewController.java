@@ -19,6 +19,11 @@ public class JugarPartidaViewController {
 	private JugarPartidaUseCaseController JPUCC;
 	private JugarPartidaView JPV;
 
+    public JugarPartidaViewController() {
+    	JPUCC = new JugarPartidaUseCaseController();
+        JPV = new JugarPartidaView(this);
+    }
+    
 	public JugarPartidaUseCaseController getJPUCC() {
 		return JPUCC;
 	}
@@ -39,6 +44,9 @@ public class JugarPartidaViewController {
 	 * Metodes
 	 */
 	
+	public void IniciAplicacio() {
+		JPV.Inici();
+	}
 	/**
 	 * Premem el boto de Jugar per anar a la vista d'identificacio
 	 */

@@ -9,8 +9,10 @@ public class EstrategiaPerTemps implements EstrategiaPuntuacio {
 	private long tempsMaxim;
 	private long startTimeStamp;
 	
-	public EstrategiaPerTemps() {
+	public EstrategiaPerTemps(long tMax) {
+		// tMax son segons i el passem a ms
 		this.startTimeStamp = System.currentTimeMillis(); 
+		this.tempsMaxim = tMax*1000;
 	}
 	
 	@Override
