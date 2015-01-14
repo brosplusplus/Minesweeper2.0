@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.bros.minesweeper.datainterface.ICtrlCasella;
+import com.bros.minesweeper.datainterface.ICtrlPartida;
 import com.bros.minesweeper.factory.FactoriaControladors;
 import com.bros.minesweeper.factory.FactoriaEstrategiaPuntuacio;
 import com.bros.minesweeper.utils.Pair;
@@ -87,7 +90,9 @@ public class Partida {
 		this.nRows = this.teNivell.getNombreCasellesxColumna();
 		this.nMines = this.teNivell.getNombreMines();
 		
-		this.inicialitzarCaselles(nRows, nCols);
+		ICtrlPartida cp = FactoriaControladors.getCtrlPartida();
+		this.idPartida = cp.save(this);
+		
 		this.estrategia = estrat;
 		this.crearCaselles(this.teNivell.getNombreCasellesxColumna(), 
 				this.teNivell.getNombreCasellesxFila(), this.teNivell.getNombreMines());
@@ -105,7 +110,9 @@ public class Partida {
 		this.nRows = this.teNivell.getNombreCasellesxColumna();
 		this.nMines = this.teNivell.getNombreMines();
 		
-		this.inicialitzarCaselles(nRows, nCols);
+		ICtrlPartida cp = FactoriaControladors.getCtrlPartida();
+		this.idPartida = cp.save(this);
+		
 		try {
 			this.estrategia = assignarEstrategiaPuntuacio();
 		} catch (InstantiationException e) {
@@ -291,10 +298,12 @@ public class Partida {
 	 * @param columnesDelNivell numero total de columnes que te el taulell
 	 */
 	public void inicialitzarCaselles(Integer filesDelNivell, Integer columnesDelNivell) {
+		ICtrlCasella cc = FactoriaControladors.getCtrlCasella();
 		for (int nF = 0; nF < filesDelNivell; ++nF) {
 			for (int nC = 0; nC <  columnesDelNivell; ++nC) {
 				Casella c = new Casella(nF, nC, this);
 				this.taulell.add(c);
+				cc.save(c);
 			}
 		}
 	}
@@ -367,10 +376,12 @@ public class Partida {
 	 * @throws IllegalAccessException
 	 */
 	public EstrategiaPuntuacio assignarEstrategiaPuntuacio() throws InstantiationException, IllegalAccessException {
-		ArrayList<Class> estrategies = FactoriaEstrategiaPuntuacio.getAll();
+		ArrayList<EstrategiaPuntuacio> estrategies = FactoriaEstrategiaPuntuacio.getAll();
 		Random rand = new Random();
 		int i = rand.nextInt(estrategies.size());
-		return (EstrategiaPuntuacio)estrategies.get(i).newInstance();
+		EstrategiaPuntuacio est = (EstrategiaPuntuacio)estrategies.get(i);
+		est.setMaxim(this.nRows, this.nCols, this.nMines);
+		return est;
 	}
 	
 	/*public static void main(String[] args) throws Exception {

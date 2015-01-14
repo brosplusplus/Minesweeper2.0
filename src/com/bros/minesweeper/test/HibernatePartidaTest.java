@@ -17,19 +17,12 @@ public class HibernatePartidaTest {
 		Partida partida = null;
 		ICtrlPartida cp = FactoriaControladors.getCtrlPartida();
 		if (accio == 1) {
-			partida = new Partida();
 			debug.outln("Nom del jugador que hi jugara:");
 			String nomU = in.nextLine();
 			Jugador jug = FactoriaControladors.getCtrlJugador().get(nomU);
 			debug.outln("Nom del nivell");
 			String nomName = in.nextLine();
 			partida = new Partida(jug, nomName);
-			try {
-				cp.save(partida);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				debug.err(e.getMessage());
-			}
 		}
 		in.close();
 		return partida;

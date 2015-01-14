@@ -44,4 +44,15 @@ public class CtrlCasella implements ICtrlCasella{
 		
 		return id;
 	}
+
+	@Override
+	public void update(Casella casella) {
+		// TODO Auto-generated method stub
+		Session session = PersistenceSessionFactory.getInstance().openSession();
+		
+		session.beginTransaction();
+		session.update(casella);
+		
+		session.close();
+	}
 }

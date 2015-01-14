@@ -1,5 +1,6 @@
 package com.bros.minesweeper.presentation;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -87,8 +88,9 @@ public class ImageGrid {
 				JButton button = new JButton();
 				button.setBounds(actualWidth, actualHeight, cellWidth, cellHeight);
 				debug.outln("Button: "+i+" "+j+" "+actualWidth+" "+actualHeight);
-				button.setOpaque(false);
-				button.setContentAreaFilled(false);
+				button.setOpaque(true);
+				button.setContentAreaFilled(true);
+				button.setBackground(new Color(0,160,255));
 				button.addMouseListener(new MouseListener() {
 				
 					@Override

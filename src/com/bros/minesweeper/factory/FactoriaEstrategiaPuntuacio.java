@@ -18,10 +18,10 @@ public class FactoriaEstrategiaPuntuacio extends AbstractFactory{
 	 * @throws InstantiationException
 	 * @throws IllegalAccessException
 	 */
-	public static ArrayList<Class> getAll() throws InstantiationException, IllegalAccessException {
-		ArrayList<Class> ret = new ArrayList<Class>();
-		ret.add(EstrategiaPerTemps.class);
-		ret.add(EstrategiaPerTirades.class);
+	public static ArrayList<EstrategiaPuntuacio> getAll() throws InstantiationException, IllegalAccessException {
+		ArrayList<EstrategiaPuntuacio> ret = new ArrayList<EstrategiaPuntuacio>();
+		ret.add(new EstrategiaPerTemps());
+		ret.add(new EstrategiaPerTirades());
 		return ret;		
 	}
 

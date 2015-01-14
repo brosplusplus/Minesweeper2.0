@@ -9,4 +9,5 @@ import com.bros.minesweeper.domain.model.Casella;
 public interface ICtrlCasella {
 	public Casella get(Integer idPartida, Integer numF, Integer numC);
 	public String save(Casella casella);
+	public void update(Casella casella);
 }
