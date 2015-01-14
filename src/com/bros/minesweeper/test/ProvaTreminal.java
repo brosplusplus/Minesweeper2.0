@@ -101,15 +101,10 @@ public class ProvaTreminal {
 				if (c.getEstaMarcada()){
 					debug.out(" M ");
 				}
-				else if (c.tensMina()) {
-					if (c.estaDescoberta()) {
+				else if (c.getEstaDescoberta()) {
+					if (c.tensMina()) {
 						debug.out(" # ");
 					}
-					/*else {
-						debug.out(" * ");
-					}*/
-				} 
-				else if (c.getEstaDescoberta()) {
 					if (c.getNumero() == null) {
 						debug.out(" _ ");
 					}
