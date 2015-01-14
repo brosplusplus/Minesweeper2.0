@@ -25,7 +25,7 @@ public class ProvaTreminal {
 		nivell.setNom("facil");
 		nivell.setNombreCasellesxColumna(5);
 		nivell.setNombreCasellesxFila(5);
-		nivell.setNombreMines(5);
+		nivell.setNombreMines(0);
 		
 		EstrategiaPerTemps estrat = new EstrategiaPerTemps();
 		
@@ -117,7 +117,7 @@ public class ProvaTreminal {
 						debug.out(" "+c.getNumero()+" ");
 					}
 				}
-				else if (!c.getEstaMarcada()) {
+				else {
 					debug.out(" . ");
 				}	
 			}
