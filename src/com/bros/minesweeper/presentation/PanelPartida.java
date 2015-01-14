@@ -59,42 +59,41 @@ public class PanelPartida extends JPanel implements IPanelAplicacio{
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, 708, GroupLayout.PREFERRED_SIZE)
+					.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, 627, GroupLayout.PREFERRED_SIZE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+							.addComponent(lblMessageArea)
+							.addGap(64))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(btnInstruccions, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-								.addComponent(btnSortir, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(96)
-							.addComponent(lblMessageArea)))
-					.addContainerGap())
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(btnSortir, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnInstruccions, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)))))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(240, Short.MAX_VALUE)
+					.addComponent(lblMessageArea)
+					.addGap(201)
+					.addComponent(btnInstruccions, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnSortir, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addGap(46))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, 555, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(180)
-							.addComponent(lblMessageArea)
-							.addPreferredGap(ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
-							.addComponent(btnInstruccions, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(btnSortir, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)))
-					.addGap(23))
+					.addContainerGap()
+					.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, 555, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		GroupLayout gl_llocTaulell = new GroupLayout(llocTaulell);
 		gl_llocTaulell.setHorizontalGroup(
 			gl_llocTaulell.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 390, Short.MAX_VALUE)
+				.addGap(0, 627, Short.MAX_VALUE)
 		);
 		gl_llocTaulell.setVerticalGroup(
 			gl_llocTaulell.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 349, Short.MAX_VALUE)
+				.addGap(0, 555, Short.MAX_VALUE)
 		);
 		llocTaulell.setLayout(gl_llocTaulell);
 		setLayout(groupLayout);
@@ -113,6 +112,7 @@ public class PanelPartida extends JPanel implements IPanelAplicacio{
 	public void setTaulellJoc(int files, int columnes){
 		joc = new ImageGrid(files, columnes, llocTaulell.getSize().width, llocTaulell.getSize().height);
 		llocTaulell.add(joc.getPanel());
+		this.setPreferredSize(llocTaulell.getPreferredSize());
 	}
 
 	@Override

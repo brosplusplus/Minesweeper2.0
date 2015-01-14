@@ -1,6 +1,7 @@
 package com.bros.minesweeper.presentation;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -27,7 +28,7 @@ public class ImageGrid {
 		DESMARCADA, MARCADA, DESCOBERTA, BOMBA, BLANCA  
 	}
 	
-	private JPanel frame;
+	public JPanel frame;
 	private static ArrayList<JButton> gridArr;
 	private static ImageIcon icnNum;
 	private static ImageIcon icnBomb;
@@ -37,7 +38,7 @@ public class ImageGrid {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ImageGrid window = new ImageGrid(5, 5, 100, 100);
+					ImageGrid window = new ImageGrid(18, 18, 160, 160);
 					JFrame mainFrame = new JFrame();
 					mainFrame.add(window.frame);
 					mainFrame.setBounds(window.frame.getBounds());
