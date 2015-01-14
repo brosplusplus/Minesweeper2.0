@@ -86,7 +86,9 @@ public class JugarPartidaViewController {
 	 */
 	public void PrJugarPartida(String nomNivell) {
 		JPUCC.crearPartida(nomNivell);
-		JPV.mostrarPartida();
+		int files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		int columnes = JPUCC.getPartida().getTeNivell().getNombreCasellesxFila();
+		JPV.mostrarPartida(files, columnes);
 	}
 	
 	/**

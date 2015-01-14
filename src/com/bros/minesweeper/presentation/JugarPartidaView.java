@@ -104,10 +104,10 @@ public class JugarPartidaView {
         frameApp.repaint();
 	}
 	
-	public void mostrarPartida() {
+	public void mostrarPartida(int files, int columnes) {
 		panelActual.remove(panelLvl);
 		frameApp.setMinimumSize(new Dimension(600,400));
-		panelGame.setTaulellJoc(30, 30);
+		panelGame.setTaulellJoc(files, columnes);
         panelActual.add(panelGame);
         frameApp.pack();
         frameApp.repaint();
