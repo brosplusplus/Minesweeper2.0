@@ -25,6 +25,7 @@ public class JugarPartidaView {
     private PanelLogin panelLog = new PanelLogin(this);
     private PanelMenuPrincipal panelMP = new PanelMenuPrincipal(this);
     private PanelNivells panelLvl = new PanelNivells(this);
+    private PanelPartida panelGame = new PanelPartida(this);
 	
     /**
      * Creadora de la classe VistaAplicacio
@@ -104,7 +105,10 @@ public class JugarPartidaView {
 	}
 	
 	public void mostrarPartida() {
-		
+		panelActual.remove(panelLvl);
+        panelActual.add(panelGame);
+        frameApp.pack();
+        frameApp.repaint();
 	}
 	
 	public void actualitzaTaulell() {
