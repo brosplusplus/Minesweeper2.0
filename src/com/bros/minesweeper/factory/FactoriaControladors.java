@@ -1,5 +1,6 @@
 package com.bros.minesweeper.factory;
 
+import com.bros.minesweeper.db.CtrlAdministrador;
 import com.bros.minesweeper.db.CtrlCasella;
 import com.bros.minesweeper.db.CtrlJugador;
 import com.bros.minesweeper.db.CtrlNivell;
@@ -33,4 +34,7 @@ public class FactoriaControladors extends AbstractFactory{
 		return new CtrlCasella();
 	}
 
+	public static CtrlAdministrador getCtrlAdministrador() {
+		return new CtrlAdministrador();
+	}
 }
