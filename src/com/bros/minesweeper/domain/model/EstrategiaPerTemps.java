@@ -9,10 +9,9 @@ public class EstrategiaPerTemps implements EstrategiaPuntuacio {
 	private long tempsMaxim;
 	private long startTimeStamp;
 	
-	public EstrategiaPerTemps(long tMax) {
+	public EstrategiaPerTemps() {
 		// tMax son segons i el passem a ms
 		this.startTimeStamp = System.currentTimeMillis(); 
-		this.tempsMaxim = tMax*1000;
 	}
 	
 	@Override
@@ -42,7 +41,7 @@ public class EstrategiaPerTemps implements EstrategiaPuntuacio {
 		Double y = -0.93;
 		Double mida = (Double)(double)files*columnes;
 		Double factor = (mida/mines)*x+y;
-		this.tempsMaxim = (int) Math.round((mida-mines)*factor); 		
+		this.tempsMaxim = (int) Math.round((mida-mines)*factor)*1000; 		
 	}
 
 }

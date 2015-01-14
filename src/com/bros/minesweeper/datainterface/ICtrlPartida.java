@@ -9,4 +9,5 @@ import com.bros.minesweeper.domain.model.Partida;
 public interface ICtrlPartida {
 	public Partida get(Integer idPartida);
 	public Integer save(Partida partida);
+	public void update(Partida partida);
 }
