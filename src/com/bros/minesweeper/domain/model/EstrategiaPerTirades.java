@@ -3,10 +3,9 @@ package com.bros.minesweeper.domain.model;
 
 public class EstrategiaPerTirades implements EstrategiaPuntuacio{
 	private Integer tiradesMaximes;
-	
-	public EstrategiaPerTirades(Integer tiradesMaximes) {
+
+	public EstrategiaPerTirades() {
 		super();
-		this.tiradesMaximes = tiradesMaximes;
 	}
 
 	@Override
@@ -25,7 +24,18 @@ public class EstrategiaPerTirades implements EstrategiaPuntuacio{
 		if (tiradesActuals > this.tiradesMaximes) {
 			return 0;
 		}
-		return this.tiradesMaximes - tiradesActuals;
+		int multiplicador = 10000;
+		double percent = (double)(this.tiradesMaximes - tiradesActuals)/this.tiradesMaximes;
+		return (int)percent * multiplicador;
+	}
+
+	@Override
+	public void setMaxim(Integer files, Integer columnes, Integer mines) {
+		Double x = 0.3;
+		Double y = -0.93;
+		Double mida = (Double)(double)files*columnes;
+		Double factor = (mida/mines)*x+y;
+		this.tiradesMaximes = (int) Math.round((mida-mines)*factor); 		
 	}
 	
 }

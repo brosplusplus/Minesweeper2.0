@@ -89,6 +89,8 @@ public class Partida {
 		
 		this.inicialitzarCaselles(nRows, nCols);
 		this.estrategia = estrat;
+		this.crearCaselles(this.teNivell.getNombreCasellesxColumna(), 
+				this.teNivell.getNombreCasellesxFila(), this.teNivell.getNombreMines());
 	}
 	
 	public Partida(Jugador jugName, String niv) {
@@ -112,7 +114,9 @@ public class Partida {
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}			
+		}
+		this.crearCaselles(this.teNivell.getNombreCasellesxColumna(), 
+				this.teNivell.getNombreCasellesxFila(), this.teNivell.getNombreMines());
 	}
 
 	public Integer getIdPartida() {
@@ -363,10 +367,10 @@ public class Partida {
 	 * @throws IllegalAccessException
 	 */
 	public EstrategiaPuntuacio assignarEstrategiaPuntuacio() throws InstantiationException, IllegalAccessException {
-		ArrayList<EstrategiaPuntuacio> estrategies = FactoriaEstrategiaPuntuacio.getAll();
+		ArrayList<Class> estrategies = FactoriaEstrategiaPuntuacio.getAll();
 		Random rand = new Random();
 		int i = rand.nextInt(estrategies.size());
-		return estrategies.get(i);
+		return (EstrategiaPuntuacio)estrategies.get(i).newInstance();
 	}
 	
 	/*public static void main(String[] args) throws Exception {

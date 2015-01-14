@@ -10,7 +10,6 @@ import com.bros.minesweeper.utils.debug;
 
 public class HibernateAdministradorTest {
 	
-	@SuppressWarnings("resource")
 	public static Administrador newAdministrador() {
 		Scanner in = new Scanner(System.in);
 		debug.outln("Machete, anem a fer un admin no fos cas que fessis trampes ;)");
@@ -48,6 +47,7 @@ public class HibernateAdministradorTest {
 				}
 			}			
 		}
+		in.close();
 		return admin;
 		
 	}
