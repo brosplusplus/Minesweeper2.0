@@ -66,7 +66,7 @@ public class JugarPartidaViewController {
 	 */
 	public void PrEntrar(String usuari, String password) throws Exception {
 			JPUCC.FerAutenticacio(usuari, password);
-			JPV.mostrarMenuPrincipal();
+			JPV.mostrarMenuPrincipal(usuari);
 	}
 	
 	/**
