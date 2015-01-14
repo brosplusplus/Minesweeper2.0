@@ -10,7 +10,7 @@ public class Main {
 			public void run() {
 				try {
 					JugarPartidaViewController J = new JugarPartidaViewController();
-			        J.IniciAplicacio(); 
+			        J.IniciAplicacio();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -16,7 +16,7 @@ public class LoginUseCaseController {
 	public Boolean login (String userN, String passwd) throws Exception {
 		CtrlUsuariRegistrat cu = FactoriaControladors.getCtrlUsuariRegistrat();
 		UsuariRegistrat u = cu.get(userN);
-
+		
 		if(!passwd.equals(u.getPwd())) throw new Exception("Password Incorrecte");
 
 		return true;

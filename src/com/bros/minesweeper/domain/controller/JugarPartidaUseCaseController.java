@@ -8,6 +8,7 @@ import com.bros.minesweeper.domain.model.EstatPartida;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.Partida;
 import com.bros.minesweeper.factory.FactoriaControladors;
+import com.bros.minesweeper.utils.debug;
 
 public class JugarPartidaUseCaseController {
 
@@ -62,7 +63,7 @@ public class JugarPartidaUseCaseController {
 		if (!cj.exists(userN)) throw new Exception("L'usuari " + userN + " no es jugador");
 		LoginUseCaseController lucc = new LoginUseCaseController();
 		lucc.login(userN, passwd);
-		this.setJugName(userN);
+		jugName = cj.get(userN);
 	}
 	
 	public ArrayList<HashMap<String, String> > obtenirNivells() throws Exception {

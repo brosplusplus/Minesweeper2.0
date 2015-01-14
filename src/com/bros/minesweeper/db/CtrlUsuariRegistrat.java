@@ -39,7 +39,7 @@ public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
 		return id;
 	}
 
-	
+	/*
 	public static void main (String[] args) {
 		ICtrlJugador ctrlUsuari = FactoriaControladors.getCtrlJugador();
 		
@@ -58,5 +58,5 @@ public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
 		else
 			debug.outln("No s'ha trobat cap Paco al sistema");
 		
-	}
+	}*/
 }

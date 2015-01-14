@@ -37,7 +37,7 @@ public class PanelInici extends JPanel {
 		Component verticalStrut = Box.createVerticalStrut(20);
 		verticalBox.add(verticalStrut);
 		
-		JLabel label_1 = new JLabel("Bros++ ® 2014");
+		JLabel label_1 = new JLabel("Bros++ Â® 2014");
 		label_1.setFont(new Font("Dialog", Font.PLAIN, 18));
 		label_1.setAlignmentX(0.5f);
 		verticalBox.add(label_1);
