@@ -41,7 +41,9 @@ public class ImageGrid {
 					JFrame mainFrame = new JFrame();
 					mainFrame.add(window.frame);
 					mainFrame.setBounds(window.frame.getBounds());
+					mainFrame.setLocationRelativeTo(null);
 					mainFrame.setVisible(true);
+					mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -72,6 +74,7 @@ public class ImageGrid {
 		
 		frame = new JPanel();
 		frame.setBounds(0,0,width*2,height*2);
+		frame.setOpaque(false);
 		
 		GridLayout grid = new GridLayout(files, columnes);
 		frame.setLayout(grid);
@@ -84,8 +87,10 @@ public class ImageGrid {
 				JButton button = new JButton();
 				button.setBounds(actualWidth, actualHeight, cellWidth, cellHeight);
 				debug.outln("Button: "+i+" "+j+" "+actualWidth+" "+actualHeight);
+				button.setOpaque(false);
+				button.setContentAreaFilled(false);
 				button.addMouseListener(new MouseListener() {
-					
+				
 					@Override
 					public void mouseClicked(MouseEvent arg0) {
 						switch(arg0.getButton()){

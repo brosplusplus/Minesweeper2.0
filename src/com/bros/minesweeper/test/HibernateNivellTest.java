@@ -16,7 +16,7 @@ public class HibernateNivellTest {
 		Scanner in = new Scanner(System.in);
 		debug.outln("Hola, que vols fer?");
 		debug.outln("1. Nou nivell\n2. Mostra Nivells");
-		int accio = in.nextInt();
+		int accio = Integer.parseInt(in.nextLine());
 		Nivell nivell = new Nivell();
 		CtrlNivell cn = FactoriaControladors.getCtrlNivell();
 		if (accio == 1) {

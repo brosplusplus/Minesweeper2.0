@@ -12,12 +12,14 @@ public class HibernateJugadorTest {
 	@SuppressWarnings("resource")
 	public static Jugador newJugador() {
 		Scanner in = new Scanner(System.in);
-		debug.outln("Hola, quÃ¨ vols fer?");
+		debug.outln("Hola, que vols fer?");
 		debug.outln("1. Nou perfil\n2. Carregar perfil");
-		int accio = in.nextInt();
-		Jugador jugador = new Jugador();
+		int accio = Integer.parseInt(in.nextLine());
+//		String accio = in.nextLine();
+		Jugador jugador = null;
 		CtrlJugador cj = new CtrlJugador();
 		if (accio == 1) {
+			jugador = new Jugador();
 			debug.outln("Nom:");
 			jugador.setNom(in.nextLine());
 			debug.outln("Cognom:");
@@ -26,7 +28,15 @@ public class HibernateJugadorTest {
 			jugador.setUsername(in.nextLine());
 			debug.outln("Password:");
 			jugador.setPwd(in.nextLine());
-			cj.save(jugador);
+			
+			try {
+				cj.save(jugador);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				debug.err(e.getMessage());
+				debug.outln("Tornem a començar");
+				return newJugador();
+			}
 		}
 		else {
 			debug.outln("Nom d'usuari:");
