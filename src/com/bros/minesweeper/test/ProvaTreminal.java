@@ -8,7 +8,6 @@ import com.bros.minesweeper.domain.model.EstrategiaPerTemps;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.Nivell;
 import com.bros.minesweeper.domain.model.Partida;
-import com.bros.minesweeper.utils.Pair;
 import com.bros.minesweeper.utils.debug;
 
 public class ProvaTreminal {
@@ -25,26 +24,16 @@ public class ProvaTreminal {
 		nivell.setNom("facil");
 		nivell.setNombreCasellesxColumna(9);
 		nivell.setNombreCasellesxFila(9);
-		nivell.setNombreMines(27);
+		nivell.setNombreMines(0);
 		
-		EstrategiaPerTemps estrat = new EstrategiaPerTemps();
+		EstrategiaPerTemps estrat = new EstrategiaPerTemps(120);
 		
 		Partida partida = new Partida(player1, nivell, estrat);
 		partida.crearCaselles(nivell.getNombreCasellesxColumna(), 
 				nivell.getNombreCasellesxFila(), nivell.getNombreMines());
 		
-		for(int i = 0; i < nivell.getNombreCasellesxColumna(); ++i) {
-			for(int j = 0; j < nivell.getNombreCasellesxFila(); ++j) {
-				/*Casella c = partida.getCasellaTaulell(i, j);
-				if (!c.tensMina()) {*/
-					debug.out(" . ");
-				/*}
-				else {
-					debug.out(" * ");
-				}*/
-			}
-			debug.outln("\n");
-		}
+		imprimeixTaulell(partida, nivell);
+
 		@SuppressWarnings("resource")
 		Scanner in = new Scanner(System.in);
 		EstatPartida ep = new EstatPartida();
@@ -67,13 +56,6 @@ public class ProvaTreminal {
 					break;
 				case 3:
 					ep = partida.descobrirCasella(numF, numC);
-					for (Pair<Integer, Integer> punt : ep.casellesPerDescobrir)
-					{
-						if (partida.getCasellaTaulell(punt.getFirst(), punt.getSecond()).estaDescoberta())
-							debug.outln(punt.getFirst()+" "+punt.getSecond()+" : YEZ");
-						else
-							debug.outln(punt.getFirst()+" "+punt.getSecond()+" : NOP");
-					}
 					break;
 				default:
 					break;
@@ -85,10 +67,11 @@ public class ProvaTreminal {
 		}
 		
 		if (ep.acabada && ep.guanyada) {
-			debug.out("Has guanyat, "+player1.getNom()+"!");
+			debug.outln("Has guanyat, "+player1.getNom()+"!");
+			debug.outln(partida.computaPuntuacio() + " punts");
 		}
 		else if (ep.acabada) {
-			debug.out("Ta petao una mina hippiecolgaoo!!!");
+			debug.outln("Ta petao una mina hippiecolgaoo!!!");
 		}
 		
 	}
