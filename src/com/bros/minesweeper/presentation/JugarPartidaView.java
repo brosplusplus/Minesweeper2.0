@@ -22,8 +22,7 @@ public class JugarPartidaView {
     private JFrame frameApp = new JFrame("Minesweeper");
     private JPanel panelActual = new JPanel();
     private JPanel panelAux = new JPanel();
-    private PanelProva panelProva = new PanelProva();
-    private PanelInici panelIni = new PanelInici();
+    private PanelInici panelIni = new PanelInici(this);
 	
     /**
      * Creadora de la classe VistaAplicacio
@@ -38,7 +37,7 @@ public class JugarPartidaView {
      * Funcio que inicialitza el frame de l'aplicacio
      */
     private void InicialitzarFrame() {
-        frameApp.setMinimumSize(new Dimension(800,600));
+        frameApp.setMinimumSize(new Dimension(500,300));
         frameApp.setPreferredSize(frameApp.getMinimumSize());
         frameApp.setLocationRelativeTo(null);
         frameApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
