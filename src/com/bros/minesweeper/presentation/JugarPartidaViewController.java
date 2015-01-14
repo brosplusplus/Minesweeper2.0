@@ -100,7 +100,6 @@ public class JugarPartidaViewController {
 	public void PrBotoDret(Integer x, Integer y) throws Exception {
 		try {
 			JPUCC.marcarCasella(x, y);
-			// TODO falta capturar l'event
 			JPV.actualitzaTaulell();
 			JPV.mostrarMissatge("S'ha marcat la casella ("+x+","+y+")");
 		}
@@ -109,7 +108,27 @@ public class JugarPartidaViewController {
 		}
 	}
 	
-	//PrBotoEsq(Integer x, Integer y)
-	//PrDobleBotoEsq(Integer x, Integer y)
-	//PrSortir()
+	public void PrBotoEsq(Integer x, Integer y) {
+		try {
+			JPUCC.desmarcarCasella(x, y);
+			JPV.actualitzaTaulell();
+			JPV.mostrarMissatge("S'ha desmarcat la casella ("+x+","+y+")");
+		}
+		catch (Exception e) {
+			JPV.mostrarMissatge(e.getMessage());
+		}
+	}
+	public void PrDobleBotoEsq(Integer x, Integer y) {
+		try {
+			JPUCC.descobrirCasella(x, y);
+			JPV.actualitzaTaulell();
+			JPV.mostrarMenuPrincipal("S'ha descobert la casella("+x+","+y+")");
+		}
+		catch (Exception e) {
+			JPV.mostrarMissatge(e.getMessage());
+		}
+	}
+	public void PrSortir() {
+		JPV.tancar();
+	}
 }
