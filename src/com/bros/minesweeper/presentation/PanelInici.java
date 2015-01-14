@@ -30,7 +30,7 @@ public class PanelInici extends JPanel {
 		verticalBox.add(verticalGlue);
 		
 		JLabel label = new JLabel("Minesweeper");
-		label.setFont(new Font("Dialog", Font.BOLD, 42));
+		label.setFont(new Font("Comic Sans MS", Font.BOLD, 42));
 		label.setAlignmentX(0.5f);
 		verticalBox.add(label);
 		
