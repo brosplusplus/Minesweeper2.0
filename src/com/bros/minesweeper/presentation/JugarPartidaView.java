@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.bros.minesweeper.utils.Pair;
@@ -19,7 +20,10 @@ public class JugarPartidaView {
 	
 	//Controlador de presentacio
 	private JugarPartidaViewController JPVC;
-
+	
+	//Area de missatges
+	public static JLabel lblMessageArea;
+	
 	//Components de la interficie grafica
     private JFrame frameApp = new JFrame("Minesweeper");
     private JPanel panelActual = new JPanel();
@@ -120,7 +124,8 @@ public class JugarPartidaView {
 	}
 	
 	public void mostrarMissatge(String txt){
-		
+		Boolean b = panelLog.escriuMissatge(txt);
+		if(!b) b = panelMP.escriuMissatge(txt);
 	}
 	
 	public void mostrarMissatgeVictoria(Integer p){

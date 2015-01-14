@@ -25,9 +25,9 @@ import javax.swing.GroupLayout.Alignment;
 
 import com.bros.minesweeper.utils.debug;
 
-public class PanelLogin extends JPanel {
+public class PanelLogin extends JPanel implements IPanelAplicacio{
 	
-
+	public JLabel lblMessageArea;
 	/**
 	 * Create the panel.
 	 * @param JPV 
@@ -99,11 +99,11 @@ public class PanelLogin extends JPanel {
 		Component verticalGlue = Box.createVerticalGlue();
 		verticalBox.add(verticalGlue);
 		
-		final JLabel MessArea = new JLabel("");
-		MessArea.setForeground(new Color(165, 42, 42));
-		MessArea.setFont(new Font("Dialog", Font.ITALIC, 12));
-		MessArea.setAlignmentX(0.5f);
-		verticalBox.add(MessArea);
+		lblMessageArea = new JLabel("");
+		lblMessageArea.setForeground(new Color(165, 42, 42));
+		lblMessageArea.setFont(new Font("Dialog", Font.ITALIC, 12));
+		lblMessageArea.setAlignmentX(0.5f);
+		verticalBox.add(lblMessageArea);
 		
 		Box horizontalBox_2 = Box.createHorizontalBox();
 		verticalBox.add(horizontalBox_2);
@@ -133,12 +133,7 @@ public class PanelLogin extends JPanel {
 		btnEntry.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				try {
-					JPV.getJPVC().PrEntrar(textField.getText(), passwordField.getText());
-				} catch (Exception exc) {
-					MessArea.setText(exc.getMessage());
-					JPV.mostrarMissatge(exc.getMessage());
-				}
+				JPV.getJPVC().PrEntrar(textField.getText(), passwordField.getText());
 			}
 		});
 		btnEntry.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -168,5 +163,11 @@ public class PanelLogin extends JPanel {
 		);
 		setLayout(groupLayout);
 
+	}
+	
+	@Override
+	public Boolean escriuMissatge(String txt) {
+		lblMessageArea.setText(txt);
+		return true;
 	}
 }

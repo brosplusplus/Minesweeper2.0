@@ -16,9 +16,10 @@ import javax.swing.GroupLayout.Alignment;
 
 import java.awt.Color;
 
-public class PanelMenuPrincipal extends JPanel {
+public class PanelMenuPrincipal extends JPanel implements IPanelAplicacio{
 
 	JLabel lblBenvingut;
+	public JLabel lblMessageArea;
 	/**
 	 * Create the panel.
 	 * @param JPV 
@@ -38,16 +39,12 @@ public class PanelMenuPrincipal extends JPanel {
 		Component verticalGlue = Box.createVerticalGlue();
 		verticalBox.add(verticalGlue);
 		
-		final JLabel lblMessageArea = new JLabel();
+		lblMessageArea = new JLabel("");
 		
 		JButton btnPlay = new JButton("Jugar");
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					JPV.getJPVC().PrAccioJugar();
-				} catch (Exception e) {
-					lblMessageArea.setText(e.getMessage());
-				}
+				JPV.getJPVC().PrAccioJugar();
 			}
 		});
 		btnPlay.setMaximumSize(new Dimension(118, 46));
@@ -111,6 +108,12 @@ public class PanelMenuPrincipal extends JPanel {
 
 	public void setNomUsuari(String usuari) {
 		lblBenvingut.setText("Benvingut, "+usuari);
+	}
+
+	@Override
+	public Boolean escriuMissatge(String txt) {
+		lblMessageArea.setText(txt);
+		return true;
 	}
 
 }

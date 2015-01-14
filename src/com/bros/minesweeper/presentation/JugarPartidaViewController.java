@@ -65,9 +65,14 @@ public class JugarPartidaViewController {
 	 *  [pwdIncorrecte]			La contrassenya indroduida no es valida per al nom d'usuari
 	 *  [usuariNoJugador]		El nom d'usuari introduit no pertany al de un Jugador
 	 */
-	public void PrEntrar(String usuari, String password) throws Exception {
-			JPUCC.FerAutenticacio(usuari, password);
-			JPV.mostrarMenuPrincipal(usuari);
+	public void PrEntrar(String usuari, String password){
+		try {	
+		JPUCC.FerAutenticacio(usuari, password);
+		JPV.mostrarMenuPrincipal(usuari);
+		}
+		catch (Exception e){
+			JPV.mostrarMissatge(e.getMessage());
+		}
 	}
 	
 	/**
@@ -75,10 +80,15 @@ public class JugarPartidaViewController {
 	 * @throws Exception
 	 *  [noHiHaNivells]	No hi han nivells a la BD del sistema
 	 */
-	public void PrAccioJugar() throws Exception {
-			ArrayList<HashMap<String, String> > nivells = JPUCC.obtenirNivells();
-			String usuari = JPUCC.getJugName();
-			JPV.mostrarNivells(usuari, nivells);
+	public void PrAccioJugar() {
+		try {	
+		ArrayList<HashMap<String, String> > nivells = JPUCC.obtenirNivells();
+		String usuari = JPUCC.getJugName();
+		JPV.mostrarNivells(usuari, nivells);
+		}
+		catch (Exception e){
+			JPV.mostrarMissatge(e.getMessage());
+		}
 	}
 	
 	/**
