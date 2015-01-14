@@ -38,7 +38,7 @@ public class PanelPartida extends JPanel {
 		});
 		
 		llocTaulell = new JPanel();
-		llocTaulell.setSize(new Dimension(150, 150));
+		llocTaulell.setSize(new Dimension(160, 160));
 		
 		JButton btnInstruccions = new JButton("Instruccions");
 		btnInstruccions.addMouseListener(new MouseAdapter() {
@@ -55,8 +55,8 @@ public class PanelPartida extends JPanel {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(23)
-					.addComponent(llocTaulell, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addContainerGap(23, Short.MAX_VALUE)
+					.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(30)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
@@ -73,8 +73,8 @@ public class PanelPartida extends JPanel {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(llocTaulell, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(93)
 							.addComponent(lblMessageArea)

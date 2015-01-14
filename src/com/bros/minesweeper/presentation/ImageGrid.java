@@ -67,10 +67,8 @@ public class ImageGrid {
 	 * Create the panel.
 	 */
 	public ImageGrid(int files, int columnes, int width, int height) {
-		int cellWidth = width/(files+1)-1;
-		int cellHeight = height/(columnes+1)-1;
-		int widthSpace = cellWidth / files;
-		int heightSpace = cellHeight / columnes;
+		int cellWidth = 10;
+		int cellHeight = 10;
 		
 		this.icnBomb = getIcon("/img/caselles/bomba.png", cellWidth, cellHeight);
 		this.icnMarc = getIcon("/img/caselles/bandera.png", cellWidth, cellHeight);
@@ -86,12 +84,9 @@ public class ImageGrid {
 		
 		gridArr = new ArrayList<JButton>();
 		for (int i = 0; i < files; i++) {
-			int actualHeight = i*(cellHeight+heightSpace);
 			for (int j = 0; j < columnes; j++) {
-				int actualWidth = j*(cellWidth+widthSpace);
 				JButton button = new JButton();
 				//button.setBounds(actualWidth, actualHeight, cellWidth, cellHeight);
-				debug.outln("Button: "+i+" "+j+" "+actualWidth+" "+actualHeight);
 				button.setOpaque(true);
 				button.setContentAreaFilled(true);
 				button.setBackground(new Color(0,160,255));
