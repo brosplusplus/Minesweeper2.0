@@ -7,6 +7,8 @@ import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.bros.minesweeper.utils.Pair;
+
 /**
  * Vista de l'aplicacio del Buscamines
  * 
@@ -113,9 +115,10 @@ public class JugarPartidaView {
         frameApp.repaint();
 	}
 	
-	public void actualitzaTaulell() {
+	public void actualitzaTaulell(ArrayList<Pair<Integer, Integer>> l, String string) {
 		
 	}
+	
 	public void mostrarMissatge(String txt){
 		
 	}
@@ -125,6 +128,7 @@ public class JugarPartidaView {
 	}
 	
 	public void mostrarMissatgeDerrota(){
+		
 		
 	}
 	

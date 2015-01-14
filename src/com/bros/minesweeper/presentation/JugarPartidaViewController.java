@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.bros.minesweeper.domain.controller.JugarPartidaUseCaseController;
-import com.bros.minesweeper.utils.debug;
+import com.bros.minesweeper.domain.model.EstatPartida;
+import com.bros.minesweeper.utils.Pair;
 
 /**
  * Controlador de la vista del joc
@@ -100,7 +101,9 @@ public class JugarPartidaViewController {
 	public void PrBotoDret(Integer x, Integer y) throws Exception {
 		try {
 			JPUCC.marcarCasella(x, y);
-			JPV.actualitzaTaulell();
+			ArrayList<Pair<Integer,Integer>> l = new ArrayList<Pair<Integer, Integer>>();
+			l.add(new Pair<Integer, Integer>(x, y));
+			JPV.actualitzaTaulell(l, "marcar");
 			JPV.mostrarMissatge("S'ha marcat la casella ("+x+","+y+")");
 		}
 		catch(Exception e){
@@ -111,7 +114,9 @@ public class JugarPartidaViewController {
 	public void PrBotoEsq(Integer x, Integer y) {
 		try {
 			JPUCC.desmarcarCasella(x, y);
-			JPV.actualitzaTaulell();
+			ArrayList<Pair<Integer,Integer>> l = new ArrayList<Pair<Integer, Integer>>();
+			l.add(new Pair<Integer, Integer>(x, y));
+			JPV.actualitzaTaulell(l, "desmarcar");
 			JPV.mostrarMissatge("S'ha desmarcat la casella ("+x+","+y+")");
 		}
 		catch (Exception e) {
@@ -120,9 +125,18 @@ public class JugarPartidaViewController {
 	}
 	public void PrDobleBotoEsq(Integer x, Integer y) {
 		try {
-			JPUCC.descobrirCasella(x, y);
-			JPV.actualitzaTaulell();
+			EstatPartida ep = JPUCC.descobrirCasella(x, y);
+			JPV.actualitzaTaulell(ep.casellesPerDescobrir, "descobrir");
 			JPV.mostrarMenuPrincipal("S'ha descobert la casella("+x+","+y+")");
+			boolean acabada = ep.acabada;
+			boolean guanyada = ep.guanyada;
+			if (acabada && guanyada) {
+				JPV.mostrarMissatgeVictoria(ep.puntuacio);
+			}
+			else if (acabada && !guanyada) {
+				JPV.mostrarMissatgeDerrota();
+			}
+			
 		}
 		catch (Exception e) {
 			JPV.mostrarMissatge(e.getMessage());
