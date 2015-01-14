@@ -59,6 +59,10 @@ public class ImageGrid {
 		return new ImageIcon(img);
 	}
 	
+	public JPanel getPanel(){
+		return this.frame;
+	}
+	
 	/**
 	 * Create the panel.
 	 */
@@ -86,7 +90,7 @@ public class ImageGrid {
 			for (int j = 0; j < columnes; j++) {
 				int actualWidth = j*(cellWidth+widthSpace);
 				JButton button = new JButton();
-				button.setBounds(actualWidth, actualHeight, cellWidth, cellHeight);
+				//button.setBounds(actualWidth, actualHeight, cellWidth, cellHeight);
 				debug.outln("Button: "+i+" "+j+" "+actualWidth+" "+actualHeight);
 				button.setOpaque(true);
 				button.setContentAreaFilled(true);
