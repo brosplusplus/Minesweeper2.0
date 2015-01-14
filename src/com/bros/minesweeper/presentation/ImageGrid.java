@@ -24,7 +24,7 @@ import com.bros.minesweeper.utils.debug;
 public class ImageGrid {
 
 	public enum Estat {
-		TAPADA, BLANC, MARCADA, NUMERO, BOMBA  
+		DESMARCADA, MARCADA, DESCOBERTA, BOMBA, BLANCA  
 	}
 	
 	private JPanel frame;
@@ -73,6 +73,7 @@ public class ImageGrid {
 		this.icnBomb = getIcon("/img/caselles/bomba.png", cellWidth, cellHeight);
 		this.icnMarc = getIcon("/img/caselles/bandera.png", cellWidth, cellHeight);
 		this.icnNum = getIcon("/img/caselles/1.png", cellWidth, cellHeight);
+		this.icnPunt = getIcon("/img/caselles/punt.png", cellWidth, cellHeight);
 		
 		frame = new JPanel();
 		frame.setBounds(0,0,width*2,height*2);
