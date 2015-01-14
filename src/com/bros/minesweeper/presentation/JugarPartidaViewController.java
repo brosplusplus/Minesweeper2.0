@@ -154,7 +154,7 @@ public class JugarPartidaViewController {
 			}
 			
 			JPV.actualitzaTaulell(dataCell);
-			JPV.mostrarMenuPrincipal("S'ha descobert la casella("+x+","+y+")");
+			JPV.mostrarMissatge("S'ha descobert la casella("+x+","+y+")");
 			boolean acabada = ep.acabada;
 			boolean guanyada = ep.guanyada;
 			if (acabada && guanyada) {
