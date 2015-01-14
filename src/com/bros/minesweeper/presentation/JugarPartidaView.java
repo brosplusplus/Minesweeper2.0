@@ -119,6 +119,7 @@ public class JugarPartidaView {
 		if (tasca.equals("marcar")) {
 			Pair<Integer, Integer> casella = dataCell.getFirst();
 			EstatCasella eC = dataCell.getSecond();
+			
 		}
 		else {
 			Pair<Integer, Integer> casella = dataCell.getFirst();
