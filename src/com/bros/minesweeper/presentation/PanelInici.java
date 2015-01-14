@@ -73,7 +73,7 @@ public class PanelInici extends JPanel {
 		btnEntry.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				JPV.mostrarIdentificacio();
+				JPV.getJPVC().PrJugar();
 			}
 		});
 		btnEntry.setFont(new Font("Arial", Font.PLAIN, 14));

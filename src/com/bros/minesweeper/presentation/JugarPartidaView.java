@@ -21,8 +21,9 @@ public class JugarPartidaView {
 	//Components de la interficie grafica
     private JFrame frameApp = new JFrame("Minesweeper");
     private JPanel panelActual = new JPanel();
-    private JPanel panelAux = new JPanel();
     private PanelInici panelIni = new PanelInici(this);
+    private PanelLogin panelLog = new PanelLogin(this);
+    private PanelMenuPrincipal panelMP = new PanelMenuPrincipal(this);
 	
     /**
      * Creadora de la classe VistaAplicacio
@@ -38,12 +39,12 @@ public class JugarPartidaView {
      */
     private void InicialitzarFrame() {
         frameApp.setMinimumSize(new Dimension(500,300));
+        frameApp.setResizable(false);
         frameApp.setPreferredSize(frameApp.getMinimumSize());
         frameApp.setLocationRelativeTo(null);
         frameApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panelActual = (JPanel) frameApp.getContentPane();
-        panelAux = panelIni;
-        panelActual.add(panelAux);
+        panelActual.add(panelIni);
     }
     
 	public JFrame getFrameApp() {
@@ -72,11 +73,24 @@ public class JugarPartidaView {
 	}
 	
 	public void mostrarIdentificacio() {
-		
+		panelActual.remove(panelIni);
+        panelActual.add(panelLog);
+        frameApp.pack();
+        frameApp.repaint();
 	}
 	
 	public void mostrarMenuPrincipal() {
-		
+		panelActual.remove(panelLog);
+        panelActual.add(panelMP);
+        frameApp.pack();
+        frameApp.repaint();
+	}
+	
+	public void logout() {
+		panelActual.remove(panelMP);
+        panelActual.add(panelLog);
+        frameApp.pack();
+        frameApp.repaint();
 	}
 	
 	public void mostrarNivells(String usuari, ArrayList<HashMap<String, String>> nivells) {
