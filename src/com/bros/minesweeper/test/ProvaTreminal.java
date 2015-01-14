@@ -8,7 +8,6 @@ import com.bros.minesweeper.domain.model.EstrategiaPerTemps;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.Nivell;
 import com.bros.minesweeper.domain.model.Partida;
-import com.bros.minesweeper.utils.Pair;
 import com.bros.minesweeper.utils.debug;
 
 public class ProvaTreminal {
@@ -57,13 +56,6 @@ public class ProvaTreminal {
 					break;
 				case 3:
 					ep = partida.descobrirCasella(numF, numC);
-					for (Pair<Integer, Integer> punt : ep.casellesPerDescobrir)
-					{
-						if (partida.getCasellaTaulell(punt.getFirst(), punt.getSecond()).estaDescoberta())
-							debug.outln(punt.getFirst()+" "+punt.getSecond()+" : YEZ");
-						else
-							debug.outln(punt.getFirst()+" "+punt.getSecond()+" : NOP");
-					}
 					break;
 				default:
 					break;
