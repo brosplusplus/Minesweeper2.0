@@ -64,14 +64,8 @@ public class JugarPartidaViewController {
 	 *  [usuariNoJugador]		El nom d'usuari introduit no pertany al de un Jugador
 	 */
 	public void PrEntrar(String usuari, String password) throws Exception {
-		try{
 			JPUCC.FerAutenticacio(usuari, password);
 			JPV.mostrarMenuPrincipal();
-		}
-		catch(Exception e){
-			JPV.mostrarMissatge(e.getMessage());
-		}
-		
 	}
 	
 	/**
@@ -80,14 +74,9 @@ public class JugarPartidaViewController {
 	 *  [noHiHaNivells]	No hi han nivells a la BD del sistema
 	 */
 	public void PrAccioJugar() throws Exception {
-		try {
 			ArrayList<HashMap<String, String> > nivells = JPUCC.obtenirNivells();
 			String usuari = JPUCC.getJugName();
 			JPV.mostrarNivells(usuari, nivells);
-		}
-		catch(Exception e){
-			JPV.mostrarMissatge(e.getMessage());
-		}
 	}
 	
 	/**
