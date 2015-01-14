@@ -23,9 +23,9 @@ public class ProvaTreminal {
 		
 		Nivell nivell = new Nivell();
 		nivell.setNom("facil");
-		nivell.setNombreCasellesxColumna(5);
-		nivell.setNombreCasellesxFila(5);
-		nivell.setNombreMines(0);
+		nivell.setNombreCasellesxColumna(9);
+		nivell.setNombreCasellesxFila(9);
+		nivell.setNombreMines(27);
 		
 		EstrategiaPerTemps estrat = new EstrategiaPerTemps();
 		
@@ -98,17 +98,17 @@ public class ProvaTreminal {
 		for(int i = 0; i < nivell.getNombreCasellesxColumna(); ++i) {
 			for(int j = 0; j < nivell.getNombreCasellesxFila(); ++j) {
 				Casella c = partida.getCasellaTaulell(i, j);
-				if (c.tensMina()) {
+				if (c.getEstaMarcada()){
+					debug.out(" M ");
+				}
+				else if (c.tensMina()) {
 					if (c.estaDescoberta()) {
 						debug.out(" # ");
 					}
 					/*else {
 						debug.out(" * ");
 					}*/
-				}
-				else if (c.getEstaMarcada()){
-					debug.out(" M ");
-				}
+				} 
 				else if (c.getEstaDescoberta()) {
 					if (c.getNumero() == null) {
 						debug.out(" _ ");
