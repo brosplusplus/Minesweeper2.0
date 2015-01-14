@@ -25,7 +25,7 @@ import com.bros.minesweeper.utils.debug;
 public class ImageGrid {
 
 	public enum Estat {
-		TAPADA, BLANC, MARCADA, NUMERO, BOMBA  
+		DESMARCADA, MARCADA, DESCOBERTA, BOMBA, BLANCA  
 	}
 	
 	public JPanel frame;

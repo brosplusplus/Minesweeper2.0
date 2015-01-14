@@ -9,24 +9,24 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import java.awt.Font;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Dimension;
 
-public class PanelPartida extends JPanel {
+public class PanelPartida extends JPanel implements IPanelAplicacio{
 	
 	private JPanel llocTaulell;
 	private ImageGrid joc;
+	private JLabel lblMessageArea;
 	/**
 	 * Create the panel.
 	 * @param JPV 
 	 */
 	public PanelPartida(final JugarPartidaView JPV) {
 		
-		JLabel lblMessageArea = new JLabel("Comencem?");
+		lblMessageArea = new JLabel("Comencem?");
 		lblMessageArea.setFont(new Font("Dialog", Font.BOLD, 12));
 		
 		JButton btnSortir = new JButton("Sortir");
@@ -38,7 +38,7 @@ public class PanelPartida extends JPanel {
 		});
 		
 		llocTaulell = new JPanel();
-		llocTaulell.setSize(new Dimension(160, 160));
+		llocTaulell.setMinimumSize(new Dimension(160, 160));
 		
 		JButton btnInstruccions = new JButton("Instruccions");
 		btnInstruccions.addMouseListener(new MouseAdapter() {
@@ -111,5 +111,10 @@ public class PanelPartida extends JPanel {
 		joc = new ImageGrid(files, columnes, llocTaulell.getSize().width, llocTaulell.getSize().height);
 		llocTaulell.add(joc.getPanel());
 		this.setPreferredSize(llocTaulell.getPreferredSize());
+	}
+
+	@Override
+	public void escriuMissatge(String txt) {
+		lblMessageArea.setText(txt);
 	}
 }
