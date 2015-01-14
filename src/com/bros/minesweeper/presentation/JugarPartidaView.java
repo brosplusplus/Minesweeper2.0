@@ -89,6 +89,7 @@ public class JugarPartidaView {
 	
 	public void mostrarMenuPrincipal(String usuari) {
 		panelActual.remove(panelLog);
+		panelMP = new PanelMenuPrincipal(this);
 		panelMP.setNomUsuari(usuari);
         panelActual.add(panelMP);
         frameApp.pack();
@@ -113,6 +114,7 @@ public class JugarPartidaView {
 	public void mostrarPartida(int files, int columnes) {
 		panelActual.remove(panelLvl);
 		frameApp.setMinimumSize(new Dimension(600,400));
+		panelGame = new PanelPartida(this);
 		panelGame.setTaulellJoc(files, columnes);
         panelActual.add(panelGame);
         frameApp.pack();
@@ -148,8 +150,9 @@ public class JugarPartidaView {
 	}
 	
 	public void mostrarMissatge(String txt){
-		Boolean b = panelLog.escriuMissatge(txt);
-		if(!b) b = panelMP.escriuMissatge(txt);
+		panelLog.escriuMissatge(txt);
+		panelMP.escriuMissatge(txt);
+		panelGame.escriuMissatge(txt);
 	}
 	
 	public void mostrarMissatgeVictoria(Integer p){

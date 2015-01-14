@@ -111,9 +111,8 @@ public class PanelMenuPrincipal extends JPanel implements IPanelAplicacio{
 	}
 
 	@Override
-	public Boolean escriuMissatge(String txt) {
+	public void escriuMissatge(String txt) {
 		lblMessageArea.setText(txt);
-		return true;
 	}
 
 }
