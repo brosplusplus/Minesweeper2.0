@@ -103,9 +103,10 @@ public class JugarPartidaViewController {
 	public void PrBotoDret(Integer x, Integer y) throws Exception {
 		try {
 			JPUCC.marcarCasella(x, y);
-			ArrayList<Pair<Integer,Integer>> l = new ArrayList<Pair<Integer, Integer>>();
-			l.add(new Pair<Integer, Integer>(x, y));
-			JPV.actualitzaTaulell(l, "marcar");
+			Pair<Integer, Integer> casellaMarcada = new Pair<Integer, Integer>(x,y);
+			Pair<Pair<Integer, Integer>, EstatCasella> dataCell = 
+					new Pair<Pair<Integer,Integer>, EstatCasella>(casellaMarcada, EstatCasella.MARCADA);
+			JPV.actualitzaTaulell(dataCell, "marcar");
 			JPV.mostrarMissatge("S'ha marcat la casella ("+x+","+y+")");
 		}
 		catch(Exception e){
@@ -116,9 +117,10 @@ public class JugarPartidaViewController {
 	public void PrBotoEsq(Integer x, Integer y) {
 		try {
 			JPUCC.desmarcarCasella(x, y);
-			ArrayList<Pair<Integer,Integer>> l = new ArrayList<Pair<Integer, Integer>>();
-			l.add(new Pair<Integer, Integer>(x, y));
-			JPV.actualitzaTaulell(l, "desmarcar");
+			Pair<Integer, Integer> casellaMarcada = new Pair<Integer, Integer>(x,y);
+			Pair<Pair<Integer, Integer>, EstatCasella> dataCell = 
+					new Pair<Pair<Integer,Integer>, EstatCasella>(casellaMarcada, EstatCasella.DESMARCADA);
+			JPV.actualitzaTaulell(dataCell, "desmarcar");
 			JPV.mostrarMissatge("S'ha desmarcat la casella ("+x+","+y+")");
 		}
 		catch (Exception e) {
@@ -128,7 +130,20 @@ public class JugarPartidaViewController {
 	public void PrDobleBotoEsq(Integer x, Integer y) {
 		try {
 			EstatPartida ep = JPUCC.descobrirCasella(x, y);
-			JPV.actualitzaTaulell(ep.casellesPerDescobrir, "descobrir");
+			Pair<Integer, Integer> casellaMarcada = new Pair<Integer, Integer>(x,y);
+			
+			ArrayList<Pair<Pair<Integer, Integer>, EstatCasella>> dataCell = 
+					new ArrayList<Pair<Pair<Integer,Integer>, EstatCasella>>();
+			
+			dataCell.add(new Pair<Pair<Integer,Integer>, EstatCasella>(casellaMarcada, consultaEstatCasella(x, y)));
+			
+			for (int i = 0; i < ep.casellesPerDescobrir.size(); ++i) {
+				Pair<Integer, Integer> casellaVoltant = ep.casellesPerDescobrir.get(i);
+				dataCell.add(new Pair<Pair<Integer,Integer>, EstatCasella>(casellaVoltant, 
+						consultaEstatCasella(casellaVoltant.getFirst(), casellaVoltant.getSecond())));
+			}
+			
+			JPV.actualitzaTaulell(dataCell);
 			JPV.mostrarMenuPrincipal("S'ha descobert la casella("+x+","+y+")");
 			boolean acabada = ep.acabada;
 			boolean guanyada = ep.guanyada;
@@ -144,6 +159,19 @@ public class JugarPartidaViewController {
 			JPV.mostrarMissatge(e.getMessage());
 		}
 	}
+	
+	private EstatCasella consultaEstatCasella(Integer x, Integer y) {
+		if (JPUCC.getPartida().getCasellaTaulell(x, y).tensMina()) {
+			return EstatCasella.BOMBA;
+		}
+		else if (JPUCC.getPartida().getCasellaTaulell(x, y).getNumero() == null) {
+			return EstatCasella.BLANCA;
+		}
+		else {
+			return EstatCasella.DESCOBERTA;
+		}
+	}
+	
 	public void PrSortir() {
 		JPV.tancar();
 	}

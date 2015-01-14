@@ -115,8 +115,31 @@ public class JugarPartidaView {
         frameApp.repaint();
 	}
 	
-	public void actualitzaTaulell(ArrayList<Pair<Integer, Integer>> l, String string) {
-		
+	public void actualitzaTaulell(Pair<Pair<Integer, Integer>, EstatCasella> dataCell, String tasca) {
+		if (tasca.equals("marcar")) {
+			Pair<Integer, Integer> casella = dataCell.getFirst();
+			EstatCasella eC = dataCell.getSecond();
+		}
+		else {
+			Pair<Integer, Integer> casella = dataCell.getFirst();
+			EstatCasella eC = dataCell.getSecond();
+		}
+	}
+
+	public void actualitzaTaulell(ArrayList<Pair<Pair<Integer, Integer>, EstatCasella>> dataCell) {
+		for(int i = 0; i < dataCell.size(); i++){
+			Pair<Integer, Integer> casella = dataCell.get(i).getFirst();
+			EstatCasella eC = dataCell.get(i).getSecond();
+			if (eC == EstatCasella.BOMBA) {
+				
+			}
+			else if (eC == EstatCasella.BLANCA) {
+				
+			}
+			else {
+				
+			}
+		}
 	}
 	
 	public void mostrarMissatge(String txt){
@@ -135,7 +158,5 @@ public class JugarPartidaView {
 	public void tancar() {
 		frameApp.dispose();
 	}
-
-
 
 }
