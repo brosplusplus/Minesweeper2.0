@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Dimension;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class PanelPartida extends JPanel implements IPanelAplicacio{
 	
@@ -38,6 +40,7 @@ public class PanelPartida extends JPanel implements IPanelAplicacio{
 		});
 		
 		llocTaulell = new JPanel();
+		llocTaulell.setSize(new Dimension(540, 540));
 		llocTaulell.setMinimumSize(new Dimension(160, 160));
 		
 		JButton btnInstruccions = new JButton("Instruccions");
@@ -55,32 +58,32 @@ public class PanelPartida extends JPanel implements IPanelAplicacio{
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(23, Short.MAX_VALUE)
-					.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(30)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addContainerGap()
+					.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, 708, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(btnSortir, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnInstruccions, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addGap(24))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(btnInstruccions, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+								.addComponent(btnSortir, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblMessageArea)
-							.addGap(43))))
+							.addGap(96)
+							.addComponent(lblMessageArea)))
+					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap()
+							.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, 555, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(93)
+							.addGap(180)
 							.addComponent(lblMessageArea)
-							.addPreferredGap(ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
 							.addComponent(btnInstruccions, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGap(18)
 							.addComponent(btnSortir, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)))
 					.addGap(23))
 		);

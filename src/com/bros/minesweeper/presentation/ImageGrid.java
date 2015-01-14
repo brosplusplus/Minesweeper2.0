@@ -74,7 +74,7 @@ public class ImageGrid {
 		this.icnNum = getIcon("/img/caselles/1.png", cellWidth, cellHeight);
 		
 		frame = new JPanel();
-		frame.setBounds(0,0,width*2,height*2);
+		frame.setBounds(0,0,width,height);
 		frame.setOpaque(false);
 		
 		GridLayout grid = new GridLayout(files, columnes);
