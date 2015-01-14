@@ -70,6 +70,7 @@ public class JugarPartidaView {
 	
 	public void Inici() {
         frameApp.pack();
+        frameApp.setUndecorated(true);
         frameApp.setVisible(true);
 	}
 	

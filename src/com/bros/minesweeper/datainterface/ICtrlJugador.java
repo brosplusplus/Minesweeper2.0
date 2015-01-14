@@ -12,5 +12,5 @@ import com.bros.minesweeper.domain.model.Jugador;
 public interface ICtrlJugador {
 	public boolean exists(String userN);
 	public Jugador get(String username);
-	public Integer save(Jugador jugador);
+	public String save(Jugador jugador) throws Exception;
 }

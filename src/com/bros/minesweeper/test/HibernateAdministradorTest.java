@@ -15,10 +15,11 @@ public class HibernateAdministradorTest {
 		Scanner in = new Scanner(System.in);
 		debug.outln("Machete, anem a fer un admin no fos cas que fessis trampes ;)");
 		debug.outln("1. Nou administrador\n2. Carregar administrador (si fas això ets un hacker de pwds)");
-		int accio = in.nextInt();
-		Administrador admin = new Administrador();
+		int accio = Integer.parseInt(in.nextLine());
+		Administrador admin = null;
 		CtrlAdministrador ca = FactoriaControladors.getCtrlAdministrador();
 		if (accio == 1) {
+			admin = new Administrador();
 			debug.outln("Nom:");
 			admin.setNom(in.nextLine());
 			debug.outln("Cognom:");

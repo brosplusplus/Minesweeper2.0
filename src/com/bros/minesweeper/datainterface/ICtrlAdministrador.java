@@ -10,6 +10,6 @@ import com.bros.minesweeper.domain.model.Administrador;
 public interface ICtrlAdministrador {
 
 	public Administrador get(String username);
-	public Integer save(Administrador administrador);
+	public String save(Administrador administrador);
 
 }

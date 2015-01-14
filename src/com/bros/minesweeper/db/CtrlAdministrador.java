@@ -24,11 +24,11 @@ public class CtrlAdministrador implements ICtrlAdministrador{
 	}
 
 	@Override
-	public Integer save(Administrador administrador) {
+	public String save(Administrador administrador) {
 			Session session = PersistenceSessionFactory.getInstance().openSession();
 			
 			session.beginTransaction();
-			Integer id = (Integer)session.save(administrador);
+			String id = (String)session.save(administrador);
 			session.save(administrador);
 			session.getTransaction().commit();
 			session.close();

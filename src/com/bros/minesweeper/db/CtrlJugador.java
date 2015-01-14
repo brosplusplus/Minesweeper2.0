@@ -22,16 +22,20 @@ public class CtrlJugador implements ICtrlJugador {
 	}
 
 	@Override
-	public Integer save(Jugador jugador) {
+	public String save(Jugador jugador) throws Exception {
 			Session session = PersistenceSessionFactory.getInstance().openSession();
 			
 			session.beginTransaction();
-			Integer id = (Integer)session.save(jugador);
-			session.save(jugador);
+			Jugador jug = (Jugador)session.get(Jugador.class,jugador.getUsername());
+			session.persist(jug);
+			jug.setCognom(jugador.getCognom());
+			jug.setEmail(jugador.getEmail());
+			jug.setNom(jugador.getNom());
+			jug.setPwd(jugador.getPwd());
 			session.getTransaction().commit();
 			session.close();
 			
-			return id;
+			return jug.getUsername();
 	} 
 }
 

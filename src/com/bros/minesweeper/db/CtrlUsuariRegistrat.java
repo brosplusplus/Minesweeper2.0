@@ -5,6 +5,7 @@ import java.sql.Statement;
 
 import org.hibernate.Session;
 
+import com.bros.minesweeper.datainterface.ICtrlJugador;
 import com.bros.minesweeper.datainterface.ICtrlUsuariRegistrat;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.UsuariRegistrat;
@@ -40,9 +41,9 @@ public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
 
 	
 	public static void main (String[] args) {
-		ICtrlUsuariRegistrat ctrlUsuari = FactoriaControladors.getCtrlUsuariRegistrat();
+		ICtrlJugador ctrlUsuari = FactoriaControladors.getCtrlJugador();
 		
-		UsuariRegistrat user = new Jugador();
+		Jugador user = new Jugador();
 		user.setUsername("Paco");
 		user.setNom("Paco");
 		user.setCognom("Franco");
