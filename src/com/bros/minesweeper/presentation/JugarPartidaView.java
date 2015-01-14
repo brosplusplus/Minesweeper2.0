@@ -1,6 +1,9 @@
 package com.bros.minesweeper.presentation;
 
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -43,12 +46,23 @@ public class JugarPartidaView {
      */
     private void InicialitzarFrame() {
         frameApp.setMinimumSize(new Dimension(500,300));
-        frameApp.setResizable(false);
-        frameApp.setPreferredSize(frameApp.getMinimumSize());
-        frameApp.setLocationRelativeTo(null);
-        frameApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        panelActual = (JPanel) frameApp.getContentPane();
-        panelActual.add(panelIni);
+//      frameApp.setMinimumSize(new Dimension());
+		frameApp.setResizable(false);
+		frameApp.setPreferredSize(frameApp.getMinimumSize());
+		frameApp.setLocationRelativeTo(null);
+		frameApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panelActual = (JPanel) frameApp.getContentPane();
+		panelActual.add(panelIni);
+		Dimension d = panelIni.getPreferredSize();
+		panelActual.setMinimumSize(d);
+		panelActual.setMaximumSize(d);
+		frameApp.setMinimumSize(d);
+		frameApp.setMaximumSize(d);
+		
+		URL url = ClassLoader.getSystemResource("img/caselles/banderaIcon.png");
+		Toolkit kit = Toolkit.getDefaultToolkit();
+		Image img = kit.createImage(url);
+		frameApp.setIconImage(img);
     }
     
 	public JFrame getFrameApp() {
@@ -77,14 +91,14 @@ public class JugarPartidaView {
 	}
 	
 	public void mostrarIdentificacio() {
-		panelActual.remove(panelIni);
+		panelActual.removeAll();
         panelActual.add(panelLog);
         frameApp.pack();
         frameApp.repaint();
 	}
 	
 	public void mostrarMenuPrincipal(String usuari) {
-		panelActual.remove(panelLog);
+		panelActual.removeAll();
 		panelMP.setNomUsuari(usuari);
         panelActual.add(panelMP);
         frameApp.pack();
@@ -92,7 +106,7 @@ public class JugarPartidaView {
 	}
 	
 	public void logout() {
-		panelActual.remove(panelMP);
+		panelActual.removeAll();
         panelActual.add(panelLog);
         frameApp.pack();
         frameApp.repaint();
@@ -100,18 +114,23 @@ public class JugarPartidaView {
 	
 	public void mostrarNivells(String usuari, ArrayList<HashMap<String, String>> nivells) {
 		panelLvl.setTaulaNivells(nivells);
-		panelActual.remove(panelMP);
+		panelActual.removeAll();
         panelActual.add(panelLvl);
         frameApp.pack();
         frameApp.repaint();
 	}
 	
 	public void mostrarPartida(int files, int columnes) {
-		panelActual.remove(panelLvl);
+		panelActual.removeAll();
 		frameApp.setMinimumSize(new Dimension(600,400));
 		panelGame.setTaulellJoc(files, columnes);
         panelActual.add(panelGame);
-        frameApp.pack();
+        frameApp.revalidate();
+        Dimension d = panelGame.getPreferredSize();
+		panelActual.setMinimumSize(d);
+		panelActual.setMaximumSize(d);
+		frameApp.setMinimumSize(d);
+		frameApp.setMaximumSize(d);
         frameApp.repaint();
 	}
 	

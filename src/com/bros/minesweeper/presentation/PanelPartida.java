@@ -110,5 +110,6 @@ public class PanelPartida extends JPanel {
 	public void setTaulellJoc(int files, int columnes){
 		joc = new ImageGrid(files, columnes, llocTaulell.getSize().width, llocTaulell.getSize().height);
 		llocTaulell.add(joc.getPanel());
+		this.setPreferredSize(llocTaulell.getPreferredSize());
 	}
 }

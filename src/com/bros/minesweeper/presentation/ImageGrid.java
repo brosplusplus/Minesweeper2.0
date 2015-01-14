@@ -1,6 +1,7 @@
 package com.bros.minesweeper.presentation;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -27,18 +28,17 @@ public class ImageGrid {
 		TAPADA, BLANC, MARCADA, NUMERO, BOMBA  
 	}
 	
-	private JPanel frame;
+	public JPanel frame;
 	private static ArrayList<JButton> gridArr;
 	private static ImageIcon icnNum;
 	private static ImageIcon icnBomb;
 	private static ImageIcon icnMarc;
-	private static ImageIcon icnPunt;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ImageGrid window = new ImageGrid(5, 5, 100, 100);
+					ImageGrid window = new ImageGrid(18, 18, 160, 160);
 					JFrame mainFrame = new JFrame();
 					mainFrame.add(window.frame);
 					mainFrame.setBounds(window.frame.getBounds());
@@ -73,10 +73,9 @@ public class ImageGrid {
 		this.icnBomb = getIcon("/img/caselles/bomba.png", cellWidth, cellHeight);
 		this.icnMarc = getIcon("/img/caselles/bandera.png", cellWidth, cellHeight);
 		this.icnNum = getIcon("/img/caselles/1.png", cellWidth, cellHeight);
-		this.icnPunt = getIcon("/img/caselles/punt.png", cellWidth, cellHeight);
 		
 		frame = new JPanel();
-		frame.setBounds(0,0,width*2,height*2);
+		frame.setBounds(0,0,files*25,columnes*25);
 		frame.setOpaque(false);
 		
 		GridLayout grid = new GridLayout(files, columnes);
