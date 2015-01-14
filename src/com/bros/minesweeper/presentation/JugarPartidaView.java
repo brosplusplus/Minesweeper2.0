@@ -80,8 +80,9 @@ public class JugarPartidaView {
         frameApp.repaint();
 	}
 	
-	public void mostrarMenuPrincipal() {
+	public void mostrarMenuPrincipal(String usuari) {
 		panelActual.remove(panelLog);
+		panelMP.setNomUsuari(usuari);
         panelActual.add(panelMP);
         frameApp.pack();
         frameApp.repaint();
