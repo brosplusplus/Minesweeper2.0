@@ -35,13 +35,13 @@ public class ProvaTreminal {
 		
 		for(int i = 0; i < nivell.getNombreCasellesxColumna(); ++i) {
 			for(int j = 0; j < nivell.getNombreCasellesxFila(); ++j) {
-				Casella c = partida.getCasellaTaulell(i, j);
-				if (!c.tensMina()) {
+				/*Casella c = partida.getCasellaTaulell(i, j);
+				if (!c.tensMina()) {*/
 					debug.out(" . ");
-				}
+				/*}
 				else {
 					debug.out(" * ");
-				}
+				}*/
 			}
 			debug.outln("\n");
 		}
