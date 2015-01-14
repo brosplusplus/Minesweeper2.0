@@ -105,7 +105,7 @@ public class ProvaTreminal {
 					if (c.tensMina()) {
 						debug.out(" # ");
 					}
-					if (c.getNumero() == null) {
+					else if (c.getNumero() == null) {
 						debug.out(" _ ");
 					}
 					else {
