@@ -3,17 +3,10 @@
  */
 package com.bros.minesweeper.db;
 
-import java.sql.Connection;
-import java.sql.Statement;
-import java.util.List;
-
 import org.hibernate.Session;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 import com.bros.minesweeper.datainterface.ICtrlCasella;
 import com.bros.minesweeper.domain.model.Casella;
-import com.bros.minesweeper.utils.debug;
 
 /**
  * Controlador de la persistencia de la clase Casella
@@ -21,6 +14,9 @@ import com.bros.minesweeper.utils.debug;
  */
 public class CtrlCasella implements ICtrlCasella{
 	
+	/**
+	 * Obtenim la casella (numF, numC) de la partida idPartida.
+	 */
 	@Override
 	public Casella get(Integer idPartida, Integer numF, Integer numC) {
 		Session session = PersistenceSessionFactory.getInstance().openSession();
@@ -33,6 +29,9 @@ public class CtrlCasella implements ICtrlCasella{
 		return lcas;
 	}
 
+	/**
+	 * Guardem la Casella casella a la base de dades.
+	 */
 	@Override
 	public String save(Casella casella) {
 		Session session = PersistenceSessionFactory.getInstance().openSession();

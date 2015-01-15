@@ -21,6 +21,9 @@ public class PersistenceSessionFactory {
 	private SessionFactory sessionFactory = null;
 	private Session s = null;
 	
+	/**
+	 * Creadora de PersistenceSessionFactory
+	 */
 	private PersistenceSessionFactory() {
 		this.configuration=new Configuration().configure();
 		this.serviceRegistryBuilder = new StandardServiceRegistryBuilder();
@@ -29,6 +32,9 @@ public class PersistenceSessionFactory {
 		this.sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 	}
 	
+	/**
+	 * Obtenim una instancia de PersistenceSessionFactory
+	 */
 	public static PersistenceSessionFactory getInstance() {
 		if (persistenceSessionFactory == null) {
 			persistenceSessionFactory = new PersistenceSessionFactory();
@@ -36,6 +42,9 @@ public class PersistenceSessionFactory {
 		return persistenceSessionFactory;
 	}
 	
+	/**
+	 * Obrim una nova Sessio.
+	 */
 	public Session openSession() {
 		if (s == null) {
 			s = sessionFactory.openSession();
@@ -47,6 +56,9 @@ public class PersistenceSessionFactory {
 		return s;
 	}
 	
+	/**
+	 * Tanquem la sessió.
+	 */
 	public void closeSession() {
 		s.close();
 	}

@@ -10,19 +10,24 @@ import com.bros.minesweeper.datainterface.ICtrlNivell;
 import com.bros.minesweeper.domain.model.Nivell;
 
 /**
- * Accedim a la informacio dels nivells que conte la base de dades
- * 
+ * Controlador de la persistencia de la clase Nivell
  * @author Alejandro Martinez
  *
  */
 public class CtrlNivell implements ICtrlNivell{
 	
+	/**
+	 * Obtenim tots els nivells disponibles a la base de dades.
+	 */
 	public ArrayList<Nivell> getAll() throws SQLException {
 		Session session = PersistenceSessionFactory.getInstance().openSession();
 		List<Nivell> nivells = session.createCriteria(Nivell.class).list();
 		return (ArrayList<Nivell>) nivells;
 	}
 	
+	/**
+	 * Obtenim el nivell amb nom nomNivell de la base de dades
+	 */
 	public Nivell get(String nomNivell) {
 		Session session = PersistenceSessionFactory.getInstance().openSession();
 		
@@ -32,6 +37,9 @@ public class CtrlNivell implements ICtrlNivell{
 		return nivell;
 	}
 
+	/**
+	 * Guardem el Nivell nivell a la base de dades.
+	 */
 	@Override
 	public String save(Nivell nivell) {
 		Session session = PersistenceSessionFactory.getInstance().openSession();
