@@ -1,19 +1,10 @@
 package com.bros.minesweeper.presentation;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,9 +21,9 @@ public class ImageGrid {
 	
 	public JPanel frame;
 	private static ArrayList<JButton> gridArr;
-	private static ImageIcon icnNum;
-	private static ImageIcon icnBomb;
-	private static ImageIcon icnMarc;
+	public static ArrayList<ImageIcon> icnNum;
+	public static ImageIcon icnBomb;
+	public static ImageIcon icnMarc;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -72,7 +63,11 @@ public class ImageGrid {
 		
 		this.icnBomb = getIcon("/img/caselles/bomba.png", cellWidth, cellHeight);
 		this.icnMarc = getIcon("/img/caselles/bandera.png", cellWidth, cellHeight);
-		this.icnNum = getIcon("/img/caselles/1.png", cellWidth, cellHeight);
+		this.icnNum = new ArrayList<ImageIcon>();
+		for (int i = 1; i < 9; ++i) {
+			debug.outln(i);
+			this.icnNum.add(getIcon("/img/caselles/"+i+".png", cellWidth, cellHeight));
+		}
 		
 		frame = new JPanel();
 		frame.setBounds(0,0,width,height);
@@ -88,8 +83,8 @@ public class ImageGrid {
 				//button.setBounds(actualWidth, actualHeight, cellWidth, cellHeight);
 				button.setOpaque(true);
 				button.setContentAreaFilled(true);
-				button.setBackground(new Color(0,160,255));
-				button.setName(((Integer)(i*+j)).toString());
+				button.setBackground(JugarPartidaView.defaultColor);
+				button.setName(((Integer)(i*files+j)).toString());
 				
 				gridArr.add(button);
 				frame.add(button);
@@ -100,22 +95,9 @@ public class ImageGrid {
 		frame.requestFocus();	
 		
 	}
-
-	public static synchronized void playSound(final String url) {
-		  new Thread(new Runnable() {
-		  // The wrapper thread is unnecessary, unless it blocks on the
-		  // Clip finishing; see comments.
-		    public void run() {
-		      try {
-		        Clip clip = AudioSystem.getClip();
-		        AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-		          this.getClass().getResourceAsStream("/path/to/sounds/" + url));
-		        clip.open(inputStream);
-		        clip.start(); 
-		      } catch (Exception e) {
-		        System.err.println(e.getMessage());
-		      }
-		    }
-		  }).start();
-		}
+	
+	public JButton getButton(Integer index) {
+		return gridArr.get(index);
+	}
+	
 }

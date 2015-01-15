@@ -1,21 +1,21 @@
 package com.bros.minesweeper.presentation;
 
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.Dimension;
-import java.awt.Component;
-import javax.swing.Box;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class PanelPartida extends JPanel implements IPanelAplicacio{
 	
@@ -118,6 +118,22 @@ public class PanelPartida extends JPanel implements IPanelAplicacio{
 	@Override
 	public void escriuMissatge(String txt) {
 		lblMessageArea.setText(txt);
+	}
+
+	public void actualitzaCasella(ImageIcon icon, Integer casella, Color color) {
+		
+		JButton btn = joc.getButton(casella);
+		if (icon == null) {
+			btn.setIcon(null);
+			btn.setOpaque(color != null);
+			btn.setContentAreaFilled(color != null);
+			btn.setBackground(color);
+		}
+		else{
+			btn.setIcon(icon);
+			btn.setOpaque(false);
+			btn.setContentAreaFilled(false);
+		}
 	}
 
 }

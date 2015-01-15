@@ -1,6 +1,7 @@
 package com.bros.minesweeper.presentation;
 
 import java.awt.AWTEvent;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -40,6 +41,8 @@ public class JugarPartidaView {
     private PanelMenuPrincipal panelMP = new PanelMenuPrincipal(this);
     private PanelNivells panelLvl = new PanelNivells(this);
     private PanelPartida panelGame = new PanelPartida(this);
+    
+    public static Color defaultColor = new Color(0,160,255);
 	
     /**
      * Creadora de la classe VistaAplicacio
@@ -105,12 +108,12 @@ public class JugarPartidaView {
 					}
 				}
 				else if (me.getSource() instanceof JButton 
-						&& (me.getModifiersEx() & MouseEvent.BUTTON2_DOWN_MASK) != 0)
+						&& (me.getModifiersEx() & MouseEvent.BUTTON3_DOWN_MASK) != 0)
 				{
 					JButton btn = (JButton) me.getSource();
 					String name = btn.getName();
 					if (isNumeric(name)) {
-							JPVC.PrBotoDret(Integer.parseInt(name));
+						JPVC.PrBotoDret(Integer.parseInt(name));
 					}
 				}
 			}
@@ -188,30 +191,32 @@ public class JugarPartidaView {
         frameApp.repaint();
 	}
 	
-	public void actualitzaTaulell(Pair<Pair<Integer, Integer>, EstatCasella> dataCell, String tasca) {
+	public void actualitzaTaulell(Pair<Integer, EstatCasella> dataCell, String tasca) {
 		if (tasca.equals("marcar")) {
-			Pair<Integer, Integer> casella = dataCell.getFirst();
+			Integer casella = dataCell.getFirst();
 			EstatCasella eC = dataCell.getSecond();
-			
+			panelGame.actualitzaCasella(ImageGrid.icnMarc, casella, null);			
 		}
 		else {
-			Pair<Integer, Integer> casella = dataCell.getFirst();
+			Integer casella = dataCell.getFirst();
 			EstatCasella eC = dataCell.getSecond();
+			panelGame.actualitzaCasella(null, casella, defaultColor);
 		}
 	}
 
-	public void actualitzaTaulell(ArrayList<Pair<Pair<Integer, Integer>, EstatCasella>> dataCell) {
+	public void actualitzaTaulell(ArrayList<Pair<Integer, EstatCasella>> dataCell) {
 		for(int i = 0; i < dataCell.size(); i++){
-			Pair<Integer, Integer> casella = dataCell.get(i).getFirst();
+			Integer casella = dataCell.get(i).getFirst();
 			EstatCasella eC = dataCell.get(i).getSecond();
 			if (eC == EstatCasella.BOMBA) {
-				
+				panelGame.actualitzaCasella(ImageGrid.icnBomb, casella, null);
 			}
 			else if (eC == EstatCasella.BLANCA) {
-				
+				panelGame.actualitzaCasella(null, casella, null);
 			}
 			else {
-				
+				int number = JPVC.getNumber(casella);
+				panelGame.actualitzaCasella(ImageGrid.icnNum.get(number-1), casella, null);
 			}
 		}
 	}

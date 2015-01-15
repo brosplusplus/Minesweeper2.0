@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.bros.minesweeper.domain.controller.JugarPartidaUseCaseController;
 import com.bros.minesweeper.domain.model.EstatPartida;
 import com.bros.minesweeper.utils.Pair;
+import com.bros.minesweeper.utils.debug;
 
 /**
  * Controlador de la vista del joc
@@ -117,9 +118,8 @@ public class JugarPartidaViewController {
 		y = index%files;
 		try {
 			JPUCC.marcarCasella(x, y);
-			Pair<Integer, Integer> casellaMarcada = new Pair<Integer, Integer>(x,y);
-			Pair<Pair<Integer, Integer>, EstatCasella> dataCell = 
-					new Pair<Pair<Integer,Integer>, EstatCasella>(casellaMarcada, EstatCasella.MARCADA);
+			Pair<Integer, EstatCasella> dataCell = 
+					new Pair<Integer, EstatCasella>(index, EstatCasella.MARCADA);
 			JPV.actualitzaTaulell(dataCell, "marcar");
 			JPV.mostrarMissatge("S'ha marcat la casella ("+x+","+y+")");
 		}
@@ -131,13 +131,13 @@ public class JugarPartidaViewController {
 	public void PrBotoEsq(Integer index) {
 		int x,y, files;
 		files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		
 		x = index/files;
 		y = index%files;
 		try {
 			JPUCC.desmarcarCasella(x, y);
-			Pair<Integer, Integer> casellaMarcada = new Pair<Integer, Integer>(x,y);
-			Pair<Pair<Integer, Integer>, EstatCasella> dataCell = 
-					new Pair<Pair<Integer,Integer>, EstatCasella>(casellaMarcada, EstatCasella.DESMARCADA);
+			Pair<Integer, EstatCasella> dataCell = 
+					new Pair<Integer, EstatCasella>(index, EstatCasella.DESMARCADA);
 			JPV.actualitzaTaulell(dataCell, "desmarcar");
 			JPV.mostrarMissatge("S'ha desmarcat la casella ("+x+","+y+")");
 		}
@@ -152,16 +152,16 @@ public class JugarPartidaViewController {
 		y = index%files;
 		try {
 			EstatPartida ep = JPUCC.descobrirCasella(x, y);
-			Pair<Integer, Integer> casellaMarcada = new Pair<Integer, Integer>(x,y);
 			
-			ArrayList<Pair<Pair<Integer, Integer>, EstatCasella>> dataCell = 
-					new ArrayList<Pair<Pair<Integer,Integer>, EstatCasella>>();
+			ArrayList<Pair<Integer, EstatCasella>> dataCell = 
+					new ArrayList<Pair<Integer, EstatCasella>>();
 			
-			dataCell.add(new Pair<Pair<Integer,Integer>, EstatCasella>(casellaMarcada, consultaEstatCasella(x, y)));
+			dataCell.add(new Pair<Integer, EstatCasella>(index, consultaEstatCasella(x, y)));
 			
 			for (int i = 0; i < ep.casellesPerDescobrir.size(); ++i) {
 				Pair<Integer, Integer> casellaVoltant = ep.casellesPerDescobrir.get(i);
-				dataCell.add(new Pair<Pair<Integer,Integer>, EstatCasella>(casellaVoltant, 
+				Integer indexVolt = casellaVoltant.getFirst()*files+casellaVoltant.getSecond();
+				dataCell.add(new Pair<Integer, EstatCasella>(indexVolt, 
 						consultaEstatCasella(casellaVoltant.getFirst(), casellaVoltant.getSecond())));
 			}
 			
@@ -196,5 +196,12 @@ public class JugarPartidaViewController {
 	
 	public void PrSortir() {
 		JPV.tancar();
+	}
+
+	public int getNumber(Integer index) {
+		int files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		int x = index/files;
+		int y = index%files;
+		return JPUCC.getPartida().getCasellaTaulell(x, y).getNumero();
 	}
 }
