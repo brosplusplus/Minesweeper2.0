@@ -105,11 +105,19 @@ public class JugarPartidaUseCaseController {
 	}
 
 	public int obteCasellesxColumna() {
-		return this.partida.getTeNivell().obteNombreCasellesxColumna();
+		return this.partida.obteCasellesxColumna();
 	}
 
 	public int obteCasellesxFila() {
-		return this.partida.getTeNivell().obteNombreCasellesxFila();
+		return this.partida.obteNombreCasellesxFila();
+	}
+
+	public Integer obteNumero(Integer x, Integer y) {
+		return this.partida.getNumero(x, y);
+	}
+
+	public boolean tensMina(Integer x, Integer y) {
+		return this.partida.tensMina(x,y);
 	}
 
 }
