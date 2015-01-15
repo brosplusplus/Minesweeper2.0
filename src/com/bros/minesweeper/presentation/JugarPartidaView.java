@@ -13,6 +13,7 @@ import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.bros.minesweeper.utils.Pair;
@@ -176,7 +177,7 @@ public class JugarPartidaView {
 		panelActual.removeAll();
 		frameApp.setMinimumSize(new Dimension(850,600));
 		panelGame = new PanelPartida(this);
-		panelGame.setTaulellJoc(30, 30);
+		panelGame.setTaulellJoc(files, columnes);
         panelActual.add(panelGame);
         frameApp.revalidate();
         Dimension d = panelGame.getPreferredSize();
@@ -222,11 +223,21 @@ public class JugarPartidaView {
 	}
 	
 	public void mostrarMissatgeVictoria(Integer p){
-		
+		JButton exit = new JButton("Sortir");
+		int res = JOptionPane.showOptionDialog(null, 
+				"Felicitats! Has guanyat!\n"
+			    + "Puntuacio: "+ p,
+			    "Final de Partida - Minesweeper", JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.INFORMATION_MESSAGE, null, new Object [] {exit}, exit);
+		if(exit.isSelected()) tancar();
 	}
 	
 	public void mostrarMissatgeDerrota(){
-		
+		JOptionPane.showConfirmDialog(null,
+			    "Oh! Has descobert una mina!\n"
+			    + "Ho sentim, has perdut...",
+			    "Final de Partida - Minesweeper",
+			    JOptionPane.ERROR_MESSAGE);
 		
 	}
 	
