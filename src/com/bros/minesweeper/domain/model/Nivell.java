@@ -66,4 +66,12 @@ public class Nivell {
 		this.nombreMines = nombreMines;
 	}
 
+	public int obteNombreCasellesxColumna() {
+		return this.getNombreCasellesxColumna();
+	}
+	
+	public int obteNombreCasellesxFila() {
+		return this.getNombreCasellesxFila();
+	}
+
 }

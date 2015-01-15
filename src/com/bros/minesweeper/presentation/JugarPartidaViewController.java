@@ -6,7 +6,6 @@ import java.util.HashMap;
 import com.bros.minesweeper.domain.controller.JugarPartidaUseCaseController;
 import com.bros.minesweeper.domain.model.EstatPartida;
 import com.bros.minesweeper.utils.Pair;
-import com.bros.minesweeper.utils.debug;
 
 /**
  * Controlador de la vista del joc
@@ -105,8 +104,8 @@ public class JugarPartidaViewController {
 	 */
 	public void PrJugarPartida(String nomNivell) {
 		JPUCC.crearPartida(nomNivell);
-		int files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
-		int columnes = JPUCC.getPartida().getTeNivell().getNombreCasellesxFila();
+		int files = JPUCC.obteCasellesxColumna();
+		int columnes = JPUCC.obteCasellesxFila();
 		JPV.mostrarPartida(files, columnes);
 	}
 	
@@ -119,7 +118,7 @@ public class JugarPartidaViewController {
 	 */
 	public void PrBotoDret(Integer index) {
 		int x,y, files;
-		files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		files = JPUCC.obteCasellesxColumna();
 		x = index/files;
 		y = index%files;
 		try {
@@ -143,7 +142,7 @@ public class JugarPartidaViewController {
 	 */
 	public void PrBotoEsq(Integer index) {
 		int x,y, files;
-		files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		files = JPUCC.obteCasellesxColumna();
 		
 		x = index/files;
 		y = index%files;
@@ -168,7 +167,7 @@ public class JugarPartidaViewController {
 	 */
 	public void PrDobleBotoEsq(Integer index) {
 		int x,y, files;
-		files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		files = JPUCC.obteCasellesxColumna();
 		x = index/files;
 		y = index%files;
 		try {
@@ -209,10 +208,10 @@ public class JugarPartidaViewController {
 	 * @return Retornem el numero de mines que te al voltant la casella
 	 */
 	public int getNumber(Integer index) {
-		int files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		int files = JPUCC.obteCasellesxColumna();
 		int x = index/files;
 		int y = index%files;
-		return JPUCC.getPartida().getCasellaTaulell(x, y).getNumero();
+		return JPUCC.obteNumero(x,y);
 	}
 	
 	/**
@@ -222,10 +221,10 @@ public class JugarPartidaViewController {
 	 * @return	Retornem el contingut de la casella mitjançant els elements de la enumeracio
 	 */
 	private EstatCasella consultaEstatCasella(Integer x, Integer y) {
-		if (JPUCC.getPartida().getCasellaTaulell(x, y).tensMina()) {
+		if (JPUCC.tensMina(x,y)) {
 			return EstatCasella.BOMBA;
 		}
-		else if (JPUCC.getPartida().getCasellaTaulell(x, y).getNumero() == null) {
+		else if (JPUCC.obteNumero(x, y) == null) {
 			return EstatCasella.BLANCA;
 		}
 		else {

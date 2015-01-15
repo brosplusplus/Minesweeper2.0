@@ -403,4 +403,20 @@ public class Partida {
 		est.setMaxim(this.nRows, this.nCols, this.nMines);
 		return est;
 	}
+
+	public int obteCasellesxColumna() {
+		return this.teNivell.obteNombreCasellesxColumna();
+	}
+
+	public int obteNombreCasellesxFila() {
+		return this.teNivell.obteNombreCasellesxFila();
+	}
+
+	public int getNumero(int x, int y) {
+		return this.getCasellaTaulell(x, y).getNumero();
+	}
+
+	public boolean tensMina(Integer x, Integer y) {
+		return this.getCasellaTaulell(x, y).tensMina();
+	}
 }

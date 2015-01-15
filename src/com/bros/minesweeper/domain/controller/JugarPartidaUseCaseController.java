@@ -104,4 +104,20 @@ public class JugarPartidaUseCaseController {
 		return cnucc.consultarNivells();
 	}
 
+	public int obteCasellesxColumna() {
+		return this.partida.obteCasellesxColumna();
+	}
+
+	public int obteCasellesxFila() {
+		return this.partida.obteNombreCasellesxFila();
+	}
+
+	public Integer obteNumero(Integer x, Integer y) {
+		return this.partida.getNumero(x, y);
+	}
+
+	public boolean tensMina(Integer x, Integer y) {
+		return this.partida.tensMina(x,y);
+	}
+
 }
