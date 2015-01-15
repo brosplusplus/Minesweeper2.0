@@ -58,4 +58,8 @@ public class HibernateJugadorTest {
 		}
 		return jugador;
 	}
+	
+	public static void main (String[] args) {
+		HibernateJugadorTest.newJugador();
+	}
 }
