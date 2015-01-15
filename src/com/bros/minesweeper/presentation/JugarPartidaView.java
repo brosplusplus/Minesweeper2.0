@@ -26,13 +26,10 @@ import com.bros.minesweeper.utils.Pair;
 * @author Alejandro Martinez
 *
 */
-
-	public class JugarPartidaView {
+public class JugarPartidaView {
+	
 	//Controlador de presentacio
 	private JugarPartidaViewController JPVC;
-	
-	//Area de missatges
-	public static JLabel lblMessageArea;
 	
 	//Components de la interficie grafica
 	private JFrame frameApp = new JFrame("Minesweeper");
@@ -116,6 +113,9 @@ import com.bros.minesweeper.utils.Pair;
 			}, MouseEvent.MOUSE_EVENT_MASK);
 		}
 	
+	/**
+	 * Getters i Setters
+	 */
 	public JFrame getFrameApp() {
 		return frameApp;
 	}
@@ -135,11 +135,18 @@ import com.bros.minesweeper.utils.Pair;
 	/**
 	* Metodes dels Panels
 	*/
+	
+	/**
+	 * Iniciem el frame principal de l'aplicacio
+	 */
 	public void Inici() {
 		frameApp.pack();
 		frameApp.setVisible(true);
 	}
 	
+	/**
+	 * Pasem de la vista inicial a la vista on ens hem d'identificar
+	 */
 	public void mostrarIdentificacio() {
 		panelActual.removeAll();
 		panelActual.add(panelLog);
@@ -147,6 +154,10 @@ import com.bros.minesweeper.utils.Pair;
 		frameApp.repaint();
 	}
 	
+	/**
+	 * Pasem de la vista on erem a la vista del menu principal
+	 * @param usuari  Es el nom d'usuari introduit 
+	 */
 	public void mostrarMenuPrincipal(String usuari) {
 		frameApp.setMinimumSize(defaultFrameDimension);
 		frameApp.setPreferredSize(defaultFrameDimension);
@@ -158,6 +169,9 @@ import com.bros.minesweeper.utils.Pair;
 		frameApp.repaint();
 	}
 	
+	/**
+	 * Tornem a la vista d'identificacio despres de fer logout a la vista de menu principal
+	 */
 	public void logout() {
 		panelActual.removeAll();
 		panelLog = new PanelLogin(this);
@@ -166,6 +180,11 @@ import com.bros.minesweeper.utils.Pair;
 		frameApp.repaint();
 	}
 	
+	/**
+	 * Pasem de la vista del menu principal a la vista de seleccionar el nivell
+	 * @param usuari	Es el nom d'usuari introduit
+	 * @param nivells	Son els nivells que composen la taula per seleccionar el nivell
+	 */
 	public void mostrarNivells(String usuari, ArrayList<HashMap<String, String>> nivells) {
 		panelLvl.setTaulaNivells(nivells);
 		panelActual.removeAll();
@@ -174,6 +193,11 @@ import com.bros.minesweeper.utils.Pair;
 		frameApp.repaint();
 	}
 	
+	/**
+	 * Pasem de la vista de seleccionar nivell a la vista de jugar la partida
+	 * @param files		Es el numero de files que tindra el taulell del joc
+	 * @param columnes  Es el numero de columnes que tindra el taulell del joc
+	 */
 	public void mostrarPartida(int files, int columnes) {
 		panelActual.removeAll();
 		frameApp.setMinimumSize(new Dimension(850,600));
@@ -189,6 +213,11 @@ import com.bros.minesweeper.utils.Pair;
 		frameApp.repaint();
 	}
 	
+	/**
+	 * Actualitzem el taulell amb la ultima accio feta
+	 * @param dataCell	Es l'estat de la casella on s'ha realitzat l'accio
+	 * @param tasca		Es el nom de la tasca que hem realitzat
+	 */
 	public void actualitzaTaulell(Pair<Integer, EstatCasella> dataCell, String tasca) {
 		if (tasca.equals("marcar")) {
 			Integer casella = dataCell.getFirst();
@@ -202,6 +231,10 @@ import com.bros.minesweeper.utils.Pair;
 		}
 	}
 	
+	/**
+	 * Actualitzem el taulell amb la ultima accio feta
+	 * @param dataCell  Es l'estat de la casella on s'ha realitzat l'accio
+	 */
 	public void actualitzaTaulell(ArrayList<Pair<Integer, EstatCasella>> dataCell) {
 		for(int i = 0; i < dataCell.size(); i++){
 			Integer casella = dataCell.get(i).getFirst();
@@ -219,24 +252,39 @@ import com.bros.minesweeper.utils.Pair;
 		}
 	}
 	
+	/**
+	 * Mostrem els misatges a l'usuari ja siguin les excepcions capturades o 
+	 * per informar-li de les accions que esta fent
+	 * @param txt	Es el text que conte el missatge
+	 */
 	public void mostrarMissatge(String txt){
 		panelLog.escriuMissatge(txt);
 		panelMP.escriuMissatge(txt);
 		panelGame.escriuMissatge(txt);
 	}
 	
+	/**
+	 * Mostrem un missatge conform l'usuari ha guanyat la partida
+	 * @param p	Es la puntuacio obtinguda
+	 */
 	public void mostrarMissatgeVictoria(Integer p){
 		JButton exit = new JButton("Sortir");
 		JOptionPane.showMessageDialog(this.frameApp, "Has guanyat\nPuntuació: "+p, "Felicitats!", JOptionPane.INFORMATION_MESSAGE);
 		this.mostrarMenuPrincipal("una altra partida?");
 	}
 	
+	/**
+	 * Mostrem un missatge conform l'usuari ha perdut la partida
+	 */
 	public void mostrarMissatgeDerrota(){
 		JButton exit = new JButton("Sortir");
 		JOptionPane.showMessageDialog(this.frameApp, "Ho sentim, has trobat una mina", "So sorry!", JOptionPane.INFORMATION_MESSAGE);
 		this.mostrarMenuPrincipal("vols tornar a provar?");
 	}
 	
+	/**
+	 * Tanquem l'aplicacio
+	 */
 	public void tancar() {
 		frameApp.dispose();
 	}
