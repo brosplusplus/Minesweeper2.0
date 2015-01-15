@@ -1,11 +1,8 @@
 package com.bros.minesweeper.presentation;
 
-import java.awt.AWTEvent;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.AWTEventListener;
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,49 +69,6 @@ public class JugarPartidaView {
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Image img = kit.createImage(url);
 		frameApp.setIconImage(img);
-		
-		Toolkit.getDefaultToolkit().addAWTEventListener(new AWTEventListener() {
-			
-			private boolean isNumeric(String str)  
-			{  
-				  try  
-				  {  
-				    double d = Double.parseDouble(str);  
-				  }  
-				  catch(NumberFormatException nfe)  
-				  {  
-				    return false;  
-				  }  
-				  return true;  
-			}
-			
-			@Override
-			public void eventDispatched(AWTEvent event) {
-				// TODO Auto-generated method stub
-				MouseEvent me = (MouseEvent) event;
-//				debug.outln(me.getSource());
-				if (me.getSource() instanceof JButton && (me.getModifiersEx() & MouseEvent.BUTTON1_DOWN_MASK) != 0) {
-					JButton btn = (JButton) me.getSource();
-					String name = btn.getName();
-					if (isNumeric(name)) {
-						if (me.getClickCount() == 2) {
-							JPVC.PrDobleBotoEsq(Integer.parseInt(name));
-						}
-						else
-							JPVC.PrBotoEsq(Integer.parseInt(name));
-					}
-				}
-				else if (me.getSource() instanceof JButton 
-						&& (me.getModifiersEx() & MouseEvent.BUTTON2_DOWN_MASK) != 0)
-				{
-					JButton btn = (JButton) me.getSource();
-					String name = btn.getName();
-					if (isNumeric(name)) {
-							JPVC.PrBotoDret(Integer.parseInt(name));
-					}
-				}
-			}
-		}, MouseEvent.MOUSE_EVENT_MASK);
     }
     
 	public JFrame getFrameApp() {
@@ -224,7 +178,7 @@ public class JugarPartidaView {
 	
 	public void mostrarMissatgeVictoria(Integer p){
 		JButton exit = new JButton("Sortir");
-		int res = JOptionPane.showOptionDialog(null, 
+		JOptionPane.showOptionDialog(null, 
 				"Felicitats! Has guanyat!\n"
 			    + "Puntuacio: "+ p,
 			    "Final de Partida - Minesweeper", JOptionPane.YES_NO_CANCEL_OPTION,
@@ -233,12 +187,13 @@ public class JugarPartidaView {
 	}
 	
 	public void mostrarMissatgeDerrota(){
-		JOptionPane.showConfirmDialog(null,
-			    "Oh! Has descobert una mina!\n"
-			    + "Ho sentim, has perdut...",
-			    "Final de Partida - Minesweeper",
-			    JOptionPane.ERROR_MESSAGE);
-		
+		JButton exit = new JButton("Sortir");
+		JOptionPane.showOptionDialog(null, 
+				"Oh! Has descobert una mina!\n"
+				+ "Ho sentim, has perdut...\n",
+				"Final de Partida - Minesweeper", JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.ERROR_MESSAGE, null, new Object [] {exit}, exit);
+		if(exit.isSelected()) tancar();
 	}
 	
 	public void tancar() {
