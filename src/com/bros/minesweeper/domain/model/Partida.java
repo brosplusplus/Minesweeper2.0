@@ -289,7 +289,7 @@ public class Partida {
 				&& es.guanyada != null && es.guanyada) {
 			es.puntuacio = computaPuntuacio();
 			IAdaptadorCorreu adapt = FactoriaAdaptadorCorreu.getAdaptadorCorreuPropi();
-			adapt.sendMessage(this.jugadorPartidaActual.getEmail(), "Congrats", "Has guanyat amb una puntuaci� de: "+es.puntuacio);
+//			adapt.sendMessage(this.jugadorPartidaActual.getEmail(), "Congrats", "Has guanyat amb una puntuaci� de: "+es.puntuacio);
 		}
 		return es;
 	}
