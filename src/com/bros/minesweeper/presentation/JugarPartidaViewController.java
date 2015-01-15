@@ -123,9 +123,12 @@ public class JugarPartidaViewController {
 		y = index%files;
 		try {
 			JPUCC.marcarCasella(x, y);
-			Pair<Integer, EstatCasella> dataCell = 
-					new Pair<Integer, EstatCasella>(index, EstatCasella.MARCADA);
-			JPV.actualitzaTaulell(dataCell, "marcar");
+			ArrayList<Pair<Integer, EstatCasella>> dataCell = 
+					new ArrayList<Pair<Integer, EstatCasella>>();
+			
+			dataCell.add(new Pair<Integer, EstatCasella>(index, consultaEstatCasella(x, y)));
+			
+			JPV.actualitzaTaulell(dataCell);
 			JPV.mostrarMissatge("S'ha marcat la casella ("+x+","+y+")");
 		}
 		catch(Exception e){
@@ -148,9 +151,12 @@ public class JugarPartidaViewController {
 		y = index%files;
 		try {
 			JPUCC.desmarcarCasella(x, y);
-			Pair<Integer, EstatCasella> dataCell = 
-					new Pair<Integer, EstatCasella>(index, EstatCasella.DESMARCADA);
-			JPV.actualitzaTaulell(dataCell, "desmarcar");
+			ArrayList<Pair<Integer, EstatCasella>> dataCell = 
+					new ArrayList<Pair<Integer, EstatCasella>>();
+			
+			dataCell.add(new Pair<Integer, EstatCasella>(index, consultaEstatCasella(x, y)));
+			
+			JPV.actualitzaTaulell(dataCell);
 			JPV.mostrarMissatge("S'ha desmarcat la casella ("+x+","+y+")");
 		}
 		catch (Exception e) {

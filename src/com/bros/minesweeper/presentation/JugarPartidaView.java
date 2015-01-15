@@ -213,12 +213,7 @@ public class JugarPartidaView {
 		frameApp.repaint();
 	}
 	
-	/**
-	 * Actualitzem el taulell amb la ultima accio feta
-	 * @param dataCell	Es l'estat de la casella on s'ha realitzat l'accio
-	 * @param tasca		Es el nom de la tasca que hem realitzat
-	 */
-	public void actualitzaTaulell(Pair<Integer, EstatCasella> dataCell, String tasca) {
+	/*public void actualitzaTaulell(Pair<Integer, EstatCasella> dataCell, String tasca) {
 		if (tasca.equals("marcar")) {
 			Integer casella = dataCell.getFirst();
 			EstatCasella eC = dataCell.getSecond();
@@ -229,7 +224,7 @@ public class JugarPartidaView {
 			EstatCasella eC = dataCell.getSecond();
 			panelGame.actualitzaCasella(null, casella, defaultColor);
 		}
-	}
+	}*/
 	
 	/**
 	 * Actualitzem el taulell amb la ultima accio feta
@@ -245,7 +240,13 @@ public class JugarPartidaView {
 			else if (eC == EstatCasella.BLANCA) {
 				panelGame.actualitzaCasella(null, casella, null);
 			}
-			else {
+			else if (eC == EstatCasella.DESMARCADA) {
+				panelGame.actualitzaCasella(null, casella, defaultColor);
+			}
+			else if (eC == EstatCasella.MARCADA) {
+				panelGame.actualitzaCasella(ImageGrid.icnMarc, casella, null);
+			}
+			else { 
 				int number = JPVC.getNumber(casella);
 				panelGame.actualitzaCasella(ImageGrid.icnNum.get(number-1), casella, null);
 			}
