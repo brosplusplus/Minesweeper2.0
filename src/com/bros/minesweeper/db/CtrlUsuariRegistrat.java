@@ -1,24 +1,20 @@
 package com.bros.minesweeper.db;
 
-import java.sql.Connection;
-import java.sql.Statement;
-
 import org.hibernate.Session;
 
-import com.bros.minesweeper.datainterface.ICtrlJugador;
 import com.bros.minesweeper.datainterface.ICtrlUsuariRegistrat;
-import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.UsuariRegistrat;
-import com.bros.minesweeper.factory.FactoriaControladors;
-import com.bros.minesweeper.utils.debug;
 
+/**
+ * Controlador de la persistencia de la clase UsuariRegistrat.
+ * @author alaxmo13
+ *
+ */
 public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
 
-	private static String tableName = "USUARIREGISTRAT";
-    // jdbc Connection
-    private static Connection conn = null;
-    private static Statement stmt = null;
-	
+	/**
+	 * Obtenim l'usuariRegistrat amb username username.
+	 */
 	public UsuariRegistrat get(String username) {
 		Session session = PersistenceSessionFactory.getInstance().openSession();
 		
@@ -27,6 +23,9 @@ public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
 		return user;
 	}
 
+	/**
+	 * Guardem l'usuariRegistrat usuariRegistrat a la base de dades
+	 */
 	@Override
 	public String save(UsuariRegistrat usuariRegistrat) {
 		Session session = PersistenceSessionFactory.getInstance().openSession();
@@ -38,25 +37,4 @@ public class CtrlUsuariRegistrat implements ICtrlUsuariRegistrat {
 		
 		return id;
 	}
-
-	/*
-	public static void main (String[] args) {
-		ICtrlJugador ctrlUsuari = FactoriaControladors.getCtrlJugador();
-		
-		Jugador user = new Jugador();
-		user.setUsername("Paco");
-		user.setNom("Paco");
-		user.setCognom("Franco");
-		user.setPwd("pacopaco");
-		
-		ctrlUsuari.save(user);
-		
-		user = ctrlUsuari.get("Paco");
-		
-		if (user != null) 
-			debug.outln("S'ha trobat un Paco al sistema: "+user.getNom()+" "+user.getCognom());
-		else
-			debug.outln("No s'ha trobat cap Paco al sistema");
-		
-	}*/
 }

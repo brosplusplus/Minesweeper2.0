@@ -10,11 +10,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.bros.minesweeper.utils.debug;
-
-
+/**
+ * 
+ * Classe per representar la graella del taulell.
+ *
+ */
 public class ImageGrid {
 
+	/**
+	 * 
+	 * Classe per representar l'estat d'una casella.
+	 *
+	 */
 	public enum Estat {
 		DESMARCADA, MARCADA, DESCOBERTA, BOMBA, BLANCA  
 	}
@@ -79,7 +86,6 @@ public class ImageGrid {
 		for (int i = 0; i < files; i++) {
 			for (int j = 0; j < columnes; j++) {
 				JButton button = new JButton();
-				//button.setBounds(actualWidth, actualHeight, cellWidth, cellHeight);
 				button.setOpaque(true);
 				button.setContentAreaFilled(true);
 				button.setBackground(JugarPartidaView.defaultColor);

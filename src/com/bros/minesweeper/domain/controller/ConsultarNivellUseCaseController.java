@@ -6,7 +6,6 @@ import java.util.HashMap;
 import com.bros.minesweeper.db.CtrlNivell;
 import com.bros.minesweeper.domain.model.Nivell;
 import com.bros.minesweeper.factory.FactoriaControladors;
-import com.bros.minesweeper.utils.debug;
 
 /**
  *ConsultarNivellUseCaseController representa el cas d'us de Consultar Nivell
@@ -17,6 +16,11 @@ import com.bros.minesweeper.utils.debug;
 
 public class ConsultarNivellUseCaseController {
 
+	/**
+	 * Funcio per obtenir tots els nivells que te la DB.
+	 * @return retorna una llista amb tots els nivells de la DB.
+	 * @throws Exception: Llenca una excepcio quan hi ha algun error.
+	 */
 	public ArrayList<HashMap<String,String>> consultarNivells() throws Exception{
 		CtrlNivell cn = FactoriaControladors.getCtrlNivell();
 		ArrayList<Nivell> ns = cn.getAll();
@@ -35,17 +39,4 @@ public class ConsultarNivellUseCaseController {
 
 	}
 	
-	public static void main(String args[]) 
-	{
-		ConsultarNivellUseCaseController ucc = new ConsultarNivellUseCaseController();
-		
-		try {
-			ArrayList<HashMap<String,String>> ar = ucc.consultarNivells();
-			debug.outln(ar.toString());
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			debug.outln(e.getMessage());
-		}
-	}
 }

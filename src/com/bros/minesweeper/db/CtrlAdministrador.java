@@ -7,12 +7,14 @@ import com.bros.minesweeper.domain.model.Administrador;
 
 
 /**
- * Accedim a la informacio dels administradors que conte la base de dades
- * 
+ * Controlador de la persistencia de la clase Administrador
  * @author Alex More
  *
  */
 public class CtrlAdministrador implements ICtrlAdministrador{
+	/**
+	 * Obtenim l'administrador "username", retorna null en cas de no trobar-lo.
+	 */
 	@Override
 	public Administrador get(String username) {
 		Session session = PersistenceSessionFactory.getInstance().openSession();
@@ -23,6 +25,9 @@ public class CtrlAdministrador implements ICtrlAdministrador{
 		return administrador;
 	}
 
+	/**
+	 * Guardem l'Adminisrador administrador a la base de dades.
+	 */
 	@Override
 	public String save(Administrador administrador) {
 			Session session = PersistenceSessionFactory.getInstance().openSession();

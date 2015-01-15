@@ -102,9 +102,9 @@ public class PanelPartida extends JPanel implements IPanelAplicacio{
 	
 	private void Instruccions() {
 		JOptionPane.showMessageDialog(null, "Instruccions:\n\n"
-                + "  Doble Boto Dret --> Descobrir Casella\n"
-                + "  Boto Esquerre 	 --> Marcar Casella\n"
-                + "  Boto Dret 		 --> Demarcar Casella\n"
+                + "  Doble Boto Esquerre --> Descobrir Casella\n"
+                + "  Boto Dret 	 		 --> Marcar Casella\n"
+                + "  Boto Esquerre 		 --> Demarcar Casella\n"
                 + "  (nomes es poden desmarcar aquelles caselles que estaven marcades previament)"
                 + " ", "Instruccions", JOptionPane.INFORMATION_MESSAGE);
 	}

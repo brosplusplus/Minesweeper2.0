@@ -1,6 +1,5 @@
 package com.bros.minesweeper.domain.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,6 +8,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * Classe que representa una mina del taulell.
+ * @author Alex More
+ *
+ */
 @Entity
 @Table(name="Casella", uniqueConstraints={
 		@UniqueConstraint(columnNames={"idPartida", "numeroFila","numeroColumna"})

@@ -2,9 +2,13 @@ package com.bros.minesweeper.domain.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Classe per representar un Jugador.
+ * @author Alex More
+ *
+ */
 @Entity
 @Table(name="Jugador")
 public class Jugador extends UsuariRegistrat{

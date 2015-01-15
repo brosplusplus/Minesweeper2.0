@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -81,6 +80,12 @@ public class Partida {
 
 	public Partida() {}
 	
+	/**
+	 * Constructor amb una estrategia seleccionada.
+	 * @param jugName jugador.
+	 * @param niv nivell.
+	 * @param estrat estrategia.
+	 */
 	public Partida(Jugador jugName, Nivell niv, EstrategiaPuntuacio estrat){
 		this.estaAcabada = false;
 		this.estaGuanyada = false;
@@ -101,6 +106,11 @@ public class Partida {
 				this.teNivell.getNombreCasellesxFila(), this.teNivell.getNombreMines());
 	}
 	
+	/**
+	 * Constructor amb una estrategia aleatoria.
+	 * @param jugName jugador.
+	 * @param niv nom del nivell.
+	 */
 	public Partida(Jugador jugName, String niv) {
 		this.estaAcabada = false;
 		this.estaGuanyada = false;
@@ -120,10 +130,8 @@ public class Partida {
 			this.estrategia = assignarEstrategiaPuntuacio();
 			debug.outln(estrategia);
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.crearCaselles(this.teNivell.getNombreCasellesxColumna(), 
@@ -281,7 +289,7 @@ public class Partida {
 				&& es.guanyada != null && es.guanyada) {
 			es.puntuacio = computaPuntuacio();
 			IAdaptadorCorreu adapt = FactoriaAdaptadorCorreu.getAdaptadorCorreuPropi();
-			adapt.sendMessage(this.jugadorPartidaActual.getEmail(), "Congrats", "Has guanyat amb una puntuació de: "+es.puntuacio);
+			adapt.sendMessage(this.jugadorPartidaActual.getEmail(), "Congrats", "Has guanyat amb una puntuaciï¿½ de: "+es.puntuacio);
 		}
 		return es;
 	}
@@ -293,7 +301,6 @@ public class Partida {
 	 * 
 	 */
 	public Integer computaPuntuacio() {
-		// TODO Auto-generated method stub
 		return estrategia.getPuntuacio(this);
 	}
 
@@ -352,6 +359,13 @@ public class Partida {
 		colocarMines();
 	}
 	
+	/**
+	 * Funcio per descobrir les caselles del voltant d'una que no te cap numero
+	 * ni mina, que esta en blanc.
+	 * @param numF fila de la casella.
+	 * @param numC columna de la casella.
+	 * @return retorna una llista amb totes les caselles que s'han descobert.
+	 */
 	public ArrayList<Pair<Integer, Integer>> descobrirCasellesVoltant(int numF, int numC) {
 		Casella c = getCasellaTaulell(numF, numC);
 		Boolean ambMina = c.getTeMina();
@@ -389,10 +403,4 @@ public class Partida {
 		est.setMaxim(this.nRows, this.nCols, this.nMines);
 		return est;
 	}
-	
-	/*public static void main(String[] args) throws Exception {
-		Partida p = new Partida();
-		EstatPartida es = p.descobrirCasella(0, 0);
-		System.out.print(es.puntuacio);
-	}*/
 }

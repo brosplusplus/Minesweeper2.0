@@ -1,6 +1,5 @@
 package com.bros.minesweeper.domain.model;
 
-import com.bros.minesweeper.utils.debug;
 
 
 public class EstrategiaPerTirades implements EstrategiaPuntuacio{

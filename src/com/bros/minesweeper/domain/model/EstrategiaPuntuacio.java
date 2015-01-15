@@ -1,7 +1,5 @@
 package com.bros.minesweeper.domain.model;
 
-
-
 /**
  * EstrategiaPuntuacio defines the interface to create Strategy 
  * Pattern over puntuation policy

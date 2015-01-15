@@ -1,29 +1,21 @@
 package com.bros.minesweeper.presentation;
 
-import javax.swing.JPanel;
-import javax.swing.Box;
-
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
 import java.awt.Font;
-
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
-import javax.swing.JButton;
+import javax.swing.Box;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-
-import com.bros.minesweeper.utils.debug;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class PanelLogin extends JPanel implements IPanelAplicacio{
 	

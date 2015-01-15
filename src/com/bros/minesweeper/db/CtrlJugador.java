@@ -5,12 +5,23 @@ import org.hibernate.Session;
 import com.bros.minesweeper.datainterface.ICtrlJugador;
 import com.bros.minesweeper.domain.model.Jugador;
 
+/**
+ * Controlador de la persistencia de la clase Jugador
+ * @author Alex More
+ *
+ */
 public class CtrlJugador implements ICtrlJugador {
 
+	/**
+	 * Funcio per saber si existeix o no el jugador amb el username userN.
+	 */
 	public boolean exists(String userN) {
 		return get(userN) != null;
 	}
 	
+	/**
+	 * Obtenim el Jugador amb username username.
+	 */
 	@Override
 	public Jugador get(String username) {
 		Session session = PersistenceSessionFactory.getInstance().openSession();
@@ -21,6 +32,9 @@ public class CtrlJugador implements ICtrlJugador {
 		return jugador;
 	}
 
+	/**
+	 * Guardem el Jugador jugador a la base de dades.
+	 */
 	@Override
 	public String save(Jugador jugador) throws Exception {
 			Session session = PersistenceSessionFactory.getInstance().openSession();
