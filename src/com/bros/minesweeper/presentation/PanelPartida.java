@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Dimension;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class PanelPartida extends JPanel implements IPanelAplicacio{
 	
@@ -38,6 +40,7 @@ public class PanelPartida extends JPanel implements IPanelAplicacio{
 		});
 		
 		llocTaulell = new JPanel();
+		llocTaulell.setSize(new Dimension(540, 540));
 		llocTaulell.setMinimumSize(new Dimension(160, 160));
 		
 		JButton btnInstruccions = new JButton("Instruccions");
@@ -55,43 +58,42 @@ public class PanelPartida extends JPanel implements IPanelAplicacio{
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(23, Short.MAX_VALUE)
-					.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(30)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addContainerGap()
+					.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, 627, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+							.addComponent(lblMessageArea)
+							.addGap(64))
 						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 								.addComponent(btnSortir, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnInstruccions, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addGap(24))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblMessageArea)
-							.addGap(43))))
+								.addComponent(btnInstruccions, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)))))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(240, Short.MAX_VALUE)
+					.addComponent(lblMessageArea)
+					.addGap(201)
+					.addComponent(btnInstruccions, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnSortir, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addGap(46))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(93)
-							.addComponent(lblMessageArea)
-							.addPreferredGap(ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
-							.addComponent(btnInstruccions, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnSortir, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)))
-					.addGap(23))
+					.addContainerGap()
+					.addComponent(llocTaulell, GroupLayout.PREFERRED_SIZE, 555, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		GroupLayout gl_llocTaulell = new GroupLayout(llocTaulell);
 		gl_llocTaulell.setHorizontalGroup(
 			gl_llocTaulell.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 390, Short.MAX_VALUE)
+				.addGap(0, 627, Short.MAX_VALUE)
 		);
 		gl_llocTaulell.setVerticalGroup(
 			gl_llocTaulell.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 349, Short.MAX_VALUE)
+				.addGap(0, 555, Short.MAX_VALUE)
 		);
 		llocTaulell.setLayout(gl_llocTaulell);
 		setLayout(groupLayout);

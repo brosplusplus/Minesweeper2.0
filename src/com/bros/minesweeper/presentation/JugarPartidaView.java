@@ -174,9 +174,9 @@ public class JugarPartidaView {
 	
 	public void mostrarPartida(int files, int columnes) {
 		panelActual.removeAll();
-		frameApp.setMinimumSize(new Dimension(600,400));
+		frameApp.setMinimumSize(new Dimension(850,600));
 		panelGame = new PanelPartida(this);
-		panelGame.setTaulellJoc(files, columnes);
+		panelGame.setTaulellJoc(30, 30);
         panelActual.add(panelGame);
         frameApp.revalidate();
         Dimension d = panelGame.getPreferredSize();
