@@ -49,6 +49,6 @@ public class GeneralHibernateTest {
 		else
 			debug.err("Error en crear Partida");
 		
-		debug.outln("Si hem arribat fins aquí es que res a petat xD");
+		debug.outln("Si hem arribat fins aquï¿½ es que res a petat xD");
 	}
 }
