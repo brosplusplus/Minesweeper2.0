@@ -78,7 +78,7 @@ public class JugarPartidaView {
 			{  
 				  try  
 				  {  
-				    double d = Double.parseDouble(str);  
+				    double d = Integer.parseInt(str);  
 				  }  
 				  catch(NumberFormatException nfe)  
 				  {  
