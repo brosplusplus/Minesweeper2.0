@@ -110,7 +110,7 @@ public class JugarPartidaViewController {
 	 *  [casellaJaMarcada]		La casella que s'intenta marcar, ja esta marcada
 	 *  [casellaJaDescoberta]	La casella que s'intenta marcar, esta descoberta
 	 */
-	public void PrBotoDret(Integer index) throws Exception {
+	public void PrBotoDret(Integer index) {
 		int x,y, files;
 		files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
 		x = index/files;
