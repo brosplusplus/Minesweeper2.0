@@ -104,4 +104,12 @@ public class JugarPartidaUseCaseController {
 		return cnucc.consultarNivells();
 	}
 
+	public int obteCasellesxColumna() {
+		return this.partida.getTeNivell().obteNombreCasellesxColumna();
+	}
+
+	public int obteCasellesxFila() {
+		return this.partida.getTeNivell().obteNombreCasellesxFila();
+	}
+
 }

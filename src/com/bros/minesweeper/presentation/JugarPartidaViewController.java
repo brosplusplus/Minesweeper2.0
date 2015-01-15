@@ -98,8 +98,8 @@ public class JugarPartidaViewController {
 	 */
 	public void PrJugarPartida(String nomNivell) {
 		JPUCC.crearPartida(nomNivell);
-		int files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
-		int columnes = JPUCC.getPartida().getTeNivell().getNombreCasellesxFila();
+		int files = JPUCC.obteCasellesxColumna();
+		int columnes = JPUCC.obteCasellesxFila();
 		JPV.mostrarPartida(files, columnes);
 	}
 	
@@ -130,7 +130,7 @@ public class JugarPartidaViewController {
 	
 	public void PrBotoEsq(Integer index) {
 		int x,y, files;
-		files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		files = JPUCC.obteCasellesxColumna();
 		
 		x = index/files;
 		y = index%files;
@@ -147,7 +147,7 @@ public class JugarPartidaViewController {
 	}
 	public void PrDobleBotoEsq(Integer index) {
 		int x,y, files;
-		files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		files = JPUCC.obteCasellesxColumna();
 		x = index/files;
 		y = index%files;
 		try {
