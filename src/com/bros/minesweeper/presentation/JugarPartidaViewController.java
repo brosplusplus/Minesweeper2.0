@@ -27,6 +27,9 @@ public class JugarPartidaViewController {
         JPV = new JugarPartidaView(this);
     }
     
+    /**
+     * Getters i Setters
+     */
 	public JugarPartidaUseCaseController getJPUCC() {
 		return JPUCC;
 	}
@@ -44,12 +47,16 @@ public class JugarPartidaViewController {
 	}
 
 	/**
-	 * Metodes
+	 * Metodes de la Classe
 	 */
 	
+	/**
+	 * Metode que crida a la vista de l'aplicacio per a que aquesta s'inicii
+	 */
 	public void IniciAplicacio() {
 		JPV.Inici();
 	}
+	
 	/**
 	 * Premem el boto de Jugar per anar a la vista d'identificacio
 	 */
@@ -105,8 +112,7 @@ public class JugarPartidaViewController {
 	
 	/**
 	 * Utilitzem el boto dret per a marcar una casella
-	 * @param x	La fila de la casella seleccionada
-	 * @param y La columna de la casella seleccionada
+	 * @param index	Es l'index de la casella sobre la que es fa l'acció
 	 * @throws Exception
 	 *  [casellaJaMarcada]		La casella que s'intenta marcar, ja esta marcada
 	 *  [casellaJaDescoberta]	La casella que s'intenta marcar, esta descoberta
@@ -128,6 +134,13 @@ public class JugarPartidaViewController {
 		}
 	}
 	
+	/**
+	 * Utilitzem el boto esquerre per desmarcar una casella
+	 * @param index  Es l'index de la casella sobre la que es fa l'acció
+	 * @throws Exception
+	 *  [casellaJaMarcada]		La casella que s'intenta marcar, ja esta marcada
+	 *  [casellaJaDescoberta]	La casella que s'intenta marcar esta descoberta
+	 */
 	public void PrBotoEsq(Integer index) {
 		int x,y, files;
 		files = JPUCC.obteCasellesxColumna();
@@ -145,6 +158,14 @@ public class JugarPartidaViewController {
 			JPV.mostrarMissatge(e.getMessage());
 		}
 	}
+	
+	/**
+	 * Utilitzem dos cops el boto dret del ratoli per descobrir una casella
+	 * @param index  Es l'index de la casella sobre la que es fa l'acció
+	 * @throws Exception
+	 *  [casellaJaDescoberta]	La casella que s'intenta descobrir, ja esta descoberta
+	 *  [casellaMarcada]		La casella que s'intenta descobrir esta marcada
+	 */
 	public void PrDobleBotoEsq(Integer index) {
 		int x,y, files;
 		files = JPUCC.obteCasellesxColumna();
@@ -182,6 +203,24 @@ public class JugarPartidaViewController {
 		}
 	}
 	
+	/**
+	 * Obtenim el numero que ha de contenir la cassella
+	 * @param index Es l'index de la casella sobre la que es fa l'acció
+	 * @return Retornem el numero de mines que te al voltant la casella
+	 */
+	public int getNumber(Integer index) {
+		int files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		int x = index/files;
+		int y = index%files;
+		return JPUCC.getPartida().getCasellaTaulell(x, y).getNumero();
+	}
+	
+	/**
+	 * Consultem el contingut d'una casella
+	 * @param x	Es el numero de fila de la casella
+	 * @param y Es el numero de columna de la casella
+	 * @return	Retornem el contingut de la casella mitjançant els elements de la enumeracio
+	 */
 	private EstatCasella consultaEstatCasella(Integer x, Integer y) {
 		if (JPUCC.getPartida().getCasellaTaulell(x, y).tensMina()) {
 			return EstatCasella.BOMBA;
@@ -194,14 +233,11 @@ public class JugarPartidaViewController {
 		}
 	}
 	
+	/**
+	 * Premem el boto per sortir de l'aplicacio
+	 */
 	public void PrSortir() {
 		JPV.tancar();
 	}
 
-	public int getNumber(Integer index) {
-		int files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
-		int x = index/files;
-		int y = index%files;
-		return JPUCC.getPartida().getCasellaTaulell(x, y).getNumero();
-	}
 }

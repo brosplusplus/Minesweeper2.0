@@ -27,7 +27,7 @@ import com.bros.minesweeper.utils.Pair;
 *
 */
 
-public class JugarPartidaView {
+	public class JugarPartidaView {
 	//Controlador de presentacio
 	private JugarPartidaViewController JPVC;
 	
@@ -160,6 +160,7 @@ public class JugarPartidaView {
 	
 	public void logout() {
 		panelActual.removeAll();
+		panelLog = new PanelLogin(this);
 		panelActual.add(panelLog);
 		frameApp.pack();
 		frameApp.repaint();
