@@ -76,13 +76,14 @@ public class JugarPartidaView {
 		Image img = kit.createImage(url);
 		frameApp.setIconImage(img);
 		
+
 		Toolkit.getDefaultToolkit().addAWTEventListener(new AWTEventListener() {
 			
 			private boolean isNumeric(String str)  
 			{  
 				  try  
 				  {  
-				    double d = Integer.parseInt(str);  
+				    double d = Double.parseDouble(str);  
 				  }  
 				  catch(NumberFormatException nfe)  
 				  {  
@@ -229,7 +230,7 @@ public class JugarPartidaView {
 	
 	public void mostrarMissatgeVictoria(Integer p){
 		JButton exit = new JButton("Sortir");
-		int res = JOptionPane.showOptionDialog(null, 
+		JOptionPane.showOptionDialog(null, 
 				"Felicitats! Has guanyat!\n"
 			    + "Puntuacio: "+ p,
 			    "Final de Partida - Minesweeper", JOptionPane.YES_NO_CANCEL_OPTION,
@@ -238,12 +239,13 @@ public class JugarPartidaView {
 	}
 	
 	public void mostrarMissatgeDerrota(){
-		JOptionPane.showConfirmDialog(null,
-			    "Oh! Has descobert una mina!\n"
-			    + "Ho sentim, has perdut...",
-			    "Final de Partida - Minesweeper",
-			    JOptionPane.ERROR_MESSAGE);
-		
+		JButton exit = new JButton("Sortir");
+		JOptionPane.showOptionDialog(null, 
+				"Oh! Has descobert una mina!\n"
+				+ "Ho sentim, has perdut...\n",
+				"Final de Partida - Minesweeper", JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.ERROR_MESSAGE, null, new Object [] {exit}, exit);
+		if(exit.isSelected()) tancar();
 	}
 	
 	public void tancar() {
