@@ -16,11 +16,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.bros.minesweeper.adapter.IAdaptadorCorreu;
 import com.bros.minesweeper.datainterface.ICtrlCasella;
 import com.bros.minesweeper.datainterface.ICtrlPartida;
+import com.bros.minesweeper.factory.FactoriaAdaptadorCorreu;
 import com.bros.minesweeper.factory.FactoriaControladors;
 import com.bros.minesweeper.factory.FactoriaEstrategiaPuntuacio;
 import com.bros.minesweeper.utils.Pair;
+import com.bros.minesweeper.utils.debug;
 
 /**
  * Partida representa una partida al joc BuscaMines
@@ -115,6 +118,7 @@ public class Partida {
 		
 		try {
 			this.estrategia = assignarEstrategiaPuntuacio();
+			debug.outln(estrategia);
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -276,6 +280,8 @@ public class Partida {
 		if (es.acabada != null && es.acabada
 				&& es.guanyada != null && es.guanyada) {
 			es.puntuacio = computaPuntuacio();
+			IAdaptadorCorreu adapt = FactoriaAdaptadorCorreu.getAdaptadorCorreuPropi();
+			adapt.sendMessage(this.jugadorPartidaActual.getEmail(), "Congrats", "Has guanyat amb una puntuació de: "+es.puntuacio);
 		}
 		return es;
 	}

@@ -1,5 +1,7 @@
 package com.bros.minesweeper.domain.model;
 
+import com.bros.minesweeper.utils.debug;
+
 
 public class EstrategiaPerTirades implements EstrategiaPuntuacio{
 	private Integer tiradesMaximes;
@@ -26,7 +28,7 @@ public class EstrategiaPerTirades implements EstrategiaPuntuacio{
 		}
 		int multiplicador = 10000;
 		double percent = (double)(this.tiradesMaximes - tiradesActuals)/this.tiradesMaximes;
-		return (int)percent * multiplicador;
+		return (int)(percent * multiplicador);
 	}
 
 	@Override

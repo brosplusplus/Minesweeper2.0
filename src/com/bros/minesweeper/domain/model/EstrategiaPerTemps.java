@@ -32,7 +32,7 @@ public class EstrategiaPerTemps implements EstrategiaPuntuacio {
 			return 0;
 		int multiplicador = 10000;
 		double percent = (double)(this.tempsMaxim - timeDiff)/this.tempsMaxim;
-		return (int)percent * multiplicador;
+		return (int)(percent * multiplicador);
 	}
 
 	@Override

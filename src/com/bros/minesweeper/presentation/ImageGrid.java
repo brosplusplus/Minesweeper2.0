@@ -65,7 +65,6 @@ public class ImageGrid {
 		this.icnMarc = getIcon("/img/caselles/bandera.png", cellWidth, cellHeight);
 		this.icnNum = new ArrayList<ImageIcon>();
 		for (int i = 1; i < 9; ++i) {
-			debug.outln(i);
 			this.icnNum.add(getIcon("/img/caselles/"+i+".png", cellWidth, cellHeight));
 		}
 		

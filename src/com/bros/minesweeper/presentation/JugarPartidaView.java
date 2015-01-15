@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.AWTEventListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,7 +84,7 @@ public class JugarPartidaView {
 			{  
 				  try  
 				  {  
-				    double d = Double.parseDouble(str);  
+				    int d = Integer.parseInt(str);  
 				  }  
 				  catch(NumberFormatException nfe)  
 				  {  
@@ -235,7 +236,37 @@ public class JugarPartidaView {
 			    + "Puntuacio: "+ p,
 			    "Final de Partida - Minesweeper", JOptionPane.YES_NO_CANCEL_OPTION,
 				JOptionPane.INFORMATION_MESSAGE, null, new Object [] {exit}, exit);
-		if(exit.isSelected()) tancar();
+		exit.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				tancar();
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	
 	public void mostrarMissatgeDerrota(){
@@ -245,7 +276,37 @@ public class JugarPartidaView {
 				+ "Ho sentim, has perdut...\n",
 				"Final de Partida - Minesweeper", JOptionPane.YES_NO_CANCEL_OPTION,
 				JOptionPane.ERROR_MESSAGE, null, new Object [] {exit}, exit);
-		if(exit.isSelected()) tancar();
+		exit.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				tancar();
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	
 	public void tancar() {
