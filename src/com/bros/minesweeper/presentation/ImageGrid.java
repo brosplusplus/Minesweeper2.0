@@ -97,35 +97,7 @@ public class ImageGrid {
 		}
 		
 		frame.setFocusable(true);
-		frame.requestFocus();
-		frame.addKeyListener(new KeyListener () {
-
-			@Override
-			public void keyPressed(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-				switch (arg0.getKeyCode()) {
-				case 27:
-					
-					break;
-				default:
-					break;
-				}
-			}
-
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
-		
+		frame.requestFocus();	
 		
 	}
 
