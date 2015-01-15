@@ -44,6 +44,7 @@ public class JugarPartidaView {
     private PanelPartida panelGame = new PanelPartida(this);
     
     public static Color defaultColor = new Color(0,160,255);
+    private Dimension defaultFrameDimension = new Dimension(500,300);
 	
     /**
      * Creadora de la classe VistaAplicacio
@@ -58,7 +59,7 @@ public class JugarPartidaView {
      * Funcio que inicialitza el frame de l'aplicacio
      */
     private void InicialitzarFrame() {
-        frameApp.setMinimumSize(new Dimension(500,300));
+        frameApp.setMinimumSize(defaultFrameDimension);
 //      frameApp.setMinimumSize(new Dimension());
 		frameApp.setResizable(false);
 		frameApp.setPreferredSize(frameApp.getMinimumSize());
@@ -155,6 +156,8 @@ public class JugarPartidaView {
 	}
 	
 	public void mostrarMenuPrincipal(String usuari) {
+		frameApp.setMinimumSize(defaultFrameDimension);
+		frameApp.setPreferredSize(defaultFrameDimension);
 		panelActual.removeAll();
 		panelMP = new PanelMenuPrincipal(this);
 		panelMP.setNomUsuari(usuari);
@@ -231,82 +234,14 @@ public class JugarPartidaView {
 	
 	public void mostrarMissatgeVictoria(Integer p){
 		JButton exit = new JButton("Sortir");
-		JOptionPane.showOptionDialog(null, 
-				"Felicitats! Has guanyat!\n"
-			    + "Puntuacio: "+ p,
-			    "Final de Partida - Minesweeper", JOptionPane.YES_NO_CANCEL_OPTION,
-				JOptionPane.INFORMATION_MESSAGE, null, new Object [] {exit}, exit);
-		exit.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				tancar();
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		JOptionPane.showMessageDialog(this.frameApp, "Has guanyat\nPuntuació: "+p, "Felicitats!", JOptionPane.INFORMATION_MESSAGE);
+		this.mostrarMenuPrincipal("una altra partida?");
 	}
 	
 	public void mostrarMissatgeDerrota(){
 		JButton exit = new JButton("Sortir");
-		JOptionPane.showOptionDialog(null, 
-				"Oh! Has descobert una mina!\n"
-				+ "Ho sentim, has perdut...\n",
-				"Final de Partida - Minesweeper", JOptionPane.YES_NO_CANCEL_OPTION,
-				JOptionPane.ERROR_MESSAGE, null, new Object [] {exit}, exit);
-		exit.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				tancar();
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		JOptionPane.showMessageDialog(this.frameApp, "Ho sentim, has trobat una mina", "So sorry!", JOptionPane.INFORMATION_MESSAGE);
+		this.mostrarMenuPrincipal("vols tornar a provar?");
 	}
 	
 	public void tancar() {

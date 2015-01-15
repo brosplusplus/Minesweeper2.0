@@ -28,13 +28,15 @@ public class HibernateJugadorTest {
 			jugador.setUsername(in.nextLine());
 			debug.outln("Password:");
 			jugador.setPwd(in.nextLine());
+			debug.outln("email:");
+			jugador.setEmail(in.nextLine());
 			
 			try {
 				cj.save(jugador);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				debug.err(e.getMessage());
-				debug.outln("Tornem a començar");
+				debug.outln("Tornem a comenï¿½ar");
 				return newJugador();
 			}
 		}

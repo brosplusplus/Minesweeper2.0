@@ -40,7 +40,12 @@ public class HibernateNivellTest {
 				e.printStackTrace();
 			}
 		}
+		in.close();
 		return nivell;
 		
+	}
+	
+	public static void main (String[] args) {
+		HibernateNivellTest.newNivell();
 	}
 }
