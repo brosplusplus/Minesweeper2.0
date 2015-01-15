@@ -189,7 +189,7 @@ import com.bros.minesweeper.utils.Pair;
 		frameApp.repaint();
 	}
 	
-	public void actualitzaTaulell(Pair<Integer, EstatCasella> dataCell, String tasca) {
+	/*public void actualitzaTaulell(Pair<Integer, EstatCasella> dataCell, String tasca) {
 		if (tasca.equals("marcar")) {
 			Integer casella = dataCell.getFirst();
 			EstatCasella eC = dataCell.getSecond();
@@ -200,7 +200,7 @@ import com.bros.minesweeper.utils.Pair;
 			EstatCasella eC = dataCell.getSecond();
 			panelGame.actualitzaCasella(null, casella, defaultColor);
 		}
-	}
+	}*/
 	
 	public void actualitzaTaulell(ArrayList<Pair<Integer, EstatCasella>> dataCell) {
 		for(int i = 0; i < dataCell.size(); i++){
@@ -212,7 +212,13 @@ import com.bros.minesweeper.utils.Pair;
 			else if (eC == EstatCasella.BLANCA) {
 				panelGame.actualitzaCasella(null, casella, null);
 			}
-			else {
+			else if (eC == EstatCasella.DESMARCADA) {
+				panelGame.actualitzaCasella(null, casella, defaultColor);
+			}
+			else if (eC == EstatCasella.MARCADA) {
+				panelGame.actualitzaCasella(ImageGrid.icnMarc, casella, null);
+			}
+			else { 
 				int number = JPVC.getNumber(casella);
 				panelGame.actualitzaCasella(ImageGrid.icnNum.get(number-1), casella, null);
 			}
