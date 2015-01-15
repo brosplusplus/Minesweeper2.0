@@ -126,7 +126,7 @@ public class JugarPartidaViewController {
 			ArrayList<Pair<Integer, EstatCasella>> dataCell = 
 					new ArrayList<Pair<Integer, EstatCasella>>();
 			
-			dataCell.add(new Pair<Integer, EstatCasella>(index, consultaEstatCasella(x, y)));
+			dataCell.add(new Pair<Integer, EstatCasella>(index, EstatCasella.MARCADA));
 			
 			JPV.actualitzaTaulell(dataCell);
 			JPV.mostrarMissatge("S'ha marcat la casella ("+x+","+y+")");
@@ -154,7 +154,7 @@ public class JugarPartidaViewController {
 			ArrayList<Pair<Integer, EstatCasella>> dataCell = 
 					new ArrayList<Pair<Integer, EstatCasella>>();
 			
-			dataCell.add(new Pair<Integer, EstatCasella>(index, consultaEstatCasella(x, y)));
+			dataCell.add(new Pair<Integer, EstatCasella>(index, EstatCasella.DESMARCADA));
 			
 			JPV.actualitzaTaulell(dataCell);
 			JPV.mostrarMissatge("S'ha desmarcat la casella ("+x+","+y+")");
@@ -227,14 +227,18 @@ public class JugarPartidaViewController {
 	 * @return	Retornem el contingut de la casella mitjançant els elements de la enumeracio
 	 */
 	private EstatCasella consultaEstatCasella(Integer x, Integer y) {
+		Integer estat = JPUCC.obteNumero(x, y);
 		if (JPUCC.tensMina(x,y)) {
 			return EstatCasella.BOMBA;
 		}
-		else if (JPUCC.obteNumero(x, y) == null) {
+		else if (estat > 0) {
+			return EstatCasella.DESCOBERTA;
+		}
+		else if (estat == -1) {
 			return EstatCasella.BLANCA;
 		}
 		else {
-			return EstatCasella.DESCOBERTA;
+			return EstatCasella.MARCADA;
 		}
 	}
 	

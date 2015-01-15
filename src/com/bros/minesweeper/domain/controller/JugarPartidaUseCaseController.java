@@ -112,7 +112,7 @@ public class JugarPartidaUseCaseController {
 		return this.partida.obteNombreCasellesxFila();
 	}
 
-	public Integer obteNumero(Integer x, Integer y) {
+	public int obteNumero(Integer x, Integer y) {
 		return this.partida.getNumero(x, y);
 	}
 

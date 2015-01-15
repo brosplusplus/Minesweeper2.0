@@ -412,8 +412,15 @@ public class Partida {
 		return this.teNivell.obteNombreCasellesxFila();
 	}
 
-	public int getNumero(int x, int y) {
-		return this.getCasellaTaulell(x, y).getNumero();
+	public Integer getNumero(int x, int y) {
+		Casella c = this.getCasellaTaulell(x, y);
+		if (c.getEstaMarcada())
+			return -2;
+		Integer n = c.getNumero();
+		if (n==null || n==0) {
+			return -1;
+		}
+		return n;
 	}
 
 	public boolean tensMina(Integer x, Integer y) {
