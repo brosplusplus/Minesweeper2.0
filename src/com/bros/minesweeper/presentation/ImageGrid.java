@@ -89,58 +89,8 @@ public class ImageGrid {
 				button.setOpaque(true);
 				button.setContentAreaFilled(true);
 				button.setBackground(new Color(0,160,255));
-				button.addMouseListener(new MouseListener() {
+				button.setName(((Integer)(i*+j)).toString());
 				
-					@Override
-					public void mouseClicked(MouseEvent arg0) {
-						switch(arg0.getButton()){
-						case MouseEvent.BUTTON1:
-							if (arg0.getClickCount() == 2) {
-								JButton btn = (JButton)arg0.getSource();
-								debug.outln("NUM");
-								btn.setIcon(icnNum);
-							}
-							else {
-								JButton btn = (JButton)arg0.getSource();
-								debug.outln("NULL");
-								btn.setIcon(null);
-							}
-							break;
-						case MouseEvent.BUTTON3:
-							JButton btn = (JButton)arg0.getSource();
-							debug.outln("MARC");
-							btn.setIcon(icnMarc);
-							break;
-						default:
-							break;
-						}
-						frame.requestFocus();
-					}
-
-					@Override
-					public void mouseEntered(MouseEvent arg0) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					@Override
-					public void mouseExited(MouseEvent arg0) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					@Override
-					public void mousePressed(MouseEvent arg0) {
-						// TODO Auto-generated method stub
-						
-					}
-
-					@Override
-					public void mouseReleased(MouseEvent arg0) {
-						// TODO Auto-generated method stub
-						
-					}
-				});
 				gridArr.add(button);
 				frame.add(button);
 			}

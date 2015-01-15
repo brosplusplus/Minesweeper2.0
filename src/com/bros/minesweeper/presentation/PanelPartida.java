@@ -119,4 +119,5 @@ public class PanelPartida extends JPanel implements IPanelAplicacio{
 	public void escriuMissatge(String txt) {
 		lblMessageArea.setText(txt);
 	}
+
 }

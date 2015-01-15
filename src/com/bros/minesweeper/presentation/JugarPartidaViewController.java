@@ -110,7 +110,11 @@ public class JugarPartidaViewController {
 	 *  [casellaJaMarcada]		La casella que s'intenta marcar, ja esta marcada
 	 *  [casellaJaDescoberta]	La casella que s'intenta marcar, esta descoberta
 	 */
-	public void PrBotoDret(Integer x, Integer y) throws Exception {
+	public void PrBotoDret(Integer index) {
+		int x,y, files;
+		files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		x = index/files;
+		y = index%files;
 		try {
 			JPUCC.marcarCasella(x, y);
 			Pair<Integer, Integer> casellaMarcada = new Pair<Integer, Integer>(x,y);
@@ -124,7 +128,11 @@ public class JugarPartidaViewController {
 		}
 	}
 	
-	public void PrBotoEsq(Integer x, Integer y) {
+	public void PrBotoEsq(Integer index) {
+		int x,y, files;
+		files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		x = index/files;
+		y = index%files;
 		try {
 			JPUCC.desmarcarCasella(x, y);
 			Pair<Integer, Integer> casellaMarcada = new Pair<Integer, Integer>(x,y);
@@ -137,7 +145,11 @@ public class JugarPartidaViewController {
 			JPV.mostrarMissatge(e.getMessage());
 		}
 	}
-	public void PrDobleBotoEsq(Integer x, Integer y) {
+	public void PrDobleBotoEsq(Integer index) {
+		int x,y, files;
+		files = JPUCC.getPartida().getTeNivell().getNombreCasellesxColumna();
+		x = index/files;
+		y = index%files;
 		try {
 			EstatPartida ep = JPUCC.descobrirCasella(x, y);
 			Pair<Integer, Integer> casellaMarcada = new Pair<Integer, Integer>(x,y);
