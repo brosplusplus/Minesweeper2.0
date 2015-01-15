@@ -23,8 +23,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
-import com.bros.minesweeper.utils.debug;
-
 public class PanelNivells extends JPanel {
 
 	private JTable table;
