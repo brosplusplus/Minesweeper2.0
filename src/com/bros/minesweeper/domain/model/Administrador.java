@@ -4,7 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-
+/**
+ * Classe per representar els administradors del sistema.
+ * @author Alex More
+ *
+ */
 @Entity
 @Table(name="ADMINISTRADOR")
 public class Administrador extends UsuariRegistrat {
