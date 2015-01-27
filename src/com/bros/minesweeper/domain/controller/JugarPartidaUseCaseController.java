@@ -1,5 +1,6 @@
 package com.bros.minesweeper.domain.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,6 +8,7 @@ import com.bros.minesweeper.db.CtrlJugador;
 import com.bros.minesweeper.domain.model.EstatPartida;
 import com.bros.minesweeper.domain.model.Jugador;
 import com.bros.minesweeper.domain.model.Partida;
+import com.bros.minesweeper.exceptions.NoHiHaNivells;
 import com.bros.minesweeper.factory.FactoriaControladors;
 
 /**
@@ -97,9 +99,10 @@ public class JugarPartidaUseCaseController {
 	/**
 	 * Funcio per obtenir tots els nivells de la DB.
 	 * @return retorna una llista amb els nivells.
+	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public ArrayList<HashMap<String, String> > obtenirNivells() throws Exception {
+	public ArrayList<HashMap<String, String> > obtenirNivells() throws NoHiHaNivells, SQLException {
 		ConsultarNivellUseCaseController cnucc = new ConsultarNivellUseCaseController();
 		return cnucc.consultarNivells();
 	}

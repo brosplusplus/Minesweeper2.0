@@ -14,6 +14,8 @@ public class ProvaTreminal {
 	
 	public static void main(String[] args) throws Exception {
 		
+		
+		
 		Jugador player1 = new Jugador();
 		player1.setNom("Jugador1");
 		player1.setCognom("Blau");
@@ -26,7 +28,7 @@ public class ProvaTreminal {
 		nivell.setNombreCasellesxFila(9);
 		nivell.setNombreMines(0);
 		
-		EstrategiaPerTemps estrat = new EstrategiaPerTemps(120);
+		EstrategiaPerTemps estrat = new EstrategiaPerTemps();
 		
 		Partida partida = new Partida(player1, nivell, estrat);
 

@@ -15,10 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.bros.minesweeper.adapter.IAdaptadorCorreu;
 import com.bros.minesweeper.datainterface.ICtrlCasella;
 import com.bros.minesweeper.datainterface.ICtrlPartida;
-import com.bros.minesweeper.factory.FactoriaAdaptadorCorreu;
 import com.bros.minesweeper.factory.FactoriaControladors;
 import com.bros.minesweeper.factory.FactoriaEstrategiaPuntuacio;
 import com.bros.minesweeper.utils.Pair;
@@ -288,8 +286,6 @@ public class Partida {
 		if (es.acabada != null && es.acabada
 				&& es.guanyada != null && es.guanyada) {
 			es.puntuacio = computaPuntuacio();
-			IAdaptadorCorreu adapt = FactoriaAdaptadorCorreu.getAdaptadorCorreuPropi();
-//			adapt.sendMessage(this.jugadorPartidaActual.getEmail(), "Congrats", "Has guanyat amb una puntuaci� de: "+es.puntuacio);
 		}
 		return es;
 	}

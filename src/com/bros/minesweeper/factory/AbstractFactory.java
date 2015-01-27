@@ -6,9 +6,9 @@ package com.bros.minesweeper.factory;
  */
 public abstract class AbstractFactory {
 	
-	private static FactoriaAdaptadorCorreu instance;
+	private static AbstractFactory instance;
 	
-	public static FactoriaAdaptadorCorreu getInstance() {
+	public static AbstractFactory getInstance() {
 		return instance;
 	}
 	

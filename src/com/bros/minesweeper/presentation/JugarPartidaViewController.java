@@ -1,10 +1,12 @@
 package com.bros.minesweeper.presentation;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.bros.minesweeper.domain.controller.JugarPartidaUseCaseController;
 import com.bros.minesweeper.domain.model.EstatPartida;
+import com.bros.minesweeper.exceptions.NoHiHaNivells;
 import com.bros.minesweeper.utils.Pair;
 
 /**
@@ -93,7 +95,7 @@ public class JugarPartidaViewController {
 		String usuari = JPUCC.getJugName();
 		JPV.mostrarNivells(usuari, nivells);
 		}
-		catch (Exception e){
+		catch (NoHiHaNivells | SQLException e){
 			JPV.mostrarMissatge(e.getMessage());
 		}
 	}

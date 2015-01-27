@@ -28,6 +28,18 @@ public class Nivell {
 	
 	private Integer nombreMines;
 
+	public Nivell() {
+		
+	}
+	
+	public Nivell(String _nom, int _nF, int _nC, int _nM) {
+		// TODO Auto-generated constructor stub
+		nom = _nom;
+		nombreCasellesxColumna = _nF;
+		nombreCasellesxFila = _nC;
+		nombreMines = _nM;
+	}
+
 	/**
 	 * Association attributes
 	 */

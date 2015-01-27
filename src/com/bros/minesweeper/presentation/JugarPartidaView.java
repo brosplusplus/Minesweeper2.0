@@ -1,7 +1,6 @@
 package com.bros.minesweeper.presentation;
 
 import java.awt.AWTEvent;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -18,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.bros.minesweeper.utils.DerbyDB;
 import com.bros.minesweeper.utils.Pair;
 
 /**
@@ -287,6 +287,7 @@ public class JugarPartidaView {
 	 * Tanquem l'aplicacio
 	 */
 	public void tancar() {
+		DerbyDB.stopDerbyDB();
 		frameApp.dispose();
 	}
 }

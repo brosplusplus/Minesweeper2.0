@@ -88,6 +88,24 @@ public class PanelLogin extends JPanel implements IPanelAplicacio{
 		horizontalStrut_5.setMaximumSize(new Dimension(40, 0));
 		horizontalBox_1.add(horizontalStrut_5);
 		
+		Component verticalStrut_3 = Box.createVerticalStrut(20);
+		verticalBox.add(verticalStrut_3);
+		
+		Box horizontalBox_3 = Box.createHorizontalBox();
+		verticalBox.add(horizontalBox_3);
+		
+		Component horizontalGlue_1 = Box.createHorizontalGlue();
+		horizontalBox_3.add(horizontalGlue_1);
+		
+		JButton btnSignup = new JButton("SignUp");
+		horizontalBox_3.add(btnSignup);
+		
+		Component horizontalStrut_8 = Box.createHorizontalStrut(20);
+		horizontalStrut_8.setPreferredSize(new Dimension(40, 0));
+		horizontalStrut_8.setMinimumSize(new Dimension(40, 0));
+		horizontalStrut_8.setMaximumSize(new Dimension(40, 0));
+		horizontalBox_3.add(horizontalStrut_8);
+		
 		Component verticalGlue = Box.createVerticalGlue();
 		verticalBox.add(verticalGlue);
 		
