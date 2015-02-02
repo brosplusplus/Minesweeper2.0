@@ -98,6 +98,11 @@ public class PanelLogin extends JPanel implements IPanelAplicacio{
 		horizontalBox_3.add(horizontalGlue_1);
 		
 		JButton btnSignup = new JButton("SignUp");
+		btnSignup.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JPV.mostrarRegistrarUsuari();
+			}
+		});
 		horizontalBox_3.add(btnSignup);
 		
 		Component horizontalStrut_8 = Box.createHorizontalStrut(20);
@@ -143,7 +148,7 @@ public class PanelLogin extends JPanel implements IPanelAplicacio{
 		btnEntry.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				JPV.getJPVC().PrEntrar(textField.getText(), passwordField.getText());
+				JPV.getJPVC().PrEntrar(textField.getText(), new String(passwordField.getPassword()));
 			}
 		});
 		btnEntry.setFont(new Font("Arial", Font.PLAIN, 14));

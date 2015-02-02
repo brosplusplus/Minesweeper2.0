@@ -38,7 +38,8 @@ public class JugarPartidaView {
 	private PanelLogin panelLog = new PanelLogin(this);
 	private PanelMenuPrincipal panelMP = new PanelMenuPrincipal(this);
 	private PanelNivells panelLvl = new PanelNivells(this);
-	private PanelPartida panelGame = new PanelPartida(this);
+	private PanelRegistraUsuari panelUser = new PanelRegistraUsuari(this);
+	private FinestraPartida panelGame;
 	public static Color defaultColor = new Color(0,160,255);
 	private Dimension defaultFrameDimension = new Dimension(500,300);
 	
@@ -199,17 +200,17 @@ public class JugarPartidaView {
 	 * @param columnes  Es el numero de columnes que tindra el taulell del joc
 	 */
 	public void mostrarPartida(int files, int columnes) {
+		panelGame = new FinestraPartida(450, 300);
+		panelGame.setVisible();
+	}
+	
+
+	public void mostrarRegistrarUsuari() {
+		// TODO Auto-generated method stub
 		panelActual.removeAll();
-		frameApp.setMinimumSize(new Dimension(850,600));
-		panelGame = new PanelPartida(this);
-		panelGame.setTaulellJoc(files, columnes);
-		panelActual.add(panelGame);
-		frameApp.revalidate();
-		Dimension d = panelGame.getPreferredSize();
-		panelActual.setMinimumSize(d);
-		panelActual.setMaximumSize(d);
-		frameApp.setMinimumSize(d);
-		frameApp.setMaximumSize(d);
+		panelUser = new PanelRegistraUsuari(this);
+		panelActual.add(panelUser);
+		frameApp.pack();
 		frameApp.repaint();
 	}
 	
@@ -231,26 +232,26 @@ public class JugarPartidaView {
 	 * @param dataCell  Es l'estat de la casella on s'ha realitzat l'accio
 	 */
 	public void actualitzaTaulell(ArrayList<Pair<Integer, EstatCasella>> dataCell) {
-		for(int i = 0; i < dataCell.size(); i++){
-			Integer casella = dataCell.get(i).getFirst();
-			EstatCasella eC = dataCell.get(i).getSecond();
-			if (eC == EstatCasella.BOMBA) {
-				panelGame.actualitzaCasella(ImageGrid.icnBomb, casella, null);
-			}
-			else if (eC == EstatCasella.BLANCA) {
-				panelGame.actualitzaCasella(null, casella, null);
-			}
-			else if (eC == EstatCasella.DESMARCADA) {
-				panelGame.actualitzaCasella(null, casella, defaultColor);
-			}
-			else if (eC == EstatCasella.MARCADA) {
-				panelGame.actualitzaCasella(ImageGrid.icnMarc, casella, null);
-			}
-			else { 
-				int number = JPVC.getNumber(casella);
-				panelGame.actualitzaCasella(ImageGrid.icnNum.get(number-1), casella, null);
-			}
-		}
+//		for(int i = 0; i < dataCell.size(); i++){
+//			Integer casella = dataCell.get(i).getFirst();
+//			EstatCasella eC = dataCell.get(i).getSecond();
+//			if (eC == EstatCasella.BOMBA) {
+//				panelGame.actualitzaCasella(ImageGrid.icnBomb, casella, null);
+//			}
+//			else if (eC == EstatCasella.BLANCA) {
+//				panelGame.actualitzaCasella(null, casella, null);
+//			}
+//			else if (eC == EstatCasella.DESMARCADA) {
+//				panelGame.actualitzaCasella(null, casella, defaultColor);
+//			}
+//			else if (eC == EstatCasella.MARCADA) {
+//				panelGame.actualitzaCasella(ImageGrid.icnMarc, casella, null);
+//			}
+//			else { 
+//				int number = JPVC.getNumber(casella);
+//				panelGame.actualitzaCasella(ImageGrid.icnNum.get(number-1), casella, null);
+//			}
+//		}
 	}
 	
 	/**
@@ -261,7 +262,8 @@ public class JugarPartidaView {
 	public void mostrarMissatge(String txt){
 		panelLog.escriuMissatge(txt);
 		panelMP.escriuMissatge(txt);
-		panelGame.escriuMissatge(txt);
+		panelUser.escriuMissatge(txt);
+//		panelGame.escriuMissatge(txt);
 	}
 	
 	/**
@@ -290,4 +292,5 @@ public class JugarPartidaView {
 		DerbyDB.stopDerbyDB();
 		frameApp.dispose();
 	}
+
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.bros.minesweeper.domain.controller.JugarPartidaUseCaseController;
+import com.bros.minesweeper.domain.controller.RegistrarJugadorUCC;
 import com.bros.minesweeper.domain.model.EstatPartida;
 import com.bros.minesweeper.exceptions.NoHiHaNivells;
 import com.bros.minesweeper.utils.Pair;
@@ -21,10 +22,12 @@ public class JugarPartidaViewController {
 	 * Atributs d'associacio
 	 */
 	private JugarPartidaUseCaseController JPUCC;
+	private RegistrarJugadorUCC RJUCC; 
 	private JugarPartidaView JPV;
 
     public JugarPartidaViewController() {
     	JPUCC = new JugarPartidaUseCaseController();
+    	RJUCC = new RegistrarJugadorUCC();
         JPV = new JugarPartidaView(this);
     }
     
@@ -249,6 +252,22 @@ public class JugarPartidaViewController {
 	 */
 	public void PrSortir() {
 		JPV.tancar();
+	}
+
+	public void PrRegistrarUsuari() {
+		// TODO Auto-generated method stub
+		JPV.mostrarRegistrarUsuari();
+	}
+
+	public void newUser(String nom, String cognom, String username,
+			char[] password, String email) {
+		String pwd = new String(password);
+		try {
+			RJUCC.registrarUsuari(nom, cognom, username, pwd, email);
+			JPV.mostrarMissatge("Usuari "+username+" creat");
+		} catch (Exception e) {
+			JPV.mostrarMissatge(e.getMessage());
+		}
 	}
 
 }

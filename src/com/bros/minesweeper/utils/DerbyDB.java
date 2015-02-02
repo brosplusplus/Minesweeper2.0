@@ -68,11 +68,13 @@ public class DerbyDB {
 		ICtrlAdministrador cA = FactoriaControladors.getCtrlAdministrador();
 		try {
 			if (cN.getAll().isEmpty()){
+				debug.outln("BROS++Minesweeper: No hi ha nivells, creat els bàsics");
 				cN.save(new Nivell("Facil",9,9,10));
 				cN.save(new Nivell("Mitja",16,16,40));
 				cN.save(new Nivell("Dificil",30,30,160));
 			}
 			if (cA.get("Brospp") == null) {
+				debug.outln("BROS++Minesweeper: No hi ha admin, creat Brospp");
 				Administrador admin = new Administrador();
 				admin.setNom("Bros");
 				admin.setCognom("PlusPlus");
